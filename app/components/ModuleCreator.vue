@@ -208,7 +208,7 @@ const emit = defineEmits<{
 }>()
 
 // Composables
-const { addCustomModule, validateModule, formatDuration, getDefaultIcon } = useLearningPath()
+const { addCustomModule, validateModule, formatDuration, getDefaultIcon, createModule } = useLearningPath()
 
 // Data
 const formData = ref({
@@ -284,7 +284,7 @@ const handleSubmit = async () => {
   isSubmitting.value = true
 
   try {
-    const newModule = {
+    const moduleData = {
       title: formData.value.title.trim(),
       description: formData.value.description.trim(),
       duration: formData.value.duration,
@@ -293,7 +293,11 @@ const handleSubmit = async () => {
       icon: formData.value.icon || undefined
     }
 
-    addCustomModule(newModule)
+    // Create the module to get the complete module object with ID
+    const newModule = createModule(moduleData)
+
+    // Add to custom modules (this will update availableModules automatically)
+    addCustomModule(moduleData)
 
     // Reset form
     formData.value = {
@@ -305,6 +309,8 @@ const handleSubmit = async () => {
       icon: ''
     }
 
+    // Emit the created module with full module data
+    emit('created', newModule)
     emit('close')
   } catch (error) {
     console.error('Error creating module:', error)

@@ -124,7 +124,7 @@ export const useLearningPath = () => {
     name: 'My Learning Path'
   }))
 
-  const customModules = ref<Module[]>([])
+  const customModules = useState<Module[]>('custom-modules', () => [])
 
   // Computed available modules that combines sample and custom modules
   const availableModules = computed(() => [...sampleModules, ...customModules.value])
@@ -208,6 +208,8 @@ export const useLearningPath = () => {
           console.error('Error loading custom modules from localStorage:', error)
           customModules.value = []
         }
+      } else {
+        customModules.value = []
       }
     }
   }
