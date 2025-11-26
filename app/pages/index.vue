@@ -70,14 +70,14 @@
         </div>
 
         <!-- Desktop view - two panels -->
-        <div class="lg:grid lg:grid-cols-2 lg:gap-6">
+        <div class="hidden lg:grid lg:grid-cols-2 lg:gap-6">
           <!-- Left Panel - Available Modules -->
-          <div class="h-[600px] lg:h-[700px]" :class="{ 'hidden lg:block': activeTab !== 'modules' }">
+          <div class="h-[600px] lg:h-[700px]">
             <ModuleListPanel @create-module="showModuleCreator = true" />
           </div>
 
           <!-- Right Panel - Learning Path -->
-          <div class="h-[600px] lg:h-[700px]" :class="{ 'hidden lg:block': activeTab !== 'path' }">
+          <div class="h-[600px] lg:h-[700px]">
             <LearningPathPanel />
           </div>
         </div>
