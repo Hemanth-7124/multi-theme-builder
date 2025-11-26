@@ -187,7 +187,7 @@
         <!-- Enhanced action buttons -->
         <div class="flex gap-3">
           <button
-            @click="exportAsJSON"
+            @click="showExportModal = true"
             class="inline-flex relative gap-2 items-center px-6 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl shadow-lg transition-all duration-300 group hover:shadow-xl hover:scale-105 hover:from-indigo-700 hover:to-purple-700"
           >
             <span class="relative z-10">Export Learning Path</span>
@@ -200,6 +200,14 @@
         </div>
       </div>
     </div>
+
+    <!-- Export Modal -->
+    <ExportModal
+      v-if="showExportModal"
+      :learning-path="learningPath"
+      @close="showExportModal = false"
+      @error="handleExportError"
+    />
   </div>
 </template>
 
@@ -211,6 +219,9 @@ import {
   ClockIcon,
   AcademicCapIcon
 } from '@heroicons/vue/24/outline'
+
+// Import ExportModal component
+import ExportModal from './ExportModal.vue'
 
 const {
   learningPath,
@@ -225,6 +236,9 @@ const {
 const isDragOver = ref(false)
 const draggedModuleIndex = ref<number | null>(null)
 const draggedOverModuleIndex = ref<number | null>(null)
+
+// Export modal state
+const showExportModal = ref(false)
 
 const handleDragOver = (event: DragEvent) => {
   event.preventDefault()
@@ -329,6 +343,12 @@ const exportAsJSON = () => {
   link.click()
   document.body.removeChild(link)
   URL.revokeObjectURL(url)
+}
+
+const handleExportError = (message: string) => {
+  // Show error to user (could be enhanced with a toast notification)
+  alert(message)
+  console.error('Export error:', message)
 }
 
 const formatDate = (date: Date) => {
