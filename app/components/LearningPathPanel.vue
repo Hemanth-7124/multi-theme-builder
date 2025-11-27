@@ -283,7 +283,8 @@ const {
   reorderModules,
   updateModuleStatus,
   getCompletedModulesCount,
-  getOverallProgress
+  getOverallProgress,
+  isInLearningPath
 } = useLearningPath()
 
 const isDragOver = ref(false)

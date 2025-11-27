@@ -454,8 +454,29 @@ export const useLearningPath = () => {
 
   const getOverallProgress = (): number => {
     if (learningPath.value.modules.length === 0) return 0
-    const completedCount = getCompletedModulesCount()
-    return Math.round((completedCount / learningPath.value.modules.length) * 100)
+
+    // Calculate the sum of progress from all modules
+    const totalProgress = learningPath.value.modules.reduce((sum, module) => {
+      // If module has progress value, use it
+      if (module.progress !== undefined) {
+        return sum + module.progress
+      }
+      // Otherwise, use status-based progress
+      if (module.status === 'completed') {
+        return sum + 100
+      }
+      if (module.status === 'in-progress') {
+        return sum + 50 // Default to 50% for in-progress without specific progress
+      }
+      // For 'not-started' status, progress is 0
+      return sum
+    }, 0)
+
+    // Calculate average progress
+    const averageProgress = totalProgress / learningPath.value.modules.length
+
+    // Round to nearest integer and ensure it's between 0-100
+    return Math.round(Math.max(0, Math.min(100, averageProgress)))
   }
 
   const isInProgress = (moduleId: string): boolean => {
