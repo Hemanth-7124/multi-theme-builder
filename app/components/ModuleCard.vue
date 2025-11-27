@@ -1,6 +1,6 @@
 <template>
   <div
-    class="module-card bg-white rounded-lg border border-gray-200 p-4 hover:shadow-md transition-all duration-200 relative"
+    class="relative p-4 bg-white rounded-lg border border-gray-200 transition-all duration-200 module-card hover:shadow-md"
     :class="[
       { 'opacity-50 cursor-not-allowed': isInPath && !allowDuplicate },
       { 'dragging': isDragging },
@@ -14,13 +14,13 @@
     @click="handleCardClick"
   >
     <!-- Header -->
-    <div class="flex items-start justify-between mb-3">
-      <div class="flex items-center gap-2">
+    <div class="flex justify-between items-start mb-3">
+      <div class="flex gap-2 items-center">
         <span class="text-2xl" v-if="module.icon">{{ module.icon }}</span>
         <h3 class="font-semibold text-gray-900">{{ module.title }}</h3>
       </div>
       <span
-        class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium"
+        class="inline-flex items-center px-2 py-1 text-xs font-medium rounded-full"
         :class="getDifficultyClass(module.difficulty)"
       >
         {{ module.difficulty }}
@@ -30,10 +30,10 @@
     <!-- Progress Bar (if showProgress is true) -->
     <div v-if="showProgress" class="mb-3">
       <div class="flex justify-between items-center mb-1">
-        <span class="text-xs text-gray-600">Progress</span>
+        <span class="text-xs text-gray-600">{{ module.status || 'not-started' }}</span>
         <span class="text-xs font-medium text-gray-900">{{ module.progress || 0 }}%</span>
       </div>
-      <div class="w-full bg-gray-200 rounded-full h-2">
+      <div class="w-full h-2 bg-gray-200 rounded-full">
         <div
           class="h-2 rounded-full transition-all duration-300"
           :class="{
@@ -46,31 +46,31 @@
     </div>
 
     <!-- Description -->
-    <p class="text-gray-600 text-sm mb-3 line-clamp-2">{{ module.description }}</p>
+    <p class="mb-3 text-sm text-gray-600 line-clamp-2">{{ module.description }}</p>
 
     <!-- Footer -->
-    <div class="flex items-center justify-between">
-      <div class="flex items-center gap-4">
+    <div class="flex justify-between items-center">
+      <div class="flex gap-4 items-center">
         <!-- Category -->
-        <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+        <span class="px-2 py-1 text-xs text-gray-500 bg-gray-100 rounded">
           {{ module.category }}
         </span>
 
         <!-- Duration -->
-        <div class="flex items-center gap-1 text-xs text-gray-600">
+        <div class="flex gap-1 items-center text-xs text-gray-600">
           <ClockIcon class="w-3 h-3" />
           <span>{{ formatDuration(module.duration) }}</span>
         </div>
       </div>
 
       <!-- Action buttons -->
-      <div class="flex items-center gap-2">
+      <div class="flex gap-2 items-center">
         <!-- Status Toggle Button -->
         <button
           v-if="showProgress"
           @click.stop="handleStatusToggle"
           :class="getStatusClass()"
-          class="p-1.5 rounded-full transition-all duration-200 hover:scale-110 border-2 shadow-sm"
+          class="p-1.5 rounded-full border-2 shadow-sm transition-all duration-200 hover:scale-110"
           :title="`Status: ${module.status || 'not-started'} (Click to change)`"
         >
           <component :is="getStatusIcon()" class="w-4 h-4" v-if="getStatusIcon()" />
@@ -80,21 +80,21 @@
         <button
           v-if="showAddButton && !isInPath"
           @click="$emit('add', module)"
-          class="text-indigo-600 hover:text-indigo-800 text-sm font-medium"
+          class="text-sm font-medium text-indigo-600 hover:text-indigo-800"
         >
           Add
         </button>
         <button
           v-if="showRemoveButton"
           @click="$emit('remove', module.id)"
-          class="text-red-600 hover:text-red-800 text-sm font-medium"
+          class="text-sm font-medium text-red-600 hover:text-red-800"
         >
           <TrashIcon class="w-4 h-4" />
         </button>
         <button
           v-if="showDeleteButton"
           @click="$emit('delete', module.id)"
-          class="text-orange-600 hover:text-orange-800 text-sm font-medium"
+          class="text-sm font-medium text-orange-600 hover:text-orange-800"
           title="Delete custom module"
         >
           <XMarkIcon class="w-4 h-4" />

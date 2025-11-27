@@ -404,6 +404,11 @@ export const useLearningPath = () => {
         if (!learningPath.value.completedModules.includes(moduleId)) {
           learningPath.value.completedModules.push(moduleId)
         }
+      } else if (status === 'in-progress') {
+        module.progress = 50
+        if (learningPath.value.completedModules) {
+          learningPath.value.completedModules = learningPath.value.completedModules.filter(id => id !== moduleId)
+        }
       } else if (status === 'not-started') {
         module.progress = 0
         if (learningPath.value.completedModules) {

@@ -113,8 +113,26 @@ const closeModal = () => {
 }
 
 const handleJsonExport = () => {
-  // Reuse the existing JSON export logic
-  const dataStr = JSON.stringify(props.learningPath, null, 2)
+  // Get progress tracking functions
+  const { getCompletedModulesCount, getOverallProgress } = useLearningPath()
+
+  // Create enhanced export data with progress tracking
+  const exportData = {
+    ...props.learningPath,
+    // Add overall progress tracking
+    overallProgress: getOverallProgress(),
+    completedModulesCount: getCompletedModulesCount(),
+    totalModules: props.learningPath.modules.length,
+    exportDate: new Date().toISOString(),
+    // Ensure all modules have progress tracking fields
+    modules: props.learningPath.modules.map(module => ({
+      ...module,
+      status: module.status || 'not-started',
+      progress: module.progress || 0
+    }))
+  }
+
+  const dataStr = JSON.stringify(exportData, null, 2)
   const dataBlob = new Blob([dataStr], { type: 'application/json' })
   const url = URL.createObjectURL(dataBlob)
   const link = document.createElement('a')
@@ -134,8 +152,27 @@ const handlePdfExport = async () => {
   try {
     isGeneratingPdf.value = true
 
+    // Calculate progress statistics
+    const { getCompletedModulesCount, getOverallProgress } = useLearningPath()
+    const completedModulesCount = getCompletedModulesCount()
+    const overallProgress = getOverallProgress()
+
+    // Create enhanced learning path data with progress tracking
+    const enhancedLearningPath = {
+      ...props.learningPath,
+      // Ensure all modules have progress tracking fields
+      modules: props.learningPath.modules.map(module => ({
+        ...module,
+        status: module.status || 'not-started',
+        progress: module.progress || 0
+      })),
+      // Add progress tracking metadata
+      overallProgress,
+      completedModulesCount
+    }
+
     const { generatePdfFromData } = usePdfExport()
-    await generatePdfFromData(props.learningPath)
+    await generatePdfFromData(enhancedLearningPath)
 
     emit('close')
   } catch (error) {

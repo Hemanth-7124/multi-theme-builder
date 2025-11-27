@@ -3,6 +3,10 @@ import type { LearningPath, Module } from '~/types'
 
 export const usePdfExport = () => {
   const generatePdfFromData = async (learningPath: LearningPath): Promise<void> => {
+    // Calculate progress statistics
+    const completedModules = learningPath.modules.filter(m => m.status === 'completed').length
+    const totalModules = learningPath.modules.length
+    const overallProgress = totalModules > 0 ? Math.round((completedModules / totalModules) * 100) : 0
     try {
       // Create a new PDF document
       const doc = new jsPDF({
@@ -72,12 +76,35 @@ export const usePdfExport = () => {
         ? `${totalHours} hour${totalHours > 1 ? 's' : ''} ${totalMinutes > 0 ? `${totalMinutes} minute${totalMinutes > 1 ? 's' : ''}` : ''}`.trim()
         : `${totalMinutes} minute${totalMinutes > 1 ? 's' : ''}`
 
-      const summaryText = `Generated on ${generatedDate} | ${learningPath.modules.length} module${learningPath.modules.length > 1 ? 's' : ''} | Total Duration: ${durationText}`
+      const summaryText = `Generated on ${generatedDate} | ${learningPath.modules.length} module${learningPath.modules.length > 1 ? 's' : ''} | ${completedModules} completed | Overall Progress: ${overallProgress}% | Total Duration: ${durationText}`
 
       doc.setFontSize(10)
       doc.setFont('helvetica', 'normal')
       doc.text(summaryText, pageWidth / 2, currentY, { align: 'center' })
       currentY += 15
+
+      // Add progress overview section (text only)
+      if (totalModules > 0) {
+        currentY += 5
+
+        // Progress section header
+        doc.setFontSize(12)
+        doc.setFont('helvetica', 'bold')
+        doc.text('Progress Overview', margin, currentY)
+        currentY += 7
+
+        // Module status breakdown
+        const notStartedCount = learningPath.modules.filter(m => (m.status || 'not-started') === 'not-started').length
+        const inProgressCount = learningPath.modules.filter(m => m.status === 'in-progress').length
+
+        doc.setFontSize(10)
+        doc.setFont('helvetica', 'normal')
+        doc.text(`Overall Progress: ${overallProgress}%`, margin, currentY)
+        currentY += 5
+        doc.text(`Not Started: ${notStartedCount} | In Progress: ${inProgressCount} | Completed: ${completedModules}`, margin, currentY)
+
+        currentY += 15
+      }
 
       // Add modules
       learningPath.modules.forEach((module, index) => {
@@ -93,12 +120,16 @@ export const usePdfExport = () => {
         doc.text(`${index + 1}. ${module.title.toUpperCase()}`, margin, currentY)
         currentY += 7
 
-        // Module metadata
+        // Module metadata with status and progress
         doc.setFontSize(9)
         doc.setFont('helvetica', 'normal')
-        const metadataText = `Category: ${module.category} | Difficulty: ${module.difficulty} | Duration: ${formatDuration(module.duration)}`
+        const status = module.status || 'not-started'
+        const progress = module.progress || 0
+        const metadataText = `Category: ${module.category} | Difficulty: ${module.difficulty} | Duration: ${formatDuration(module.duration)} | Status: ${status.replace('-', ' ').toUpperCase()} | Progress: ${progress}%`
         doc.text(metadataText, margin, currentY)
         currentY += 5
+
+        // Progress information included in text only (no visual progress bar)
 
         // Module description
         doc.setFontSize(10)
