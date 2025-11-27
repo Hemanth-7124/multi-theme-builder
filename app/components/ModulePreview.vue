@@ -9,6 +9,7 @@
         <div class="flex justify-between items-start">
           <div class="flex gap-4 items-start">
             <div class="flex justify-center items-center w-12 h-12 bg-indigo-100 rounded-lg">
+             
               <span class="text-2xl">{{ module.icon }}</span>
             </div>
             <div>
@@ -42,7 +43,7 @@
         </div>
 
         <!-- Duration & Info -->
-        <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+        <div class="grid grid-cols-3 gap-4 md:grid-cols-3">
           <div class="flex gap-2 items-center p-3 bg-gray-50 rounded-lg">
             <ClockIcon class="w-5 h-5 text-indigo-600" />
             <div>
@@ -64,13 +65,7 @@
               <p class="text-sm font-medium text-gray-900">{{ module.difficulty }}</p>
             </div>
           </div>
-          <div v-if="module.progress !== undefined" class="flex gap-2 items-center p-3 bg-gray-50 rounded-lg">
-            <CheckCircleIcon class="w-5 h-5 text-blue-600" />
-            <div>
-              <p class="text-xs text-gray-500">Progress</p>
-              <p class="text-sm font-medium text-gray-900">{{ module.progress }}%</p>
-            </div>
-          </div>
+      
         </div>
 
         <!-- Prerequisites -->
@@ -91,6 +86,7 @@
         <!-- Learning Objectives -->
         <div v-if="module.learningObjectives && module.learningObjectives.length > 0">
           <h3 class="mb-3 text-lg font-semibold text-gray-900">Learning Objectives</h3>
+        
           <ul class="space-y-3">
             <li
               v-for="objective in module.learningObjectives"

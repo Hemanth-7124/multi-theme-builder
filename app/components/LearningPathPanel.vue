@@ -17,36 +17,57 @@
       </div>
 
       <!-- Stats -->
-      <div class="flex gap-2 justify-between items-center">
-        <div class="flex gap-6 items-center">
-          <div class="flex gap-2 items-center px-3 py-2 bg-white rounded-lg border border-gray-200 shadow-sm">
-            <BookOpenIcon class="w-5 h-5 text-indigo-600" />
-            <span class="text-sm font-medium text-gray-900">{{ moduleCount }} modules</span>
-          </div>
-          <div class="flex gap-2 items-center px-3 py-2 bg-white rounded-lg border border-gray-200 shadow-sm">
-            <ClockIcon class="w-5 h-5 text-green-600" />
-            <span class="text-sm font-medium text-gray-900">{{ formatDuration(totalDuration) }}</span>
-          </div>
-          <div v-if="getCompletedModulesCount() > 0" class="flex gap-2 items-center px-3 py-2 bg-white rounded-lg border border-gray-200 shadow-sm">
-            <CheckCircleIcon class="w-5 h-5 text-green-600" />
-            <span class="text-sm font-medium text-gray-900">{{ getCompletedModulesCount() }} completed</span>
-          </div>
-        </div>
+   <div class="flex flex-col gap-4 justify-between items-start p-4 bg-white rounded-xl border border-gray-100 shadow-sm sm:flex-row sm:items-center">
+  
+  <!-- Stats Section -->
+  <div class="flex flex-wrap gap-4 items-center">
+    
+    <div class="flex gap-2 items-center px-4 py-2 bg-white rounded-lg border border-gray-200 shadow-sm">
+      <BookOpenIcon class="w-5 h-5 text-indigo-600" />
+      <span class="text-sm font-medium text-gray-900">
+        {{ moduleCount }} Modules
+      </span>
+    </div>
 
-        <!-- Progress indicator -->
-        <div v-if="moduleCount > 0" class="hidden sm:block">
-          <div class="flex gap-1 items-center">
-            <span class="text-xs text-gray-600">Overall Progress</span>
-            <div class="overflow-hidden w-32 h-2 bg-gray-200 rounded-full">
-              <div
-                class="h-full bg-gradient-to-r from-green-500 to-green-600 rounded-full transition-all duration-500"
-                :style="{ width: `${getOverallProgress()}%` }"
-              />
-            </div>
-            <span class="text-xs font-medium text-gray-900">{{ getOverallProgress() }}%</span>
-          </div>
-        </div>
-      </div>
+    <div class="flex gap-2 items-center px-4 py-2 bg-white rounded-lg border border-gray-200 shadow-sm">
+      <ClockIcon class="w-5 h-5 text-green-600" />
+      <span class="text-sm font-medium text-gray-900">
+        {{ formatDuration(totalDuration) }}
+      </span>
+    </div>
+
+    <div
+      v-if="getCompletedModulesCount() > 0"
+      class="flex gap-2 items-center px-4 py-2 bg-white rounded-lg border border-gray-200 shadow-sm"
+    >
+      <CheckCircleIcon class="w-5 h-5 text-green-600" />
+      <span class="text-sm font-medium text-gray-900">
+        {{ getCompletedModulesCount() }} Completed
+      </span>
+    </div>
+
+  </div>
+
+  <!-- Progress Section -->
+  <div v-if="moduleCount > 0" class="flex gap-2 items-center">
+    <span class="text-xs text-gray-600 whitespace-nowrap">
+      Overall Progress
+    </span>
+
+    <div class="overflow-hidden w-32 h-2 bg-gray-200 rounded-full">
+      <div
+        class="h-full bg-green-500 rounded-full transition-all duration-500"
+        :style="{ width: `${getOverallProgress()}%` }"
+      ></div>
+    </div>
+
+    <span class="text-xs font-semibold text-gray-900">
+      {{ getOverallProgress() }}%
+    </span>
+  </div>
+
+</div>
+
     </div>
 
     <!-- Drop Zone -->

@@ -134,6 +134,159 @@
         </p>
       </div>
 
+      <!-- Prerequisites (optional) -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          Prerequisites (optional)
+        </label>
+        <div class="space-y-2 mb-3">
+          <div v-for="(prerequisite, index) in formData.prerequisitesList" :key="index" class="flex gap-2">
+            <input
+              v-model="formData.prerequisitesList[index]"
+              type="text"
+              class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              placeholder="e.g., Basic JavaScript knowledge"
+            />
+            <button
+              type="button"
+              @click="removePrerequisite(index)"
+              class="p-2 text-red-600 hover:bg-red-50 rounded-md transition-colors"
+            >
+              <XMarkIcon class="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+        <button
+          type="button"
+          @click="addPrerequisite"
+          class="w-full px-3 py-2 border-2 border-dashed border-gray-300 text-gray-600 rounded-md hover:border-gray-400 hover:text-gray-700 transition-colors"
+        >
+          + Add Prerequisite
+        </button>
+        <p class="mt-1 text-sm text-gray-500">
+          List any prior knowledge or skills needed for this module
+        </p>
+      </div>
+
+      <!-- Learning Objectives (optional) -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          Learning Objectives (optional)
+        </label>
+        <div class="space-y-2 mb-3">
+          <div v-for="(objective, index) in formData.learningObjectivesList" :key="index" class="flex gap-2">
+            <input
+              v-model="formData.learningObjectivesList[index]"
+              type="text"
+              class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              placeholder="e.g., Understand Vue.js reactivity system"
+            />
+            <button
+              type="button"
+              @click="removeLearningObjective(index)"
+              class="p-2 text-red-600 hover:bg-red-50 rounded-md transition-colors"
+            >
+              <XMarkIcon class="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+        <button
+          type="button"
+          @click="addLearningObjective"
+          class="w-full px-3 py-2 border-2 border-dashed border-gray-300 text-gray-600 rounded-md hover:border-gray-400 hover:text-gray-700 transition-colors"
+        >
+          + Add Learning Objective
+        </button>
+        <p class="mt-1 text-sm text-gray-500">
+          What will learners be able to do after completing this module?
+        </p>
+      </div>
+
+      <!-- Topics (optional) -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          Topics Covered (optional)
+        </label>
+        <div class="space-y-2 mb-3">
+          <div v-for="(topic, index) in formData.topicsList" :key="index" class="flex gap-2">
+            <input
+              v-model="formData.topicsList[index]"
+              type="text"
+              class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              placeholder="e.g., Vue.js Components"
+            />
+            <button
+              type="button"
+              @click="removeTopic(index)"
+              class="p-2 text-red-600 hover:bg-red-50 rounded-md transition-colors"
+            >
+              <XMarkIcon class="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+        <button
+          type="button"
+          @click="addTopic"
+          class="w-full px-3 py-2 border-2 border-dashed border-gray-300 text-gray-600 rounded-md hover:border-gray-400 hover:text-gray-700 transition-colors"
+        >
+          + Add Topic
+        </button>
+        <p class="mt-1 text-sm text-gray-500">
+          List the main topics that will be covered in this module
+        </p>
+      </div>
+
+      <!-- Resources (optional) -->
+      <div>
+        <label for="resources" class="block text-sm font-medium text-gray-700 mb-1">
+          Resources & Materials (optional)
+        </label>
+        <div class="space-y-2 mb-3">
+          <div v-for="(resource, index) in formData.resourceList" :key="index" class="flex gap-2">
+            <input
+              v-model="resource.title"
+              type="text"
+              class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              placeholder="Resource title (e.g., Vue.js Documentation)"
+            />
+            <select
+              v-model="resource.type"
+              class="px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            >
+              <option value="documentation">Documentation</option>
+              <option value="article">Article</option>
+              <option value="video">Video</option>
+              <option value="course">Course</option>
+              <option value="book">Book</option>
+              <option value="tool">Tool</option>
+            </select>
+            <input
+              v-model="resource.url"
+              type="url"
+              class="w-48 px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              placeholder="URL (optional)"
+            />
+            <button
+              type="button"
+              @click="removeResource(index)"
+              class="p-2 text-red-600 hover:bg-red-50 rounded-md transition-colors"
+            >
+              <XMarkIcon class="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+        <button
+          type="button"
+          @click="addResource"
+          class="w-full px-3 py-2 border-2 border-dashed border-gray-300 text-gray-600 rounded-md hover:border-gray-400 hover:text-gray-700 transition-colors"
+        >
+          + Add Resource
+        </button>
+        <p class="mt-1 text-sm text-gray-500">
+          Add helpful resources like documentation, tutorials, videos, or tools
+        </p>
+      </div>
+
       <!-- Preview -->
       <div v-if="formData.title" class="border-t pt-4">
         <p class="text-sm font-medium text-gray-700 mb-2">Preview:</p>
@@ -217,7 +370,11 @@ const formData = ref({
   duration: 60,
   category: '',
   difficulty: 'Beginner' as 'Beginner' | 'Intermediate' | 'Advanced',
-  icon: ''
+  icon: '',
+  prerequisitesList: [] as string[],
+  learningObjectivesList: [] as string[],
+  topicsList: [] as string[],
+  resourceList: [] as { title: string; type: 'video' | 'article' | 'documentation' | 'book' | 'course' | 'tool'; url?: string }[]
 })
 
 const errors = ref<Record<string, string>>({})
@@ -240,6 +397,42 @@ const getDifficultyClass = (difficulty: string) => {
     'Advanced': 'bg-red-100 text-red-800'
   }
   return classes[difficulty as keyof typeof classes] || 'bg-gray-100 text-gray-800'
+}
+
+const addPrerequisite = () => {
+  formData.value.prerequisitesList.push('')
+}
+
+const removePrerequisite = (index: number) => {
+  formData.value.prerequisitesList.splice(index, 1)
+}
+
+const addLearningObjective = () => {
+  formData.value.learningObjectivesList.push('')
+}
+
+const removeLearningObjective = (index: number) => {
+  formData.value.learningObjectivesList.splice(index, 1)
+}
+
+const addTopic = () => {
+  formData.value.topicsList.push('')
+}
+
+const removeTopic = (index: number) => {
+  formData.value.topicsList.splice(index, 1)
+}
+
+const addResource = () => {
+  formData.value.resourceList.push({
+    title: '',
+    type: 'documentation',
+    url: ''
+  })
+}
+
+const removeResource = (index: number) => {
+  formData.value.resourceList.splice(index, 1)
 }
 
 const validateForm = (): boolean => {
@@ -290,7 +483,33 @@ const handleSubmit = async () => {
       duration: formData.value.duration,
       category: formData.value.category,
       difficulty: formData.value.difficulty,
-      icon: formData.value.icon || undefined
+      icon: formData.value.icon || undefined,
+      prerequisites: formData.value.prerequisitesList.length > 0
+        ? formData.value.prerequisitesList
+            .filter(item => item.trim())
+            .map(item => item.trim())
+        : undefined,
+      learningObjectives: formData.value.learningObjectivesList.length > 0
+        ? formData.value.learningObjectivesList
+            .filter(item => item.trim())
+            .map(item => item.trim())
+        : undefined,
+      topics: formData.value.topicsList.length > 0
+        ? formData.value.topicsList
+            .filter(item => item.trim())
+            .map(item => item.trim())
+        : undefined,
+      resources: formData.value.resourceList.length > 0
+        ? formData.value.resourceList
+            .filter(resource => resource.title.trim())
+            .map((resource, index) => ({
+              id: `resource-${Date.now()}-${index}`,
+              title: resource.title.trim(),
+              type: resource.type,
+              url: resource.url?.trim() || undefined,
+              description: undefined
+            }))
+        : undefined
     }
 
     // Create the module to get the complete module object with ID
@@ -306,7 +525,11 @@ const handleSubmit = async () => {
       duration: 60,
       category: '',
       difficulty: 'Beginner',
-      icon: ''
+      icon: '',
+      prerequisitesList: [],
+      learningObjectivesList: [],
+      topicsList: [],
+      resourceList: []
     }
 
     // Emit the created module with full module data
