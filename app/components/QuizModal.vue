@@ -222,6 +222,9 @@
               <TrophyIcon class="w-5 h-5" />
               Generate Certificate
             </button>
+            <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-3 text-sm">
+              <p class="text-yellow-800">🎉 Automatic certificate generation should trigger. If not, click the button above.</p>
+            </div>
           </div>
         </div>
       </div>

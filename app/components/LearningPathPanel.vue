@@ -460,13 +460,21 @@ const handleStartQuiz = (module: Module) => {
 }
 
 const handleQuizCompleted = (quizResult: QuizAttempt) => {
+  console.log('=== handleQuizCompleted called ===')
+  console.log('Quiz result passed:', quizResult.passed)
+
   if (quizModule.value) {
     // Complete the quiz in the learning path
     completeQuiz(quizModule.value.id, quizResult)
 
-    // Close quiz modal
-    showQuizModal.value = false
-    quizModule.value = null
+    // Only close quiz modal if quiz failed (certificate modal will handle closing if passed)
+    if (!quizResult.passed) {
+      console.log('Quiz failed, closing quiz modal')
+      showQuizModal.value = false
+      quizModule.value = null
+    } else {
+      console.log('Quiz passed, keeping quiz modal open for certificate handling')
+    }
   }
 }
 

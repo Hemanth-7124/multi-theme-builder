@@ -161,9 +161,10 @@
               <h4 class="font-semibold text-blue-900 mb-1">Certificate Instructions</h4>
               <ul class="text-blue-800 space-y-1">
                 <li>• Click on the name field to personalize your certificate</li>
-                <li>• Download as PDF for easy sharing and printing</li>
+                <li>• Enter your name and press Enter to save it</li>
+                <li>• Download, Print, or Share your certificate</li>
+                <li>• The module will be marked as completed after you download/share</li>
                 <li>• Each certificate has a unique ID for verification</li>
-                <li>• Keep this certificate as proof of your achievement</li>
               </ul>
             </div>
           </div>
@@ -235,7 +236,7 @@ const cancelEditingName = () => {
   isEditingName.value = false
 }
 
-// Certificate generation
+// Certificate generation (saves data but doesn't emit or close modal)
 const generateAndSaveCertificate = async () => {
   if (!learnerName.value) return
 
@@ -249,11 +250,11 @@ const generateAndSaveCertificate = async () => {
     certificateId: certificateId.value
   }
 
-  // Save certificate using useLearningPath
+  // Save certificate using useLearningPath but don't emit (user hasn't downloaded yet)
   const { addCertificate } = useLearningPath()
   addCertificate(certificate)
 
-  emit('certificate-generated', certificate)
+  console.log('Certificate saved but modal staying open for user to download')
 }
 
 // PDF generation using useCertificate composable
@@ -267,6 +268,13 @@ const handleDownloadPDF = async () => {
 
   try {
     await downloadCertificate(certificate, props.module)
+
+    // Only emit certificate-generated after successful download
+    console.log('PDF downloaded successfully, emitting certificate-generated event')
+    emit('certificate-generated', certificate)
+
+    // Show success message
+    alert('Certificate downloaded successfully! You can close this window now.')
   } catch (error) {
     console.error('Error generating PDF:', error)
     alert('Failed to generate PDF. Please try again.')
@@ -298,6 +306,20 @@ const handlePrint = () => {
       printWindow.document.close()
       printWindow.focus()
       printWindow.print()
+
+      // Emit certificate-generated after successful print
+      const certificate = {
+        id: `cert-${Date.now()}`,
+        moduleId: props.module.id,
+        moduleName: props.module.title,
+        learnerName: learnerName.value,
+        completionDate: new Date(),
+        score: props.quizResult?.score || 100,
+        certificateId: certificateId.value
+      }
+      emit('certificate-generated', certificate)
+      console.log('Certificate printed successfully, emitting certificate-generated event')
+
       printWindow.close()
     }
   }
@@ -317,6 +339,19 @@ const handleShare = async () => {
         text: shareText,
         url: shareUrl
       })
+
+      // Emit certificate-generated after successful share
+      const certificate = {
+        id: `cert-${Date.now()}`,
+        moduleId: props.module.id,
+        moduleName: props.module.title,
+        learnerName: learnerName.value,
+        completionDate: new Date(),
+        score: props.quizResult?.score || 100,
+        certificateId: certificateId.value
+      }
+      emit('certificate-generated', certificate)
+      console.log('Certificate shared successfully, emitting certificate-generated event')
     } catch (error) {
       console.log('Share cancelled or failed:', error)
     }
@@ -324,8 +359,19 @@ const handleShare = async () => {
     // Fallback: copy to clipboard
     try {
       await navigator.clipboard.writeText(`${shareText}\nVerify: ${shareUrl}`)
-      // TODO: Show success notification
-      console.log('Link copied to clipboard')
+
+      // Emit certificate-generated after successful copy
+      const certificate = {
+        id: `cert-${Date.now()}`,
+        moduleId: props.module.id,
+        moduleName: props.module.title,
+        learnerName: learnerName.value,
+        completionDate: new Date(),
+        score: props.quizResult?.score || 100,
+        certificateId: certificateId.value
+      }
+      emit('certificate-generated', certificate)
+      console.log('Certificate link copied successfully, emitting certificate-generated event')
     } catch (error) {
       console.error('Failed to copy to clipboard:', error)
     }
