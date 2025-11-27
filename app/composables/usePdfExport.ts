@@ -3,10 +3,13 @@ import type { LearningPath, Module } from '~/types'
 
 export const usePdfExport = () => {
   const generatePdfFromData = async (learningPath: LearningPath): Promise<void> => {
-    // Calculate progress statistics
+    // Import the getOverallProgress function to use the proper calculation
+    const { getOverallProgress } = useLearningPath()
+
+    // Calculate progress statistics using the updated function
     const completedModules = learningPath.modules.filter(m => m.status === 'completed').length
     const totalModules = learningPath.modules.length
-    const overallProgress = totalModules > 0 ? Math.round((completedModules / totalModules) * 100) : 0
+    const overallProgress = totalModules > 0 ? getOverallProgress() : 0
     try {
       // Create a new PDF document
       const doc = new jsPDF({
