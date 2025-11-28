@@ -1,10 +1,12 @@
-import type { Module, LearningPath, ModuleStatus, QuizAttempt, Certificate } from '~/types'
+import type { Module, LearningPath, ModuleStatus, QuizAttempt, Certificate, CustomQuestion, CustomQuestionBank, ImportedQuestion } from '~/types'
 import { formatDuration } from '~/utils/formatting'
 
 const LEARNING_PATH_KEY = 'learning-path'
 const CUSTOM_MODULES_KEY = 'custom-modules'
 const QUIZ_ATTEMPTS_KEY = 'quiz-attempts'
 const CERTIFICATES_KEY = 'certificates'
+const CUSTOM_QUESTIONS_KEY = 'custom-module-questions'
+const QUESTION_IMPORTS_KEY = 'imported-questions'
 
 export const useLearningPath = () => {
   // Sample modules data
@@ -198,6 +200,10 @@ export const useLearningPath = () => {
   // Quiz-related state
   const quizAttempts = useState<QuizAttempt[]>('quiz-attempts', () => [])
   const certificates = useState<Certificate[]>('certificates', () => [])
+
+  // Custom Questions state
+  const customQuestions = useState<CustomQuestionBank>('custom-module-questions', () => ({}))
+  const importedQuestions = useState<ImportedQuestion[]>('imported-questions', () => [])
 
   // Computed available modules that combines sample and custom modules
   const availableModules = computed(() => [...sampleModules, ...customModules.value])
@@ -609,9 +615,206 @@ export const useLearningPath = () => {
     return certificates.value.some(cert => cert.moduleId === moduleId)
   }
 
+  // Custom Questions Management Functions
+
+  const loadCustomQuestions = () => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem(CUSTOM_QUESTIONS_KEY)
+      if (stored) {
+        try {
+          const parsed = JSON.parse(stored)
+          customQuestions.value = parsed || {}
+          // Convert date strings back to Date objects
+          Object.keys(customQuestions.value).forEach(moduleId => {
+            customQuestions.value[moduleId] = customQuestions.value[moduleId].map(q => ({
+              ...q,
+              createdAt: new Date(q.createdAt),
+              updatedAt: q.updatedAt ? new Date(q.updatedAt) : undefined
+            }))
+          })
+        } catch (error) {
+          console.error('Error loading custom questions:', error)
+          customQuestions.value = {}
+        }
+      }
+    }
+  }
+
+  const saveCustomQuestions = () => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(CUSTOM_QUESTIONS_KEY, JSON.stringify(customQuestions.value))
+    }
+  }
+
+  const loadImportedQuestions = () => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem(QUESTION_IMPORTS_KEY)
+      if (stored) {
+        try {
+          const parsed = JSON.parse(stored)
+          importedQuestions.value = parsed || []
+          // Convert date strings back to Date objects
+          importedQuestions.value = importedQuestions.value.map(iq => ({
+            ...iq,
+            importedAt: new Date(iq.importedAt)
+          }))
+        } catch (error) {
+          console.error('Error loading imported questions:', error)
+          importedQuestions.value = []
+        }
+      }
+    }
+  }
+
+  const saveImportedQuestions = () => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(QUESTION_IMPORTS_KEY, JSON.stringify(importedQuestions.value))
+    }
+  }
+
+  // CRUD Operations for Custom Questions
+  const addCustomQuestion = (moduleId: string, questionData: Omit<CustomQuestion, 'id' | 'isCustom' | 'createdAt'>) => {
+    // Validate required fields
+    if (!moduleId || !questionData.text || !questionData.options || questionData.options.length < 2) {
+      throw new Error('Invalid question data: moduleId, text, and at least 2 options are required')
+    }
+
+    if (!customQuestions.value[moduleId]) {
+      customQuestions.value[moduleId] = []
+    }
+
+    const newQuestion: CustomQuestion = {
+      ...questionData,
+      id: `custom-q-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      isCustom: true,
+      createdAt: new Date(),
+      moduleId
+    }
+
+    customQuestions.value[moduleId].push(newQuestion)
+    updateModuleQuestionCount(moduleId)
+    saveCustomQuestions()
+
+    return newQuestion
+  }
+
+  const updateCustomQuestion = (moduleId: string, questionId: string, updates: Partial<CustomQuestion>) => {
+    const questions = customQuestions.value[moduleId]
+    if (!questions) return null
+
+    const questionIndex = questions.findIndex(q => q.id === questionId)
+    if (questionIndex === -1) return null
+
+    questions[questionIndex] = {
+      ...questions[questionIndex],
+      ...updates,
+      updatedAt: new Date()
+    }
+
+    saveCustomQuestions()
+    return questions[questionIndex]
+  }
+
+  const removeCustomQuestion = (moduleId: string, questionId: string) => {
+    const questions = customQuestions.value[moduleId]
+    if (!questions) return false
+
+    const initialLength = questions.length
+    customQuestions.value[moduleId] = questions.filter(q => q.id !== questionId)
+
+    // Check if questions still exist after filtering
+    if (customQuestions.value[moduleId] && customQuestions.value[moduleId].length === 0) {
+      delete customQuestions.value[moduleId]
+    }
+
+    updateModuleQuestionCount(moduleId)
+    saveCustomQuestions()
+
+    // Calculate result based on whether questions were actually removed
+    const currentQuestions = customQuestions.value[moduleId]
+    const currentLength = currentQuestions ? currentQuestions.length : 0
+
+    return currentLength < initialLength
+  }
+
+  const getModuleCustomQuestions = (moduleId: string): CustomQuestion[] => {
+    return customQuestions.value[moduleId] || []
+  }
+
+  // Import Questions from Existing Question Bank
+  const importQuestionsFromBank = async (moduleId: string, questionIds: string[]) => {
+    try {
+      const { questionBank } = await import('~/data/questionBank')
+
+      questionIds.forEach(originalId => {
+        const originalQuestion = questionBank.find(q => q.id === originalId)
+        if (!originalQuestion) return
+
+        // Check if already imported
+        const alreadyImported = importedQuestions.value.some(
+          iq => iq.originalQuestionId === originalId && iq.targetModuleId === moduleId
+        )
+
+        if (alreadyImported) return
+
+        // Create custom question copy
+        const customQuestion: Omit<CustomQuestion, 'id' | 'isCustom' | 'createdAt'> = {
+          moduleId,
+          text: originalQuestion.text,
+          category: originalQuestion.category,
+          difficulty: originalQuestion.difficulty,
+          options: [...originalQuestion.options],
+          correctAnswer: originalQuestion.correctAnswer,
+          explanation: originalQuestion.explanation
+        }
+
+        addCustomQuestion(moduleId, customQuestion)
+
+        // Track import
+        importedQuestions.value.push({
+          originalQuestionId: originalId,
+          targetModuleId: moduleId,
+          importedAt: new Date()
+        })
+      })
+
+      saveImportedQuestions()
+    } catch (error) {
+      console.error('Error importing questions:', error)
+    }
+  }
+
+  // Get all available questions for a module (custom + imported from bank)
+  const getAllQuestionsForModule = async (moduleId: string, category: string, difficulty: string) => {
+    try {
+      const customQuestions = getModuleCustomQuestions(moduleId)
+
+      // Get questions from main bank that match this module
+      const { getQuestionsByCategory } = await import('~/data/questionBank')
+      const bankQuestions = getQuestionsByCategory(category, difficulty as any, moduleId)
+
+      // Combine and return all questions
+      return [...customQuestions, ...bankQuestions]
+    } catch (error) {
+      console.error('Error getting all questions for module:', error)
+      return []
+    }
+  }
+
+  // Helper Functions
+  const updateModuleQuestionCount = (moduleId: string) => {
+    const module = availableModules.value.find(m => m.id === moduleId)
+    if (module && isCustomModule(moduleId)) {
+      module.hasCustomQuestions = customQuestions.value[moduleId]?.length > 0
+      module.customQuestionCount = customQuestions.value[moduleId]?.length || 0
+    }
+  }
+
   // Load from localStorage on initialization
   onMounted(() => {
     loadFromLocalStorage()
+    loadCustomQuestions()
+    loadImportedQuestions()
   })
 
   return {
@@ -620,6 +823,8 @@ export const useLearningPath = () => {
     availableModules: readonly(availableModules),
     quizAttempts: readonly(quizAttempts),
     certificates: readonly(certificates),
+    customQuestions: readonly(customQuestions),
+    importedQuestions: readonly(importedQuestions),
 
     // Computed
     totalDuration,
@@ -660,6 +865,18 @@ export const useLearningPath = () => {
     addCertificate,
     getCertificates,
     getCertificate,
-    hasCertificate
+    hasCertificate,
+
+    // Custom Questions Management Methods
+    addCustomQuestion,
+    updateCustomQuestion,
+    removeCustomQuestion,
+    getModuleCustomQuestions,
+    importQuestionsFromBank,
+    getAllQuestionsForModule,
+    loadCustomQuestions,
+    saveCustomQuestions,
+    loadImportedQuestions,
+    saveImportedQuestions
   }
 }

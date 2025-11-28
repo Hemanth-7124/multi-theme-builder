@@ -18,6 +18,9 @@ export interface Module {
   learningObjectives?: string[]
   topics?: string[]
   resources?: Resource[]
+  // Custom Question Bank fields
+  hasCustomQuestions?: boolean // Quick check for UI
+  customQuestionCount?: number // Cache count for performance
 }
 
 export interface LearningPath {
@@ -82,6 +85,26 @@ export interface Question {
   options: string[]
   correctAnswer: number
   explanation?: string
+}
+
+// Custom Question Bank interfaces
+export interface CustomQuestion extends Question {
+  moduleId: string // Links to specific custom module
+  isCustom: true // Distinguishes from predefined questions
+  createdAt: Date
+  updatedAt?: Date
+}
+
+// Question bank management interfaces
+export interface CustomQuestionBank {
+  [moduleId: string]: CustomQuestion[] // Map of moduleId -> questions
+}
+
+// Question import tracking
+export interface ImportedQuestion {
+  originalQuestionId: string
+  targetModuleId: string
+  importedAt: Date
 }
 
 export interface QuizAttempt {

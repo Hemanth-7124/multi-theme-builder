@@ -1,6 +1,7 @@
 import type { Question, QuizAttempt, Module } from '~/types'
 import { QUIZ_CONFIG } from '~/types'
 import { getRandomQuestions, calculateScore } from '~/data/questionBank'
+import { useLearningPath } from '~/composables/useLearningPath'
 
 export const useQuiz = () => {
   // Quiz state management
@@ -92,22 +93,43 @@ export const useQuiz = () => {
   }
 
   // Start a new quiz
-  const startQuiz = (module: Module): QuizAttempt | null => {
+  const startQuiz = async (module: Module): Promise<QuizAttempt | null> => {
     try {
-      const questions = getRandomQuestions(
-        module.category,
-        module.difficulty,
-        QUIZ_CONFIG.QUESTIONS_PER_QUIZ,
-        module.id
-      )
+      // Get composable instance
+      const { isCustomModule, getAllQuestionsForModule } = useLearningPath()
+
+      let questions: Question[] = []
+
+      if (isCustomModule(module.id)) {
+        // Use enhanced question retrieval for custom modules
+        questions = await getAllQuestionsForModule(module.id, module.category, module.difficulty)
+
+        if (questions.length > QUIZ_CONFIG.QUESTIONS_PER_QUIZ) {
+          // Randomly select questions if we have more than needed
+          const shuffled = [...questions].sort(() => 0.5 - Math.random())
+          questions = shuffled.slice(0, QUIZ_CONFIG.QUESTIONS_PER_QUIZ)
+        }
+      } else {
+        // Use existing system for predefined modules
+        questions = getRandomQuestions(
+          module.category,
+          module.difficulty,
+          QUIZ_CONFIG.QUESTIONS_PER_QUIZ,
+          module.id
+        )
+      }
 
       if (questions.length === 0) {
         // Show user-friendly alert instead of console error
+        const actionMessage = isCustomModule(module.id)
+          ? `Please add questions for this custom module by clicking the question management icon in the modules panel.`
+          : `Please try another module or contact an administrator to add questions for this module.`
+
         alert(`No quiz questions available for "${module.title}" at the ${module.difficulty} level.
 
 This module doesn't have specific questions assigned yet.
 
-Please try another module or contact an administrator to add questions for this module.`)
+${actionMessage}`)
         return null
       }
 

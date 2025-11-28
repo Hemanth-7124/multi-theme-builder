@@ -84,10 +84,12 @@
           :module="module"
           :is-in-path="isInPath(module.id)"
           :show-delete-button="isCustomModule(module.id)"
+          :show-questions-button="isCustomModule(module.id)"
           :enable-preview="true"
           @add="addToPath"
           @delete="deleteCustomModule"
           @preview="handleModulePreview"
+          @manage-questions="handleManageQuestions"
         />
       </div>
     </div>
@@ -101,6 +103,14 @@
       @add-to-path="addToPath"
       @remove-from-path="removeFromLearningPath"
     />
+
+    <!-- Question Manager Modal -->
+    <QuestionManagerModal
+      v-if="showQuestionManager && selectedModule"
+      :module="selectedModule"
+      @close="showQuestionManager = false"
+      @questions-updated="handleQuestionsUpdated"
+    />
   </div>
 </template>
 
@@ -109,6 +119,7 @@ import type { Module } from '~/types'
 import { MagnifyingGlassIcon, PlusIcon } from '@heroicons/vue/24/outline'
 import { CATEGORIES, DIFFICULTY_LEVELS } from '~/types'
 import ModulePreview from './ModulePreview.vue'
+import QuestionManagerModal from './QuestionManagerModal.vue'
 
 const emit = defineEmits<{
   'create-module': []
@@ -125,6 +136,10 @@ const {
 // Preview modal state
 const showPreviewModal = ref(false)
 const previewModule = ref<Module | null>(null)
+
+// Question Manager modal state
+const showQuestionManager = ref(false)
+const selectedModule = ref<Module | null>(null)
 
 const searchQuery = ref('')
 const selectedCategory = ref('')
@@ -187,6 +202,16 @@ const clearFilters = () => {
 const handleModulePreview = (module: Module) => {
   previewModule.value = module
   showPreviewModal.value = true
+}
+
+const handleManageQuestions = (module: Module) => {
+  selectedModule.value = module
+  showQuestionManager.value = true
+}
+
+const handleQuestionsUpdated = (moduleId: string) => {
+  // Refresh module data if needed
+  console.log(`Questions updated for module: ${moduleId}`)
 }
 </script>
 

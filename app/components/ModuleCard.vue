@@ -91,6 +91,15 @@
         >
           <TrashIcon class="w-4 h-4" />
         </button>
+        <!-- Manage Questions Button (for custom modules only) -->
+        <button
+          v-if="showQuestionsButton"
+          @click.stop="$emit('manage-questions', module)"
+          class="p-1.5 text-sm font-medium text-purple-600 hover:text-purple-800 rounded-full border-2 border-purple-200 hover:border-purple-300 transition-all duration-200 hover:scale-110"
+          :title="`Manage Questions${module.customQuestionCount ? ` (${module.customQuestionCount})` : ''}`"
+        >
+          <QuestionMarkCircleIcon class="w-4 h-4" />
+        </button>
         <button
           v-if="showDeleteButton"
           @click="$emit('delete', module.id)"
@@ -126,6 +135,7 @@ interface Props {
   showAddButton?: boolean
   showRemoveButton?: boolean
   showDeleteButton?: boolean
+  showQuestionsButton?: boolean
   customClass?: string
   draggable?: boolean
   index?: number
@@ -140,6 +150,7 @@ const props = withDefaults(defineProps<Props>(), {
   showAddButton: true,
   showRemoveButton: false,
   showDeleteButton: false,
+  showQuestionsButton: false,
   customClass: '',
   draggable: true,
   index: undefined,
@@ -154,6 +165,7 @@ const emit = defineEmits<{
   remove: [moduleId: string]
   delete: [moduleId: string]
   preview: [module: Module]
+  'manage-questions': [module: Module]
   'update-status': [moduleId: string, status: 'not-started' | 'in-progress' | 'quiz-required' | 'quiz-passed' | 'completed']
   'start-quiz': [module: Module]
 }>()

@@ -486,7 +486,7 @@ watch(() => props.module, (newModule) => {
 })
 
 // Start quiz for current module
-const startQuizForModule = () => {
+const startQuizForModule = async () => {
   selectedAnswer.value = -1
   showFeedback.value = false
   quizCompleted.value = false
@@ -494,10 +494,15 @@ const startQuizForModule = () => {
 
   // Only start quiz if user is not locked out
   if (!isLockedOut.value) {
-    const quiz = startQuiz(props.module)
+    try {
+      const quiz = await startQuiz(props.module)
 
-    if (!quiz) {
-      console.error('Failed to start quiz')
+      if (!quiz) {
+        console.error('Failed to start quiz')
+        emit('close')
+      }
+    } catch (error) {
+      console.error('Error starting quiz:', error)
       emit('close')
     }
   }
