@@ -1,7 +1,8 @@
 <template>
   <div class="relative path-selector-container">
+ 
     <button
-      @click="showDropdown = !showDropdown"
+       @click="toggleDropdown"
       class="flex gap-2 items-center px-3 py-2 min-w-0 max-w-xs text-sm font-medium text-gray-700 bg-white rounded-lg border border-gray-300 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
     >
       <div
@@ -97,125 +98,12 @@
 
     </div>
 
-    <!-- Overlay -->
-    <div
-      v-if="showDropdown"
-      @click="showDropdown = false"
-      class="fixed inset-0 z-40"
-    ></div>
-
-    <!-- Path Details Panel -->
-    <div
-      v-if="selectedPathDetails"
-      class="absolute right-0 left-0 top-full z-50 p-4 mt-2 bg-white rounded-lg border border-gray-200 shadow-lg"
-    >
-      <div class="flex justify-between items-start mb-3">
-        <div class="flex gap-3 items-center">
-          <div
-            class="flex-shrink-0 w-4 h-4 rounded-full"
-            :style="{ backgroundColor: selectedPathDetails.color || '#6366f1' }"
-          ></div>
-          <div>
-            <h4 class="font-semibold text-gray-900">{{ selectedPathDetails.name }}</h4>
-            <p v-if="selectedPathDetails.description" class="mt-1 text-sm text-gray-600">{{ selectedPathDetails.description }}</p>
-          </div>
-        </div>
-        <button
-          @click="selectedPathDetails = null"
-          class="text-gray-400 hover:text-gray-500"
-        >
-          <XMarkIcon class="w-4 h-4" />
-        </button>
-      </div>
-
-      <!-- Path Stats -->
-      <div class="grid grid-cols-3 gap-4 mb-4">
-        <div class="p-2 text-center bg-gray-50 rounded">
-          <div class="text-lg font-semibold text-gray-900">{{ selectedPathDetails.modules?.length || 0 }}</div>
-          <div class="text-xs text-gray-600">Modules</div>
-        </div>
-        <div class="p-2 text-center bg-blue-50 rounded">
-          <div class="text-lg font-semibold text-blue-600">{{ formatDuration(selectedPathDetails.totalDuration || 0) }}</div>
-          <div class="text-xs text-gray-600">Duration</div>
-        </div>
-        <div class="p-2 text-center bg-green-50 rounded">
-          <div class="text-lg font-semibold text-green-600">{{ selectedPathDetails.overallProgress || 0 }}%</div>
-          <div class="text-xs text-gray-600">Progress</div>
-        </div>
-      </div>
-
-      <!-- Progress Bar -->
-      <div v-if="selectedPathDetails.overallProgress > 0" class="mb-4">
-        <div class="flex justify-between mb-1 text-xs text-gray-600">
-          <span>Overall Progress</span>
-          <span>{{ selectedPathDetails.overallProgress }}%</span>
-        </div>
-        <div class="overflow-hidden w-full h-2 bg-gray-200 rounded-full">
-          <div
-            class="h-full transition-all duration-300"
-            :class="getProgressBarColor(selectedPathDetails.overallProgress)"
-            :style="{ width: `${selectedPathDetails.overallProgress}%` }"
-          ></div>
-        </div>
-      </div>
-
-      <!-- Tags -->
-      <div v-if="selectedPathDetails.tags && selectedPathDetails.tags.length > 0" class="mb-4">
-        <div class="flex flex-wrap gap-1">
-          <span
-            v-for="tag in selectedPathDetails.tags"
-            :key="tag"
-            class="inline-flex items-center px-2 py-1 text-xs font-medium text-indigo-700 bg-indigo-100 rounded"
-          >
-            {{ tag }}
-          </span>
-        </div>
-      </div>
-
-      <!-- Recent Modules -->
-      <div v-if="selectedPathDetails.modules && selectedPathDetails.modules.length > 0">
-        <h5 class="mb-2 text-sm font-medium text-gray-700">Recent Modules</h5>
-        <div class="space-y-2">
-          <div
-            v-for="(module, index) in selectedPathDetails.modules.slice(0, 3)"
-            :key="module.id"
-            class="flex gap-2 items-center p-2 bg-gray-50 rounded"
-          >
-            <span class="text-xs font-medium text-gray-500">{{ index + 1 }}.</span>
-            <span class="flex-1 text-sm text-gray-700 truncate">{{ module.title }}</span>
-            <span
-              v-if="module.status === 'completed'"
-              class="text-xs text-green-600"
-            >
-              ✓
-            </span>
-          </div>
-        </div>
-        <div v-if="selectedPathDetails.modules.length > 3" class="mt-2 text-xs text-center text-gray-500">
-          ... and {{ selectedPathDetails.modules.length - 3 }} more modules
-        </div>
-      </div>
-
-      <!-- Action Buttons -->
-      <div class="flex gap-2 pt-3 mt-4 border-t border-gray-200">
-        <button
-          @click="activatePath(selectedPathDetails.id)"
-          class="flex-1 px-3 py-2 text-sm font-medium text-indigo-600 bg-indigo-50 rounded hover:bg-indigo-100"
-        >
-          Switch to Path
-        </button>
-        <button
-          @click="selectedPathDetails = null"
-          class="px-3 py-2 text-sm font-medium text-gray-600 bg-gray-100 rounded hover:bg-gray-200"
-        >
-          Close
-        </button>
-      </div>
-    </div>
+ 
   </div>
 </template>
 
 <script setup lang="ts">
+import { watch, nextTick } from 'vue'
 import {
   ChevronDownIcon,
   CheckIcon,
@@ -227,9 +115,11 @@ import {
   ArrowRightIcon
 } from '@heroicons/vue/24/outline'
 import { formatDate } from '~/utils/formatting'
+import { ref } from 'vue'
 
 // State
 const showDropdown = ref(false)
+
 const searchQuery = ref('')
 const selectedPathDetails = ref(null)
 
@@ -237,7 +127,9 @@ const selectedPathDetails = ref(null)
 const {
   currentLearningPath,
   activePathId,
-  formatDuration
+  learningPaths,
+  formatDuration,
+  loadLearningPaths
 } = useLearningPath()
 
 const {
@@ -247,47 +139,102 @@ const {
   filteredPaths
 } = usePathManager()
 
-// Computed
-const filteredPathsList = computed(() => {
-  try {
-    if (!searchQuery?.value?.trim()) {
-      return filteredPaths?.value || []
+// Local storage fallback
+const localPaths = ref([])
+
+// Method to load paths directly from Local Storage
+const loadPathsFromStorage = () => {
+  if (typeof window !== 'undefined') {
+    try {
+      const savedPaths = localStorage.getItem('learning-paths')
+      if (savedPaths) {
+        const paths = JSON.parse(savedPaths)
+        if (Array.isArray(paths)) {
+          console.log('PathSelector: Loaded', paths.length, 'paths from Local Storage')
+          localPaths.value = paths
+          return paths
+        }
+      }
+    } catch (error) {
+      console.error('PathSelector: Error loading from Local Storage:', error)
     }
-    return searchPaths(searchQuery.value) || []
-  } catch (error) {
-    console.warn('Error in filteredPathsList:', error)
-    return []
   }
+  return []
+}
+
+const toggleDropdown = () => {
+showDropdown.value = !showDropdown.value
+}
+
+// Method to ensure paths are loaded
+const ensurePathsLoaded = () => {
+  let paths = []
+
+  // Try reactive learningPaths first
+  if (learningPaths?.value && learningPaths.value.length > 0) {
+    paths = learningPaths.value
+    console.log('PathSelector: Using learningPaths:', paths.length)
+  }
+  // Fallback to filteredPaths
+  else if (filteredPaths?.value && filteredPaths.value.length > 0) {
+    paths = filteredPaths.value
+    console.log('PathSelector: Using filteredPaths:', paths.length)
+  }
+  // Final fallback to local storage data
+  else if (localPaths.value.length > 0) {
+    paths = localPaths.value
+    console.log('PathSelector: Using localPaths:', paths.length)
+  }
+
+  return paths
+}
+
+// Computed with forced reactivity
+const filteredPathsList = computed(() => {
+  // Force dependency tracking and use the enhanced data loading
+  const paths = ensurePathsLoaded()
+  const query = searchQuery?.value?.trim()
+
+  console.log('PathSelector: Computing filteredPathsList', {
+    totalPaths: paths.length,
+    searchQuery: query
+  })
+
+  // Filter out archived paths
+  const activePaths = paths.filter(path => !path.isArchived)
+
+  // Apply search filter if needed
+  if (!query) {
+    console.log('PathSelector: Returning', activePaths.length, 'active paths')
+    return activePaths
+  }
+
+  // Search functionality - fallback to searchPaths if available
+  if (typeof searchPaths === 'function') {
+    return searchPaths(query) || []
+  }
+
+  // Manual search if searchPaths not available
+  const searchQueryLower = query.toLowerCase()
+  const filtered = activePaths.filter(path =>
+    path.name.toLowerCase().includes(searchQueryLower) ||
+    (path.description && path.description.toLowerCase().includes(searchQueryLower)) ||
+    (path.tags && path.tags.some(tag => tag.toLowerCase().includes(searchQueryLower)))
+  )
+
+  console.log('PathSelector: Returning', filtered.length, 'filtered paths')
+  return filtered
 })
 
 // Methods
 const selectPath = (pathId: string) => {
   switchToPath(pathId)
-  showDropdown.value = false
+  showDropdown.value = false // close after select
 }
 
-const showPathDetails = (pathId: string) => {
-  const path = filteredPaths.value?.find(p => p.id === pathId)
-  if (path) {
-    selectedPathDetails.value = path
-  }
-}
 
-const activatePath = (pathId: string) => {
-  switchToPath(pathId)
-  selectedPathDetails.value = null
-}
 
-const createNewPath = () => {
-  startCreatePath()
-  showDropdown.value = false
-}
 
-const managePaths = () => {
-  // Emit event to parent or use composable
-  showDropdown.value = false
-  navigateTo('#manage-paths')
-}
 
 const getPathProgressColor = (progress: number): string => {
   if (progress >= 80) return 'text-green-600'
@@ -295,11 +242,7 @@ const getPathProgressColor = (progress: number): string => {
   return 'text-gray-600'
 }
 
-const getProgressBarColor = (progress: number): string => {
-  if (progress >= 80) return 'bg-green-500'
-  if (progress >= 50) return 'bg-yellow-500'
-  return 'bg-gray-400'
-}
+
 
 const formatDate = (date: Date | string): string => {
   try {
@@ -334,9 +277,23 @@ const handleClickOutside = (event: MouseEvent) => {
   }
 }
 
-onMounted(() => {
-  document.addEventListener('click', handleClickOutside)
+// Watch dropdown state changes
+watch(showDropdown, (isOpen) => {
+  if (isOpen) {
+    console.log('PathSelector: Dropdown opened')
+
+
+  }
 })
+
+// Watch reactive sources to trigger updates
+watch([learningPaths, filteredPaths, localPaths], () => {
+  console.log('PathSelector: Paths updated, recomputing filtered list')
+  nextTick(() => {
+    ensurePathsLoaded()
+  })
+}, { deep: true })
+
 
 onUnmounted(() => {
   document.removeEventListener('click', handleClickOutside)
