@@ -1,10 +1,14 @@
 <template>
-  <div class="relative">
+  <div class="relative path-selector-container">
     <button
       @click="showDropdown = !showDropdown"
       class="flex gap-2 items-center px-3 py-2 min-w-0 max-w-xs text-sm font-medium text-gray-700 bg-white rounded-lg border border-gray-300 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
     >
-  
+      <div
+        v-if="currentLearningPath"
+        class="flex-shrink-0 w-2 h-2 rounded-full"
+        :style="{ backgroundColor: currentLearningPath.color || '#6366f1' }"
+      ></div>
       <span class="truncate">{{ currentLearningPath?.name || 'Select Path' }}</span>
       <ChevronDownIcon
         class="w-4 h-4 text-gray-400 transition-transform"
@@ -39,7 +43,8 @@
         <div
           v-for="path in filteredPathsList"
           :key="path.id"
-          class="p-3 w-full text-left border-b border-gray-100 transition-colors"
+          @click="selectPath(path.id)"
+          class="p-3 w-full text-left border-b border-gray-100 transition-colors cursor-pointer"
           :class="{
             'bg-indigo-50 border-indigo-200': path.id === activePathId
           }"
@@ -59,13 +64,6 @@
                     title="View path details"
                   >
                     <InformationCircleIcon class="w-4 h-4" />
-                  </button>
-                  <button
-                    @click.stop="selectPath(path.id)"
-                    class="p-1 text-indigo-600 transition-colors hover:text-indigo-700"
-                    title="Switch to this path"
-                  >
-                    <ArrowRightIcon class="w-4 h-4" />
                   </button>
                 </div>
               </div>
@@ -104,25 +102,7 @@
         </div>
       </div>
 
-      <!-- Footer Actions -->
-      <div class="p-3 bg-gray-50 border-t border-gray-200">
-        <div class="grid grid-cols-2 gap-2">
-          <button
-            @click.stop="createNewPath"
-            class="flex gap-2 justify-center items-center px-3 py-2 text-sm font-medium text-indigo-600 bg-white rounded-lg border border-indigo-200 hover:bg-indigo-50"
-          >
-            <PlusIcon class="w-4 h-4" />
-            New Path
-          </button>
-          <button
-            @click.stop="managePaths"
-            class="flex gap-2 justify-center items-center px-3 py-2 text-sm font-medium text-gray-700 bg-white rounded-lg border border-gray-200 hover:bg-gray-50"
-          >
-            <Cog6ToothIcon class="w-4 h-4" />
-            Manage
-          </button>
-        </div>
-      </div>
+
     </div>
 
     <!-- Overlay -->
@@ -355,15 +335,18 @@ const formatDate = (date: Date | string): string => {
 }
 
 // Close dropdown when clicking outside
-onMounted(() => {
-  document.addEventListener('click', () => {
+const handleClickOutside = (event: MouseEvent) => {
+  const target = event.target as HTMLElement
+  if (!target.closest('.path-selector-container')) {
     showDropdown.value = false
-  })
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside)
 })
 
 onUnmounted(() => {
-  document.removeEventListener('click', () => {
-    showDropdown.value = false
-  })
+  document.removeEventListener('click', handleClickOutside)
 })
 </script>
