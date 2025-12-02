@@ -1,0 +1,136 @@
+import type { BrandConfig } from '../../tokens/types'
+
+export default {
+  id: 'uptor',
+  name: 'Uptor',
+  description: 'Premium educational platform for skill development',
+  logo: '/brands/uptor/assets/logo.svg',
+  favicon: '/brands/uptor/assets/favicon.ico',
+  theme: {
+    layout: 'minimal',
+    assets: {
+      logo: '/brands/uptor/assets/logo.svg',
+      favicon: '/brands/uptor/assets/favicon.ico',
+      hero: '/brands/uptor/assets/hero.webp'
+    },
+    tokens: {
+      colors: {
+        // Professional green theme
+        'color-primary': '#059669',
+        'color-primary-hover': '#047857',
+        'color-primary-active': '#065f46',
+        'color-secondary': '#6b7280',
+        'color-secondary-hover': '#4b5563',
+        'color-accent': '#f59e0b',
+        'color-accent-hover': '#d97706',
+        'color-background': '#ffffff',
+        'color-surface': '#f9fafb',
+        'color-surface-hover': '#f3f4f6',
+        'color-surface-active': '#e5e7eb',
+        'color-text-primary': '#111827',
+        'color-text-secondary': '#6b7280',
+        'color-text-muted': '#9ca3af',
+        'color-text-inverse': '#ffffff',
+        'color-border': '#e5e7eb',
+        'color-border-hover': '#d1d5db',
+        'color-error': '#dc2626',
+        'color-warning': '#d97706',
+        'color-success': '#059669',
+        'color-info': '#0891b2'
+      },
+      typography: {
+        'font-family-sans': 'Inter, system-ui, sans-serif',
+        'font-family-serif': 'Georgia, serif',
+        'font-family-mono': 'JetBrains Mono, Consolas, monospace',
+        'font-size-xs': '0.75rem',
+        'font-size-sm': '0.875rem',
+        'font-size-base': '1rem',
+        'font-size-lg': '1.125rem',
+        'font-size-xl': '1.25rem',
+        'font-size-2xl': '1.5rem',
+        'font-size-3xl': '1.875rem',
+        'font-size-4xl': '2.25rem',
+        'font-size-5xl': '3rem',
+        'font-size-6xl': '3.75rem',
+        'font-size-7xl': '4.5rem',
+        'font-size-8xl': '6rem',
+        'font-weight-light': '300',
+        'font-weight-normal': '400',
+        'font-weight-medium': '500',
+        'font-weight-semibold': '600',
+        'font-weight-bold': '700',
+        'font-weight-extrabold': '800',
+        'line-height-tight': '1.25',
+        'line-height-normal': '1.5',
+        'line-height-relaxed': '1.75',
+        'letter-spacing-tight': '-0.025em',
+        'letter-spacing-normal': '0',
+        'letter-spacing-wide': '0.025em'
+      },
+      spacing: {
+        'spacing-0': '0',
+        'spacing-1': '0.25rem',
+        'spacing-2': '0.5rem',
+        'spacing-3': '0.75rem',
+        'spacing-4': '1rem',
+        'spacing-5': '1.25rem',
+        'spacing-6': '1.5rem',
+        'spacing-7': '1.75rem',
+        'spacing-8': '2rem',
+        'spacing-9': '2.25rem',
+        'spacing-10': '2.5rem',
+        'spacing-11': '2.75rem',
+        'spacing-12': '3rem',
+        'spacing-14': '3.5rem',
+        'spacing-16': '4rem',
+        'spacing-20': '5rem',
+        'spacing-24': '6rem',
+        'spacing-28': '7rem',
+        'spacing-32': '8rem',
+        'spacing-36': '9rem',
+        'spacing-40': '10rem',
+        'spacing-44': '11rem',
+        'spacing-48': '12rem',
+        'spacing-52': '13rem',
+        'spacing-56': '14rem',
+        'spacing-60': '15rem',
+        'spacing-64': '16rem',
+        'spacing-72': '18rem',
+        'spacing-80': '20rem',
+        'spacing-96': '24rem'
+      },
+      borderRadius: {
+        'radius-none': '0',
+        'radius-xs': '0.125rem',
+        'radius-sm': '0.25rem',
+        'radius-md': '0.375rem',
+        'radius-lg': '0.5rem',
+        'radius-xl': '0.75rem',
+        'radius-2xl': '1rem',
+        'radius-3xl': '1.5rem',
+        'radius-full': '9999px'
+      },
+      shadows: {
+        'shadow-xs': '0 1px 2px 0 rgba(5, 150, 105, 0.05)',
+        'shadow-sm': '0 1px 3px 0 rgba(5, 150, 105, 0.1), 0 1px 2px 0 rgba(5, 150, 105, 0.06)',
+        'shadow-md': '0 4px 6px -1px rgba(5, 150, 105, 0.1), 0 2px 4px -1px rgba(5, 150, 105, 0.06)',
+        'shadow-lg': '0 10px 15px -3px rgba(5, 150, 105, 0.1), 0 4px 6px -2px rgba(5, 150, 105, 0.05)',
+        'shadow-xl': '0 20px 25px -5px rgba(5, 150, 105, 0.1), 0 10px 10px -5px rgba(5, 150, 105, 0.04)',
+        'shadow-2xl': '0 25px 50px -12px rgba(5, 150, 105, 0.25)',
+        'shadow-inner': 'inset 0 2px 4px 0 rgba(5, 150, 105, 0.06)',
+        'shadow-none': 'none'
+      }
+    }
+  },
+  navigation: [
+    { label: 'Courses', href: '#courses' },
+    { label: 'Instructors', href: '#instructors' },
+    { label: 'Pricing', href: '#pricing' },
+    { label: 'About', href: '#about' },
+    { label: 'Contact', href: '#contact' }
+  ],
+  cta: {
+    primary: 'Browse Courses',
+    secondary: 'Start Free Trial'
+  }
+} as BrandConfig

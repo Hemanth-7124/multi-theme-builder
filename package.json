@@ -1,25 +1,40 @@
 {
-  "name": "learning-path-builder",
-  "type": "module",
+  "name": "brandroute-engine",
+  "version": "1.0.0",
+  "description": "Route-Based Multi-Theme Website Engine with Nuxt 4 + TailwindCSS",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "type-check": "nuxt typecheck"
+  },
+  "keywords": [
+    "nuxt",
+    "tailwindcss",
+    "multi-theme",
+    "design-tokens",
+    "route-based-theming"
+  ],
+  "author": "Lead Architect",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
   },
   "dependencies": {
-    "@heroicons/vue": "^2.2.0",
+    "@nuxt/icon": "^2.1.0",
+    "@nuxt/ui": "^4.2.1",
     "@nuxtjs/tailwindcss": "^6.14.0",
-    "jspdf": "^3.0.4",
+    "@tailwindcss/typography": "^0.5.19",
+    "autoprefixer": "^10.4.22",
     "nuxt": "^4.2.1",
-    "vue": "^3.5.25",
-    "vue-draggable-next": "^2.3.0",
-    "vue-router": "^4.6.3",
-    "vuedraggable": "^2.24.3"
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.18"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.22"
+    "@nuxt/devtools": "latest"
   }
 }

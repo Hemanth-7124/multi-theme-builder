@@ -1,0 +1,75 @@
+{
+  "overrides": {
+    "hero": {
+      "visible": true,
+      "order": 1,
+      "content": {
+        "title": "Learn Without Limits",
+        "subtitle": "Uptor - Premium educational platform for skill development",
+        "description": "Discover a world of knowledge with our comprehensive learning platform. Master new skills, advance your career, and achieve your goals.",
+        "ctaText": "Start Learning",
+        "backgroundImage": "/brands/uptor/assets/hero.webp"
+      }
+    },
+    "features": {
+      "visible": true,
+      "order": 2,
+      "content": {
+        "title": "Learning Features",
+        "subtitle": "Everything you need for successful learning",
+        "features": [
+          {
+            "icon": "/brands/uptor/assets/icons/feature1.svg",
+            "title": "Expert Instructors",
+            "description": "Learn from industry experts and thought leaders"
+          },
+          {
+            "icon": "/brands/uptor/assets/icons/feature2.svg",
+            "title": "Interactive Learning",
+            "description": "Engaging content with hands-on practice and projects"
+          },
+          {
+            "icon": "/brands/uptor/assets/icons/feature3.svg",
+            "title": "Certification Programs",
+            "description": "Earn recognized certificates to advance your career"
+          }
+        ]
+      }
+    },
+    "about": {
+      "visible": true,
+      "order": 3,
+      "content": {
+        "title": "About Uptor",
+        "subtitle": "Transforming education through technology",
+        "story": "Uptor is revolutionizing online education by making high-quality learning accessible to everyone. Our platform combines cutting-edge technology with proven teaching methods.",
+        "image": "/brands/uptor/assets/hero.webp",
+        "imageAlt": "Uptor learning platform",
+        "stats": [
+          { "value": "100K+", "label": "Active Learners" },
+          { "value": "500+", "label": "Expert Instructors" },
+          { "value": "1000+", "label": "Courses Available" },
+          { "value": "98%", "label": "Satisfaction Rate" }
+        ]
+      }
+    },
+    "cta": {
+      "visible": true,
+      "order": 4,
+      "content": {
+        "title": "Ready to Start Your Learning Journey?",
+        "subtitle": "Join thousands of learners advancing their careers with Uptor",
+        "primaryText": "Browse Courses",
+        "secondaryText": "Start Free Trial"
+      }
+    },
+    "footer": {
+      "visible": true,
+      "order": 5,
+      "content": {
+        "companyName": "Uptor Education",
+        "tagline": "Premium Educational Platform for Skill Development"
+      }
+    }
+  }
+}

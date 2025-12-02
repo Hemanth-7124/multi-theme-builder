@@ -6,7 +6,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      appName: 'Learning Path Builder'
+      appName: 'Brand Router Engine'
     }
   }
 })

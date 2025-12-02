@@ -1,0 +1,75 @@
+{
+  "overrides": {
+    "hero": {
+      "visible": true,
+      "order": 1,
+      "content": {
+        "title": "Enterprise Project Management Excellence",
+        "subtitle": "PMC delivers powerful tools for modern project teams",
+        "description": "Streamline your project workflows with our comprehensive enterprise management suite. Track progress, manage resources, and deliver results on time.",
+        "ctaText": "Start Free Trial",
+        "backgroundImage": "/brands/pmc/assets/hero.webp"
+      }
+    },
+    "features": {
+      "visible": true,
+      "order": 2,
+      "content": {
+        "title": "Enterprise Features",
+        "subtitle": "Powerful tools for project success",
+        "features": [
+          {
+            "icon": "/brands/pmc/assets/icons/feature1.svg",
+            "title": "Resource Management",
+            "description": "Optimize resource allocation and utilization across projects"
+          },
+          {
+            "icon": "/brands/pmc/assets/icons/feature2.svg",
+            "title": "Advanced Reporting",
+            "description": "Comprehensive analytics and reporting for data-driven decisions"
+          },
+          {
+            "icon": "/brands/pmc/assets/icons/feature3.svg",
+            "title": "Team Collaboration",
+            "description": "Seamless collaboration tools for distributed teams"
+          }
+        ]
+      }
+    },
+    "about": {
+      "visible": true,
+      "order": 3,
+      "content": {
+        "title": "About PMC",
+        "subtitle": "Your trusted enterprise project management partner",
+        "story": "PMC has been at the forefront of enterprise project management solutions for over a decade. We serve Fortune 500 companies and innovative startups alike.",
+        "image": "/brands/pmc/assets/hero.webp",
+        "imageAlt": "PMC team and clients",
+        "stats": [
+          { "value": "500+", "label": "Enterprise Clients" },
+          { "value": "50K+", "label": "Active Projects" },
+          { "value": "95%", "label": "On-Time Delivery" },
+          { "value": "24/7", "label": "Enterprise Support" }
+        ]
+      }
+    },
+    "cta": {
+      "visible": true,
+      "order": 4,
+      "content": {
+        "title": "Ready to Elevate Your Project Management?",
+        "subtitle": "Join industry leaders who trust PMC for their project success",
+        "primaryText": "Request Demo",
+        "secondaryText": "Contact Sales"
+      }
+    },
+    "footer": {
+      "visible": true,
+      "order": 5,
+      "content": {
+        "companyName": "PMC Solutions",
+        "tagline": "Enterprise Project Management Excellence"
+      }
+    }
+  }
+}

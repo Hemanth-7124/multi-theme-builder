@@ -1,0 +1,7 @@
+<svg width="200" height="40" viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="40" rx="20" fill="#059669"/>
+  <path d="M20 14V26M26 14V26" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M16 26H30" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <text x="42" y="25" font-family="Inter, sans-serif" font-size="18" font-weight="600" fill="white">Uptor</text>
+  <path d="M170 15L180 25L190 15" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

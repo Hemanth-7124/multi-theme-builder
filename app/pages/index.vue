@@ -1,248 +1,90 @@
 <template>
-  <div>
-    <NuxtRouteAnnouncer />
-    <div class="min-h-screen bg-gray-50">
-      <!-- Header -->
-      <header class="bg-white border-b border-gray-200 shadow-sm">
-        <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-          <div class="flex justify-between items-center h-16">
-            <!-- Left Section - Logo and Title -->
-            <div class="flex gap-3 items-center">
-              <div class="flex justify-center items-center w-8 h-8 bg-indigo-600 rounded-lg">
-                <AcademicCapIcon class="w-5 h-5 text-white" />
-              </div>
-              <h1 class="text-xl font-bold text-gray-900">Learning Path Builder</h1>
-            </div>
+  <div class="min-h-screen bg-background text-text-primary">
+    <div class="container px-6 py-16 mx-auto">
+      <div class="mb-16 text-center">
+        <h1 class="mb-6 text-5xl font-bold text-primary">Brand Router Engine</h1>
+        <p class="mx-auto max-w-3xl text-xl text-text-secondary">
+          A powerful multi-theme website engine with dynamic brand switching and design token integration.
+        </p>
+      </div>
 
-            <!-- Center Section - Path Selector (Desktop) -->
-            <div class="hidden md:block">
-              <PathSelector />
+      <div class="grid grid-cols-1 gap-8 mx-auto max-w-6xl md:grid-cols-2 lg:grid-cols-3">
+        <div
+          v-for="brand in availableBrands"
+          :key="brand.id"
+          class="rounded-xl shadow-lg transition-all duration-300 bg-surface hover:shadow-xl hover:-translate-y-1"
+        >
+          <div class="p-8">
+            <div class="flex items-center mb-4">
+              <img
+                :src="brand.logo"
+                :alt="`${brand.name} logo`"
+                class="mr-4 w-12 h-12 rounded-lg"
+                loading="lazy"
+              />
+              <h3 class="text-2xl font-bold text-primary">{{ brand.name }}</h3>
             </div>
-
-            <!-- Right Section - Actions -->
-            <div class="flex gap-3 items-center">
-              <!-- Path Management Button (Desktop) -->
-              <button
-                @click="showPathManager = true"
-                class="flex gap-2 items-center px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-              >
-                <Cog6ToothIcon class="w-4 h-4" />
-                <span class="hidden lg:inline">Manage Paths</span>
-              </button>
-
-              <!-- Mobile Path Selector -->
-              <button
-                @click="showMobilePathSelector = true"
-                class="flex gap-2 items-center px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 md:hidden"
-              >
-                <SwatchIcon class="w-4 h-4" />
-                <span>{{ currentLearningPath?.name || 'Select Path' }}</span>
-              </button>
-            </div>
+            <p class="mb-6 text-text-secondary">{{ brand.description }}</p>
+            <NuxtLink
+              :to="`/${brand.id}`"
+              class="inline-flex items-center px-6 py-3 font-semibold text-white rounded-lg transition-colors bg-primary hover:bg-primary/90"
+            >
+              View {{ brand.name }} Site
+              <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </NuxtLink>
           </div>
         </div>
-      </header>
+      </div>
 
-      <!-- Mobile Path Selector Bar -->
-      <div v-if="currentLearningPath" class="md:hidden bg-gray-50 border-b border-gray-200">
-        <div class="px-4 py-3">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <div
-                class="w-3 h-3 rounded-full"
-                :style="{ backgroundColor: currentLearningPath.color || '#6366f1' }"
-              ></div>
+      <div class="mt-16 text-center">
+        <div class="p-8 mx-auto max-w-4xl rounded-xl bg-surface">
+          <h2 class="mb-6 text-3xl font-bold text-primary">Features</h2>
+          <div class="grid grid-cols-1 gap-6 text-left md:grid-cols-2">
+            <div class="flex items-start space-x-3">
+              <div class="flex flex-shrink-0 justify-center items-center mt-1 w-6 h-6 text-white rounded-full bg-accent">
+                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+              </div>
               <div>
-                <h3 class="text-sm font-medium text-gray-900">{{ currentLearningPath.name }}</h3>
-                <p class="text-xs text-gray-500">{{ moduleCount || 0 }} modules • {{ formatDuration(totalDuration || 0) }}</p>
+                <h3 class="font-semibold text-primary">Dynamic Theme Switching</h3>
+                <p class="text-sm text-text-secondary">Route-based brand theme changes with CSS variables</p>
               </div>
             </div>
-            <div class="text-right">
-              <div class="text-sm font-medium text-gray-900">{{ overallProgress || 0 }}%</div>
-              <div class="w-16 h-1.5 bg-gray-200 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-indigo-600 transition-all duration-300"
-                  :style="{ width: `${overallProgress || 0}%` }"
-                ></div>
+            <div class="flex items-start space-x-3">
+              <div class="flex flex-shrink-0 justify-center items-center mt-1 w-6 h-6 text-white rounded-full bg-accent">
+                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-primary">Design Token System</h3>
+                <p class="text-sm text-text-secondary">Centralized design tokens with Tailwind integration</p>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Main Content -->
-      <main class="px-4 py-8 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <!-- Mobile view - tabs -->
-        <div class="mb-6 lg:hidden">
-          <div class="border-b border-gray-200">
-            <nav class="flex -mb-px">
-              <button
-                @click="activeTab = 'modules'"
-                :class="[
-                  activeTab === 'modules'
-                    ? 'border-indigo-500 text-indigo-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
-                  'w-1/2 py-2 px-1 text-center border-b-2 font-medium text-sm'
-                ]"
-              >
-                Available Modules
-              </button>
-              <button
-                @click="activeTab = 'path'"
-                :class="[
-                  activeTab === 'path'
-                    ? 'border-indigo-500 text-indigo-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
-                  'w-1/2 py-2 px-1 text-center border-b-2 font-medium text-sm'
-                ]"
-              >
-                Your Learning Path
-                <span v-if="moduleCount > 0" class="px-2 py-0.5 ml-2 text-xs text-indigo-600 bg-indigo-100 rounded-full">
-                  {{ moduleCount }}
-                </span>
-              </button>
-            </nav>
-          </div>
-        </div>
-
-        <!-- Mobile Panels -->
-        <div class="lg:hidden">
-          <!-- Available Modules Panel (Mobile) -->
-          <div v-show="activeTab === 'modules'" class="h-[500px] mb-6">
-            <ModuleListPanel @create-module="showModuleCreator = true" />
-          </div>
-
-          <!-- Learning Path Panel (Mobile) -->
-          <div v-show="activeTab === 'path'" class="h-[500px] mb-6">
-            <LearningPathPanel />
-          </div>
-        </div>
-
-        <!-- Desktop view - two panels -->
-        <div class="hidden lg:grid lg:grid-cols-2 lg:gap-6">
-          <!-- Left Panel - Available Modules -->
-          <div class="h-[600px] lg:h-[700px]">
-            <ModuleListPanel @create-module="showModuleCreator = true" />
-          </div>
-
-          <!-- Right Panel - Learning Path -->
-          <div class="h-[600px] lg:h-[700px]">
-            <LearningPathPanel />
-          </div>
-        </div>
-
-        <!-- Quick Stats (Mobile) -->
-        <div v-if="(moduleCount || 0) > 0" class="p-4 mt-6 bg-white rounded-lg border border-gray-200 lg:hidden">
-          <div class="flex justify-between items-center">
-            <div class="flex gap-4 items-center text-sm text-gray-600">
-              <div class="flex gap-1 items-center">
-                <BookOpenIcon class="w-4 h-4" />
-                <span>{{ moduleCount || 0 }} modules</span>
+            <div class="flex items-start space-x-3">
+              <div class="flex flex-shrink-0 justify-center items-center mt-1 w-6 h-6 text-white rounded-full bg-accent">
+                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
               </div>
-              <div class="flex gap-1 items-center">
-                <ClockIcon class="w-4 h-4" />
-                <span>{{ formatDuration(totalDuration || 0) }}</span>
+              <div>
+                <h3 class="font-semibold text-primary">Lazy Loading</h3>
+                <p class="text-sm text-text-secondary">Optimized performance with code splitting</p>
               </div>
             </div>
-          </div>
-        </div>
-      </main>
-
-      <!-- Instructions overlay for first-time users -->
-      <div v-if="showInstructions" class="flex fixed inset-0 z-50 justify-center items-center p-4 bg-black bg-opacity-50">
-        <div class="p-6 w-full max-w-md bg-white rounded-lg">
-          <h2 class="mb-4 text-xl font-bold text-gray-900">Welcome to Learning Path Builder! 🎓</h2>
-          <div class="space-y-3 text-sm text-gray-600">
-            <div class="flex gap-3 items-start">
-              <span class="font-semibold text-indigo-600">1.</span>
-              <p>Browse available modules in the left panel</p>
-            </div>
-            <div class="flex gap-3 items-start">
-              <span class="font-semibold text-indigo-600">2.</span>
-              <p>Create custom modules using the "Create Module" button</p>
-            </div>
-            <div class="flex gap-3 items-start">
-              <span class="font-semibold text-indigo-600">3.</span>
-              <p>Drag modules to the right panel or click "Add" to add them to your path</p>
-            </div>
-            <div class="flex gap-3 items-start">
-              <span class="font-semibold text-indigo-600">4.</span>
-              <p>Your progress is automatically saved in your browser</p>
-            </div>
-          </div>
-          <button
-            @click="showInstructions = false"
-            class="px-4 py-2 mt-6 w-full text-white bg-indigo-600 rounded-lg transition-colors hover:bg-indigo-700"
-          >
-            Get Started
-          </button>
-        </div>
-      </div>
-
-      <!-- Module Creator Modal -->
-      <div v-if="showModuleCreator" class="flex fixed inset-0 z-50 justify-center items-center p-4 bg-black bg-opacity-50">
-        <div class="w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-          <ModuleCreator
-            @close="showModuleCreator = false"
-            @created="handleModuleCreated"
-          />
-        </div>
-      </div>
-
-      <!-- Path Manager Modal -->
-      <PathManager
-        v-if="showPathManager"
-        @close="showPathManager = false"
-      />
-
-      <!-- Mobile Path Selector Modal -->
-      <div v-if="showMobilePathSelector" class="flex fixed inset-0 z-50 justify-center items-center p-4 bg-black bg-opacity-50">
-        <div class="w-full max-w-md">
-          <div class="p-4 bg-white rounded-lg">
-            <div class="flex items-center justify-between mb-4">
-              <h3 class="text-lg font-medium text-gray-900">Select Learning Path</h3>
-              <button
-                @click="showMobilePathSelector = false"
-                class="text-gray-400 hover:text-gray-500"
-              >
-                <XMarkIcon class="w-6 h-6" />
-              </button>
-            </div>
-            <div class="space-y-2">
-              <button
-                v-for="path in filteredPaths"
-                :key="path.id"
-                @click="selectPath(path.id)"
-                class="w-full p-3 text-left border rounded-lg transition-colors"
-                :class="[
-                  path.id === activePathId
-                    ? 'border-indigo-500 bg-indigo-50'
-                    : 'border-gray-200 hover:bg-gray-50'
-                ]"
-              >
-                <div class="flex items-center gap-3">
-                  <div
-                    class="w-3 h-3 rounded-full flex-shrink-0"
-                    :style="{ backgroundColor: path.color || '#6366f1' }"
-                  ></div>
-                  <div class="flex-1 min-w-0">
-                    <p class="text-sm font-medium text-gray-900 truncate">{{ path.name }}</p>
-                    <p class="text-xs text-gray-500">{{ path.modules.length }} modules</p>
-                  </div>
-                  <CheckIcon
-                    v-if="path.id === activePathId"
-                    class="w-5 h-5 text-indigo-600 flex-shrink-0"
-                  />
-                </div>
-              </button>
-            </div>
-            <div class="mt-4 pt-4 border-t border-gray-200">
-              <button
-                @click="createNewPath"
-                class="w-full px-3 py-2 text-sm font-medium text-indigo-600 bg-indigo-50 rounded-lg hover:bg-indigo-100"
-              >
-                Create New Path
-              </button>
+            <div class="flex items-start space-x-3">
+              <div class="flex flex-shrink-0 justify-center items-center mt-1 w-6 h-6 text-white rounded-full bg-accent">
+                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-primary">Config-Driven</h3>
+                <p class="text-sm text-text-secondary">Easy brand setup with JSON configuration</p>
+              </div>
             </div>
           </div>
         </div>
@@ -252,92 +94,40 @@
 </template>
 
 <script setup lang="ts">
-import {
-  AcademicCapIcon,
-  BookOpenIcon,
-  ClockIcon,
-  Cog6ToothIcon,
-  SwatchIcon,
-  XMarkIcon,
-  CheckIcon
-} from '@heroicons/vue/24/outline'
-
-// State
-const activeTab = ref<'modules' | 'path'>('modules')
-const showInstructions = ref(true)
-const showModuleCreator = ref(false)
-const showPathManager = ref(false)
-const showMobilePathSelector = ref(false)
-
-// Composables
-const {
-  moduleCount,
-  totalDuration,
-  overallProgress,
-  formatDuration,
-  currentLearningPath,
-  activePathId
-} = useLearningPath()
-
-const {
-  switchToPath,
-  startCreatePath,
-  filteredPaths
-} = usePathManager()
-
-// Methods
-const handleModuleCreated = (module: any) => {
-  // Module is already added to available modules via the composable
-  console.log('Module created:', module)
-  // Optionally, you could show a success message or switch to modules tab
-  activeTab.value = 'modules'
-}
-
-const selectPath = (pathId: string) => {
-  switchToPath(pathId)
-  showMobilePathSelector.value = false
-}
-
-const createNewPath = () => {
-  startCreatePath()
-  showMobilePathSelector.value = false
-  showPathManager.value = true
-}
-
-// Hide instructions if user has already started
-onMounted(() => {
-  try {
-    if (moduleCount?.value > 0 || (filteredPaths?.value?.length > 0 && filteredPaths.value[0]?.modules?.length > 0)) {
-      showInstructions.value = false
-    }
-  } catch (error) {
-    console.warn('Error in onMounted:', error)
-    // Keep instructions visible if there's an error
-  }
-})
-
-// Set page metadata
-useHead({
-  title: 'Learning Path Builder',
-  meta: [
-    {
-      name: 'description',
-      content: 'Build your personalized learning journey by selecting and arranging modules in your preferred order.'
-    }
-  ]
-})
-
-// Page layout meta
+// Define page meta
 definePageMeta({
   layout: 'default'
 })
-</script>
 
-<style>
-/* Custom scrollbar styles */
-@media (max-width: 1023px) {
-  .lg\:h-\[700px\] {
-    height: 500px;
+// Available brands
+const availableBrands = [
+  {
+    id: 'chitti',
+    name: 'Chitti',
+    description: 'Modern AI-powered platform for intelligent automation',
+    logo: '/brands/chitti/assets/logo.svg'
+  },
+  {
+    id: 'uptor',
+    name: 'Uptor',
+    description: 'Innovative learning management system for modern education',
+    logo: '/brands/uptor/assets/logo.svg'
+  },
+  {
+    id: 'pmc',
+    name: 'PMC',
+    description: 'Professional management consulting for enterprise growth',
+    logo: '/brands/pmc/assets/logo.svg'
   }
-}
-</style>
+]
+
+// Set page metadata
+useHead({
+  title: 'Brand Router Engine',
+  meta: [
+    { name: 'description', content: 'Multi-theme website engine with dynamic brand switching' },
+    { name: 'og:title', content: 'Brand Router Engine' },
+    { name: 'og:description', content: 'A powerful multi-theme website engine with dynamic brand switching' }
+  ]
+})
+</script>

@@ -1,0 +1,98 @@
+{
+  "defaultSections": [
+    {
+      "id": "hero",
+      "type": "hero",
+      "visible": true,
+      "order": 1,
+      "content": {
+        "title": "Welcome to Our Platform",
+        "subtitle": "Discover amazing possibilities",
+        "description": "Transform your business with our innovative solutions",
+        "ctaText": "Get Started",
+        "backgroundImage": null
+      }
+    },
+    {
+      "id": "features",
+      "type": "features",
+      "visible": true,
+      "order": 2,
+      "content": {
+        "title": "Powerful Features",
+        "subtitle": "Everything you need to succeed",
+        "features": [
+          {
+            "icon": "/shared/icons/feature1.svg",
+            "title": "Smart Automation",
+            "description": "Intelligent workflow automation that learns from your patterns"
+          },
+          {
+            "icon": "/shared/icons/feature2.svg",
+            "title": "Real-time Collaboration",
+            "description": "Work together seamlessly with your team in real-time"
+          },
+          {
+            "icon": "/shared/icons/feature3.svg",
+            "title": "Advanced Analytics",
+            "description": "Deep insights into your workflow performance and optimization"
+          }
+        ]
+      }
+    },
+    {
+      "id": "about",
+      "type": "about",
+      "visible": true,
+      "order": 3,
+      "content": {
+        "title": "About Us",
+        "subtitle": "Our story and mission",
+        "story": "We are dedicated to providing innovative solutions that transform how businesses operate. Our team brings together expertise from various fields to create comprehensive solutions that drive real results.",
+        "image": "/shared/assets/team.jpg",
+        "imageAlt": "Our team",
+        "stats": [
+          { "value": "1000+", "label": "Happy Clients" },
+          { "value": "99%", "label": "Satisfaction Rate" },
+          { "value": "24/7", "label": "Support Available" }
+        ],
+        "values": [
+          {
+            "title": "Innovation",
+            "description": "Pushing boundaries and creating cutting-edge solutions"
+          },
+          {
+            "title": "Quality",
+            "description": "Delivering excellence in everything we do"
+          },
+          {
+            "title": "Customer Focus",
+            "description": "Putting our clients at the center of everything"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cta",
+      "type": "cta",
+      "visible": true,
+      "order": 4,
+      "content": {
+        "title": "Ready to Get Started?",
+        "subtitle": "Join thousands of satisfied customers",
+        "primaryText": "Start Free Trial",
+        "secondaryText": "Schedule Demo"
+      }
+    },
+    {
+      "id": "footer",
+      "type": "footer",
+      "visible": true,
+      "order": 5,
+      "content": {
+        "companyName": "Company Name",
+        "tagline": "Your trusted partner for digital solutions"
+      }
+    }
+  ]
+}
