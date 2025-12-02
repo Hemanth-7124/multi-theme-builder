@@ -9,8 +9,24 @@
       </div>
 
       <div class="grid grid-cols-1 gap-8 mx-auto max-w-6xl md:grid-cols-2 lg:grid-cols-3">
+        <!-- Loading state -->
+        <div v-if="pending" class="col-span-full text-center py-8">
+          <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+          <p class="mt-4 text-text-secondary">Loading brands...</p>
+        </div>
+
+        <!-- Error state -->
+        <div v-else-if="!availableBrands || availableBrands.length === 0" class="col-span-full text-center py-8">
+          <div class="p-8 rounded-xl bg-surface">
+            <h3 class="text-xl font-semibold text-primary mb-2">No Brands Found</h3>
+            <p class="text-text-secondary">No brand configurations were found in the /brands directory.</p>
+          </div>
+        </div>
+
+        <!-- Brand cards -->
         <div
           v-for="brand in availableBrands"
+          v-else
           :key="brand.id"
           class="rounded-xl shadow-lg transition-all duration-300 bg-surface hover:shadow-xl hover:-translate-y-1"
         >
@@ -99,27 +115,16 @@ definePageMeta({
   layout: 'default'
 })
 
-// Available brands
-const availableBrands = [
-  {
-    id: 'chitti',
-    name: 'Chitti',
-    description: 'Modern AI-powered platform for intelligent automation',
-    logo: '/brands/chitti/assets/logo.svg'
-  },
-  {
-    id: 'uptor',
-    name: 'Uptor',
-    description: 'Innovative learning management system for modern education',
-    logo: '/brands/uptor/assets/logo.svg'
-  },
-  {
-    id: 'pmc',
-    name: 'PMC',
-    description: 'Professional management consulting for enterprise growth',
-    logo: '/brands/pmc/assets/logo.svg'
+// Dynamic brand discovery
+const { data: availableBrands, pending } = await useAsyncData('available-brands', async () => {
+  try {
+    const { useAllBrandsInfo } = await import('../composables/useBrand')
+    return await useAllBrandsInfo()
+  } catch (error) {
+    console.error('Error loading brands:', error)
+    return []
   }
-]
+})
 
 // Set page metadata
 useHead({

@@ -6,14 +6,26 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     return
   }
 
-  // List of allowed brands
-  const allowedBrands = ['chitti', 'uptor', 'pmc']
+  // Dynamically validate brand parameter
+  try {
+    const { useBrandExists } = await import('../composables/useBrand')
+    const brandExists = await useBrandExists(brandParam)
 
-  // Validate brand parameter
-  if (!allowedBrands.includes(brandParam)) {
+    if (!brandExists) {
+      // Get list of available brands for error message
+      const { useDiscoverBrands } = await import('../composables/useBrand')
+      const availableBrands = await useDiscoverBrands()
+
+      throw createError({
+        statusCode: 404,
+        statusMessage: `Brand "${brandParam}" not found. Available brands: ${availableBrands.join(', ') || 'None'}`
+      })
+    }
+  } catch (error) {
+    // If brand validation fails, show 404
     throw createError({
       statusCode: 404,
-      statusMessage: `Brand "${brandParam}" not found. Available brands: ${allowedBrands.join(', ')}`
+      statusMessage: `Brand "${brandParam}" not found or configuration is invalid.`
     })
   }
 
@@ -26,27 +38,13 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     const { applyBrandTheme } = await import('~/plugins/applyTokens')
 
     try {
-      // Load brand configuration using explicit imports
-      let brandConfig
+      // Load brand configuration dynamically
+      const { useBrand } = await import('../composables/useBrand')
+      const { config: brandConfig } = await useBrand(brandParam)
 
-      switch (brandParam) {
-        case 'chitti':
-          brandConfig = await import('../../brands/chitti/config.ts')
-          break
-        case 'uptor':
-          brandConfig = await import('../../brands/uptor/config.ts')
-          break
-        case 'pmc':
-          brandConfig = await import('../../brands/pmc/config.ts')
-          break
-        default:
-          console.warn(`Unknown brand: ${brandParam}`)
-          return
-      }
-
-      if (brandConfig.default?.tokens) {
+      if (brandConfig?.theme?.tokens) {
         // Apply brand-specific theme tokens
-        applyBrandTheme(brandConfig.default.tokens, brandParam)
+        applyBrandTheme(brandConfig.theme.tokens, brandParam)
       }
     } catch (error) {
       console.error(`Failed to apply tokens for brand "${brandParam}":`, error)
