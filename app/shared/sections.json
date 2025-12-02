@@ -23,17 +23,17 @@
         "subtitle": "Everything you need to succeed",
         "features": [
           {
-            "icon": "/shared/icons/feature1.svg",
+            "icon": "/app/shared/icons/feature1.svg",
             "title": "Smart Automation",
             "description": "Intelligent workflow automation that learns from your patterns"
           },
           {
-            "icon": "/shared/icons/feature2.svg",
+            "icon": "/app/shared/icons/feature2.svg",
             "title": "Real-time Collaboration",
             "description": "Work together seamlessly with your team in real-time"
           },
           {
-            "icon": "/shared/icons/feature3.svg",
+            "icon": "/app/shared/icons/feature3.svg",
             "title": "Advanced Analytics",
             "description": "Deep insights into your workflow performance and optimization"
           }
@@ -49,7 +49,7 @@
         "title": "About Us",
         "subtitle": "Our story and mission",
         "story": "We are dedicated to providing innovative solutions that transform how businesses operate. Our team brings together expertise from various fields to create comprehensive solutions that drive real results.",
-        "image": "/shared/assets/team.jpg",
+        "image": "/app/shared/assets/team.jpg",
         "imageAlt": "Our team",
         "stats": [
           { "value": "1000+", "label": "Happy Clients" },

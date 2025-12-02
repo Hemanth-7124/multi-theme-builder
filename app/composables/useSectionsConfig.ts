@@ -21,7 +21,7 @@ function deepMerge<T extends Record<string, any>>(target: T, source: Partial<T>)
 export const useSectionsConfig = async (brandId: string): Promise<SectionConfig[]> => {
   try {
     // Load shared sections configuration
-    const sharedResponse = await import('../../shared/sections.json')
+    const sharedResponse = await import('../shared/sections.json')
     const sharedSections = sharedResponse.default.defaultSections
 
     // Try to load brand-specific overrides
