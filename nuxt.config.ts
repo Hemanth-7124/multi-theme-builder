@@ -2,7 +2,7 @@ export default defineNuxtConfig({
   ssr: true,
 
   modules: [
-    '@netlify/nuxt',
+   
     '@nuxtjs/tailwindcss'
   ],
 
