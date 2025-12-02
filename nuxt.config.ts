@@ -1,4 +1,3 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   css: [
     '~/assets/css/main.css'
@@ -7,12 +6,15 @@ export default defineNuxtConfig({
   postcss: {
     plugins: {
       tailwindcss: {},
-      autoprefixer: {},
-    },
+      autoprefixer: {}
+    }
   },
 
   nitro: {
-    preset: 'netlify'
+    preset: 'netlify' // 👈 💥 REQUIRED
+  },
+
+  experimental: {
+    payloadExtraction: false
   }
 })
-
