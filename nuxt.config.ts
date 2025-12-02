@@ -10,10 +10,6 @@ export default defineNuxtConfig({
     }
   },
 
-  nitro: {
-    preset: 'netlify' // 👈 💥 REQUIRED
-  },
-
   experimental: {
     payloadExtraction: false
   }
