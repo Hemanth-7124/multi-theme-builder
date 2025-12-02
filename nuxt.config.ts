@@ -1,17 +1,16 @@
 export default defineNuxtConfig({
-   ssr: false,
-  css: [
-    '~/assets/css/main.css'
+  ssr: true,
+
+  modules: [
+    '@netlify/nuxt',
+    '@nuxtjs/tailwindcss'
   ],
 
-  postcss: {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {}
-    }
+  nitro: {
+    preset: 'netlify'
   },
 
-  experimental: {
-    payloadExtraction: false
-  }
+  css: [
+    '~/assets/css/main.css'
+  ]
 })
