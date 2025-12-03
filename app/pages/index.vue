@@ -115,15 +115,46 @@ definePageMeta({
   layout: 'default'
 })
 
-// Dynamic brand discovery
-const { data: availableBrands, pending } = await useAsyncData('available-brands', async () => {
+// Dynamic brand discovery with proper refresh handling
+const { data: availableBrands, pending, refresh: refreshBrands } = await useAsyncData('available-brands', async () => {
   try {
+    console.log('🔄 Loading brands from composables with force refresh...')
     const { useAllBrandsInfo } = await import('../composables/useBrand')
-    return await useAllBrandsInfo()
+    const brands = await useAllBrandsInfo(true) // Force refresh
+    console.log('📊 Brands loaded:', brands)
+    return brands
   } catch (error) {
-    console.error('Error loading brands:', error)
+    console.error('❌ Error loading brands:', error)
     return []
   }
+}, {
+  // Ensure this refetches on client navigation
+  server: true,
+  client: true,
+  default: () => []
+})
+
+// Refresh brands when navigating to homepage
+onMounted(() => {
+  console.log('🏠 Homepage mounted, refreshing brands list')
+  refreshBrands()
+})
+
+// Also refresh when the route changes to this page
+const route = useRoute()
+watch(() => route.path, (newPath) => {
+  if (newPath === '/') {
+    console.log('🏠 Navigated to homepage, refreshing brands list')
+    refreshBrands()
+  }
+})
+
+// Clear any brand state when on homepage
+onMounted(() => {
+  const { clearBrandState } = import('~/composables/useBrandState').then(m => {
+    m.clearBrandState()
+    console.log('🧹 Cleared brand state on homepage')
+  })
 })
 
 // Set page metadata
