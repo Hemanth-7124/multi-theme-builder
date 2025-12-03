@@ -47,12 +47,10 @@ const currentBrandConfig = computed(() => safeBrandConfig.value || fallbackBrand
 // Compute which layout component to use based on brand configuration
 const layoutComponent = computed(() => {
   if (!currentBrandConfig.value?.theme?.layout) {
-    console.warn('No layout specified in brand config, using default')
     return ModernLayout // fallback to modern
   }
 
   const layoutType = currentBrandConfig.value.theme.layout
-  console.log(`🎯 Brand "${currentBrandConfig.value.id}" using layout "${layoutType}"`)
 
   switch (layoutType) {
     case 'modern':
@@ -62,7 +60,6 @@ const layoutComponent = computed(() => {
     case 'minimal':
       return MinimalLayout
     default:
-      console.warn(`Unknown layout "${layoutType}", falling back to modern`)
       return ModernLayout
   }
 })

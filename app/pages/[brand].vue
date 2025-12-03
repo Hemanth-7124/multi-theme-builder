@@ -48,18 +48,14 @@ const loadBrandData = async () => {
     throw new Error('Brand slug is required')
   }
 
-  console.log(`Loading brand data for: ${currentBrandSlug}`)
-
+  
   const { config } = await useBrand(currentBrandSlug)
-  console.log(`Brand config loaded for ${currentBrandSlug}:`, config)
-
+  
   // Apply brand theme tokens on client side
   if (process.client && config?.theme?.tokens) {
-    console.log(`Applying theme tokens for ${currentBrandSlug}`)
     const { useTokens } = await import('~/composables/useTokens')
     const { applyBrandTheme } = useTokens()
     applyBrandTheme(config.theme, currentBrandSlug)
-    console.log(`✅ Brand theme applied: ${config.name} with layout: ${config.theme.layout}`)
   }
 
   // Load sections with brand-specific overrides
@@ -94,17 +90,13 @@ const { setBrandState } = await import('~/composables/useBrandState')
 watch(brandData, (newData) => {
   setBrandState(newData)
 
-  // Log layout information for debugging
   if (newData?.theme?.layout) {
-    console.log(`🎯 Brand "${newData.id}" should use layout "${newData.theme.layout}"`)
-
     // Apply new theme tokens when brand data changes
     if (process.client && newData?.theme?.tokens) {
       nextTick(async () => {
         const { useTokens } = await import('~/composables/useTokens')
         const { applyBrandTheme } = useTokens()
         applyBrandTheme(newData.theme, newData.id)
-        console.log(`🔄 Brand theme updated: ${newData.name} with layout: ${newData.theme.layout}`)
       })
     }
   }

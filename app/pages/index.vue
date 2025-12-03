@@ -158,13 +158,11 @@ const {
   "available-brands",
   async () => {
     try {
-      console.log("🔄 Loading brands from composables with force refresh...");
       const { useAllBrandsInfo } = await import("../composables/useBrand");
-      const brands = await useAllBrandsInfo(true); // Force refresh
-      console.log("📊 Brands loaded:", brands);
+      const brands = await useAllBrandsInfo(true); // Force refresh;
       return brands;
     } catch (error) {
-      console.error("❌ Error loading brands:", error);
+      console.error("Error loading brands:", error);
       return [];
     }
   },
@@ -178,7 +176,6 @@ const {
 
 // Refresh brands when navigating to homepage
 onMounted(() => {
-  console.log("🏠 Homepage mounted, refreshing brands list");
   refreshBrands();
 });
 
@@ -188,7 +185,6 @@ watch(
   () => route.path,
   (newPath) => {
     if (newPath === "/") {
-      console.log("🏠 Navigated to homepage, refreshing brands list");
       refreshBrands();
     }
   }
@@ -198,8 +194,7 @@ watch(
 onMounted(async () => {
   const { setBrandState } = await import("~/composables/useBrandState");
   setBrandState(null);
-  console.log("🧹 Cleared brand state on homepage");
-});
+  });
 
 // Set page metadata
 useHead({

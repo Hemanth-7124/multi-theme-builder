@@ -210,7 +210,6 @@ const toggleMobileMenu = () => {
 // Apply brand tokens when component mounts
 onMounted(() => {
   // Tokens are already applied via the plugin, but we can ensure they're correct
-  console.log(`🎨 BrandShell initialized for: ${props.brandConfig.name}`)
 })
 </script>
 

@@ -169,6 +169,6 @@ interface Props {
 const props = defineProps<Props>()
 
 const handleCtaClick = (href: string) => {
-  console.log('Highlights CTA clicked:', href)
+  // Handle CTA click
 }
 </script>

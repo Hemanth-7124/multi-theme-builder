@@ -221,10 +221,10 @@ const filteredPartnerLogos = computed(() => {
 })
 
 const handleProgramClick = (programId: string) => {
-  console.log('Program clicked:', programId)
+  // Handle program click
 }
 
 const handleCtaClick = (href: string) => {
-  console.log('Partners CTA clicked:', href)
+  // Handle CTA click
 }
 </script>

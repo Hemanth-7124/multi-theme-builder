@@ -151,11 +151,9 @@ const props = defineProps<Props>()
 
 const handleServiceCta = (cta: ServiceCTA) => {
   // Handle service-specific CTA clicks
-  console.log('Service CTA clicked:', cta)
 }
 
 const handleCtaClick = (href: string) => {
   // Handle main CTA click
-  console.log('Main CTA clicked:', href)
 }
 </script>

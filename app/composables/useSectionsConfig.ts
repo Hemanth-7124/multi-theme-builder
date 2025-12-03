@@ -31,7 +31,7 @@ export const useSectionsConfig = async (brandId: string): Promise<SectionConfig[
       brandOverrides = brandResponse.default.overrides
     } catch (error) {
       // No brand-specific overrides found, use shared config only
-      console.log(`No sections overrides found for brand "${brandId}"`)
+      // Continue with shared config only
     }
 
     // Create a map of shared sections by ID for easy lookup
@@ -83,13 +83,6 @@ export const useSectionsConfig = async (brandId: string): Promise<SectionConfig[
 
     // Sort visible sections by order
     const finalSections = visibleSections.sort((a, b) => a.order - b.order)
-
-    console.log(`Final sections for brand "${brandId}":`, finalSections.map(s => ({
-      id: s.id,
-      order: s.order,
-      brandVisible: brandOverrides?.[s.id]?.visible,
-      defaultVisible: sharedSections.find(ds => ds.id === s.id)?.visible
-    })))
 
     return finalSections
 
