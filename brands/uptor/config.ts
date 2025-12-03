@@ -7,7 +7,7 @@ export default {
   logo: '/brands/uptor/assets/logo.svg',
   favicon: '/brands/uptor/assets/favicon.ico',
   theme: {
-    layout: 'minimal',
+    layout: 'modern',
     assets: {
       logo: '/brands/uptor/assets/logo.svg',
       favicon: '/brands/uptor/assets/favicon.ico',
