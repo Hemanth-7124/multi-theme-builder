@@ -18,21 +18,8 @@ export const useBrandState = () => {
 }
 
 /**
- * Computed property to get safe brand config with defaults
+ * Computed property to get current brand config (no defaults)
  */
 export const useSafeBrandConfig = () => {
-  return computed(() => {
-    return brandState.value || {
-      id: 'unknown',
-      name: 'Brand',
-      logo: '/placeholder-logo.svg',
-      favicon: '/favicon.ico',
-      theme: {
-        layout: 'default',
-        tokens: {}
-      },
-      navigation: [],
-      cta: { primary: 'Get Started', secondary: 'Learn More' }
-    }
-  })
+  return computed(() => brandState.value)
 }

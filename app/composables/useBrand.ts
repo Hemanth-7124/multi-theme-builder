@@ -69,27 +69,7 @@ export const useBrand = async (brandId: string) => {
   } catch (error) {
     console.error(`Failed to load brand configuration for "${brandId}":`, error)
 
-    // Return a default configuration
-    const defaultConfig: BrandConfig = {
-      id: brandId,
-      name: brandId.charAt(0).toUpperCase() + brandId.slice(1),
-      description: 'Brand configuration not found',
-      logo: '/placeholder-logo.svg',
-      favicon: '/favicon.ico',
-      theme: {
-        layout: 'default',
-        tokens: {}
-      },
-      navigation: [],
-      cta: {
-        primary: 'Get Started',
-        secondary: 'Learn More'
-      }
-    }
-
-    return {
-      config: defaultConfig
-    }
+// Throw error instead of returning default config    throw new Error(`Brand "${brandId}" not found. Please create a configuration file at brands/${brandId}/config.ts`);
   }
 }
 

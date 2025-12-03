@@ -2,6 +2,7 @@ export default defineNuxtConfig({
   ssr: true,
 
   modules: [
+    '@nuxt/icon',
    
     '@nuxtjs/tailwindcss'
   ],

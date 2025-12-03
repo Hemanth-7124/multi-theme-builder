@@ -39,33 +39,43 @@ export default {
         'color-info': '#7c3aed'
       },
       typography: {
-        'font-family-sans': 'Inter, system-ui, sans-serif',
-        'font-family-serif': 'Georgia, serif',
-        'font-family-mono': 'JetBrains Mono, Consolas, monospace',
-        'font-size-xs': '0.75rem',
-        'font-size-sm': '0.875rem',
-        'font-size-base': '1rem',
-        'font-size-lg': '1.125rem',
-        'font-size-xl': '1.25rem',
-        'font-size-2xl': '1.5rem',
-        'font-size-3xl': '1.875rem',
-        'font-size-4xl': '2.25rem',
-        'font-size-5xl': '3rem',
-        'font-size-6xl': '3.75rem',
-        'font-size-7xl': '4.5rem',
-        'font-size-8xl': '6rem',
-        'font-weight-light': '300',
-        'font-weight-normal': '400',
-        'font-weight-medium': '500',
-        'font-weight-semibold': '600',
-        'font-weight-bold': '700',
-        'font-weight-extrabold': '800',
-        'line-height-tight': '1.2',
-        'line-height-normal': '1.5',
-        'line-height-relaxed': '1.7',
-        'letter-spacing-tight': '-0.025em',
-        'letter-spacing-normal': '0',
-        'letter-spacing-wide': '0.025em'
+       // Navy Modern Typography
+
+'font-family-sans': 'Poppins, system-ui, sans-serif',        // Clean & geometric
+'font-family-serif': 'Merriweather, serif',                  // Elegant balance
+'font-family-mono': 'Fira Code, monospace',                  // Better coding fonts
+
+// New sizes (slightly larger heading scale)
+'font-size-xs': '0.75rem',   // 12px
+'font-size-sm': '0.875rem',  // 14px
+'font-size-base': '1rem',    // 16px (body)
+'font-size-lg': '1.125rem',  // 18px
+'font-size-xl': '1.375rem',  // 22px
+'font-size-2xl': '1.75rem',  // 28px
+'font-size-3xl': '2.125rem', // 34px
+'font-size-4xl': '2.75rem',  // 44px
+'font-size-5xl': '3.5rem',   // 56px
+'font-size-6xl': '4.5rem',   // 72px
+'font-size-7xl': '5.5rem',   // 88px
+
+// Font weights with better UI defaults
+'font-weight-light': '300',
+'font-weight-normal': '400',
+'font-weight-medium': '500',
+'font-weight-semibold': '600',
+'font-weight-bold': '700',
+'font-weight-extrabold': '800',
+
+// Improved readability
+'line-height-tight': '1.15',
+'line-height-normal': '1.45',
+'line-height-relaxed': '1.65',
+
+// Cleaner letter spacing
+'letter-spacing-tight': '-0.015em',
+'letter-spacing-normal': '0em',
+'letter-spacing-wide': '0.035em'
+
       },
       spacing: {
         'spacing-0': '0',

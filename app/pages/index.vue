@@ -10,15 +10,15 @@
 
       <div class="grid grid-cols-1 gap-8 mx-auto max-w-6xl md:grid-cols-2 lg:grid-cols-3">
         <!-- Loading state -->
-        <div v-if="pending" class="col-span-full text-center py-8">
-          <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+        <div v-if="pending" class="col-span-full py-8 text-center">
+          <div class="inline-block w-8 h-8 rounded-full border-b-2 animate-spin border-primary"></div>
           <p class="mt-4 text-text-secondary">Loading brands...</p>
         </div>
 
         <!-- Error state -->
-        <div v-else-if="!availableBrands || availableBrands.length === 0" class="col-span-full text-center py-8">
+        <div v-else-if="!availableBrands || availableBrands.length === 0" class="col-span-full py-8 text-center">
           <div class="p-8 rounded-xl bg-surface">
-            <h3 class="text-xl font-semibold text-primary mb-2">No Brands Found</h3>
+            <h3 class="mb-2 text-xl font-semibold text-primary">No Brands Found</h3>
             <p class="text-text-secondary">No brand configurations were found in the /brands directory.</p>
           </div>
         </div>
@@ -150,11 +150,10 @@ watch(() => route.path, (newPath) => {
 })
 
 // Clear any brand state when on homepage
-onMounted(() => {
-  const { clearBrandState } = import('~/composables/useBrandState').then(m => {
-    m.clearBrandState()
-    console.log('🧹 Cleared brand state on homepage')
-  })
+onMounted(async () => {
+  const { setBrandState } = await import('~/composables/useBrandState')
+  setBrandState(null)
+  console.log('🧹 Cleared brand state on homepage')
 })
 
 // Set page metadata

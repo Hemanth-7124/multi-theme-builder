@@ -74,7 +74,7 @@ const loadBrandData = async () => {
 
 // Use useAsyncData with reactive key to ensure it refetches when brand changes
 const { data: brandData, error, pending: isLoading, refresh } = await useAsyncData(
-  () => `brand-${brandSlug.value}`,
+  computed(() => `brand-${brandSlug.value}`),
   loadBrandData,
   {
     // Key function ensures refetch when brandSlug changes
@@ -86,13 +86,6 @@ const { data: brandData, error, pending: isLoading, refresh } = await useAsyncDa
 // Create a reactive computed property for the brand config
 const brandConfig = computed(() => brandData.value)
 
-// Watch for route parameter changes and refresh data
-watch(brandSlug, async (newSlug, oldSlug) => {
-  if (newSlug !== oldSlug && newSlug) {
-    console.log(`Route changed from ${oldSlug} to ${newSlug}, refreshing brand data`)
-    await refresh()
-  }
-}, { immediate: false })
 
 // Set the shared brand state for layouts to access
 const { setBrandState } = await import('~/composables/useBrandState')
