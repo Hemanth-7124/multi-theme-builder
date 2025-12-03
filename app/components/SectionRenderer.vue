@@ -11,9 +11,9 @@
           />
         </template>
         <template #fallback>
-          <div class="section-loading flex justify-center items-center p-12">
+          <div class="flex justify-center items-center p-12 section-loading">
             <div class="text-center">
-              <div class="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+              <div class="mx-auto mb-4 w-8 h-8 rounded-full border-2 animate-spin border-primary border-t-transparent"></div>
               <p class="text-text-muted">Loading {{ section.type }} section...</p>
             </div>
           </div>
@@ -73,12 +73,7 @@ const getSectionClasses = (section: SectionConfig) => {
   return baseClasses.join(' ')
 }
 
-// Log for debugging
-watchEffect(() => {
-  if (props.sections?.length > 0) {
-    console.log('SectionRenderer rendering sections:', props.sections.map(s => ({ id: s.id, type: s.type })))
-  }
-})
+
 </script>
 
 <style scoped>

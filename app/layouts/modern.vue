@@ -136,8 +136,7 @@ const props = defineProps<{
 // Use the passed brand config
 const safeBrandConfig = computed(() => props.brandConfig)
 
-// Debug: Log the brand config value in modern layout
-console.log('Modern Layout - brandConfig:', props.brandConfig)
+
 
 // Mobile menu state
 const mobileMenuOpen = ref(false)

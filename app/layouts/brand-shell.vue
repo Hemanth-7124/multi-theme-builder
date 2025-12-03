@@ -67,13 +67,7 @@ const layoutComponent = computed(() => {
   }
 })
 
-// Debug: Log the brand config value and layout selection
-watchEffect(() => {
-  if (currentBrandConfig.value) {
-    console.log('BrandShell Layout - currentBrandConfig:', currentBrandConfig.value)
-    console.log('BrandShell Layout - layoutComponent:', layoutComponent.value?.__name || 'Unknown')
-  }
-})
+
 </script>
 
 <style scoped>
