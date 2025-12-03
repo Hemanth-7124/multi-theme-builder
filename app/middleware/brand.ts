@@ -6,6 +6,14 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     return
   }
 
+  // Validate brand parameter format
+  if (brandParam.includes('.svg') || brandParam.includes('/') || brandParam.includes('\\') || brandParam.includes('..')) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: `Invalid brand parameter format: "${brandParam}"`
+    })
+  }
+
   // Dynamically validate brand parameter
   try {
     const { useBrandExists } = await import('../composables/useBrand')

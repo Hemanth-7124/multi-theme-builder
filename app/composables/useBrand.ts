@@ -43,6 +43,16 @@ export const useDiscoverBrands = async (forceRefresh: boolean = false): Promise<
  * Load brand configuration dynamically
  */
 export const useBrand = async (brandId: string) => {
+  // Validate brandId parameter
+  if (!brandId || typeof brandId !== 'string') {
+    throw new Error('Invalid brand ID provided')
+  }
+
+  // Check if brandId looks like a file path (which would be incorrect)
+  if (brandId.includes('.svg') || brandId.includes('/') || brandId.includes('\\')) {
+    throw new Error(`Invalid brand ID "${brandId}". Brand ID should be a simple identifier, not a file path.`)
+  }
+
   // Check cache first
   if (brandCache.has(brandId)) {
     return {
@@ -64,7 +74,8 @@ export const useBrand = async (brandId: string) => {
   } catch (error) {
     console.error(`Failed to load brand configuration for "${brandId}":`, error)
 
-// Throw error instead of returning default config    throw new Error(`Brand "${brandId}" not found. Please create a configuration file at brands/${brandId}/config.ts`);
+    // Throw error instead of returning default config
+    throw new Error(`Brand "${brandId}" not found. Please create a configuration file at brands/${brandId}/config.ts`);
   }
 }
 

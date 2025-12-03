@@ -12,7 +12,7 @@
       }
     },
     "features": {
-      "visible": true,
+      "visible": false,
       "order": 2,
       "content": {
         "title": "Learning Features",

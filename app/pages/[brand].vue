@@ -48,7 +48,11 @@ const loadBrandData = async () => {
     throw new Error('Brand slug is required')
   }
 
-  
+  // Validate brand slug format
+  if (currentBrandSlug.includes('.svg') || currentBrandSlug.includes('/') || currentBrandSlug.includes('\\') || currentBrandSlug.includes('..')) {
+    throw new Error(`Invalid brand slug format: "${currentBrandSlug}"`)
+  }
+
   const { config } = await useBrand(currentBrandSlug)
   
   // Apply brand theme tokens on client side

@@ -11,31 +11,7 @@
         "backgroundImage": "/brands/pmc/assets/hero.webp"
       }
     },
-    "features": {
-      "visible": true,
-      "order": 2,
-      "content": {
-        "title": "Enterprise Features",
-        "subtitle": "Powerful tools for project success",
-        "features": [
-          {
-            "icon": "/brands/pmc/assets/icons/feature1.svg",
-            "title": "Resource Management",
-            "description": "Optimize resource allocation and utilization across projects"
-          },
-          {
-            "icon": "/brands/pmc/assets/icons/feature2.svg",
-            "title": "Advanced Reporting",
-            "description": "Comprehensive analytics and reporting for data-driven decisions"
-          },
-          {
-            "icon": "/brands/pmc/assets/icons/feature3.svg",
-            "title": "Team Collaboration",
-            "description": "Seamless collaboration tools for distributed teams"
-          }
-        ]
-      }
-    },
+
     "about": {
       "visible": true,
       "order": 3,
