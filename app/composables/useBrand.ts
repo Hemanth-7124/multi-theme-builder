@@ -7,7 +7,7 @@ const brandCache = new Map<string, BrandConfig>()
 let availableBrandsCache: string[] | null = null
 
 /**
- * Dynamically discover available brands from the brands directory
+ * Dynamically discover available brands from the server API
  */
 export const useDiscoverBrands = async (): Promise<string[]> => {
   if (availableBrandsCache) {
@@ -15,29 +15,15 @@ export const useDiscoverBrands = async (): Promise<string[]> => {
   }
 
   try {
-    // Always use file system to scan the brands directory
-    const fs = await import('node:fs')
-    const path = await import('node:path')
+    // Fetch brands from server API
+    const { data } = await $fetch('/api/brands')
 
-    const brandsDir = path.join(process.cwd(), 'brands')
-
-    if (fs.existsSync(brandsDir)) {
-      const items = fs.readdirSync(brandsDir, { withFileTypes: true })
-      const brandDirs = items
-        .filter(dirent => dirent.isDirectory())
-        .map(dirent => dirent.name)
-
-      // Filter for directories that contain config.ts
-      const validBrands = brandDirs.filter(brand => {
-        const configPath = path.join(brandsDir, brand, 'config.ts')
-        return fs.existsSync(configPath)
-      })
-
-      availableBrandsCache = validBrands
-      return validBrands
+    if (data?.brands && Array.isArray(data.brands)) {
+      availableBrandsCache = data.brands
+      return data.brands
     }
 
-    // If brands directory doesn't exist, return empty array
+    // Fallback to empty array if API returns unexpected format
     availableBrandsCache = []
     return []
   } catch (error) {

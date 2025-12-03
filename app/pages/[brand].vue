@@ -32,119 +32,95 @@
 import type { SectionConfig } from '../../tokens/types'
 import { useBrand } from '~/composables/useBrand'
 
-// Get route parameters
+// Set default layout - will be switched dynamically
+definePageMeta({
+  layout: 'brand-shell'
+})
+
+// Get route parameters reactively
 const route = useRoute()
-const brandSlug = route.params.brand as string
+const brandSlug = computed(() => route.params.brand as string)
 
-// Define page meta to use dynamic layout based on brand theme
-const layoutType = ref('brand-shell')
+// Dynamic layout determination and loading
+const loadBrandData = async () => {
+  const currentBrandSlug = brandSlug.value
+  if (!currentBrandSlug) {
+    throw new Error('Brand slug is required')
+  }
 
-// Load brand config for layout selection
-const loadLayoutType = async () => {
-  try {
-    // Dynamically import brand config to get layout type
-    let brandConfig
-    switch (brandSlug) {
-      case 'chitti':
-        brandConfig = await import('../../brands/chitti/config.ts')
-        break
-      case 'pmc':
-        brandConfig = await import('../../brands/pmc/config.ts')
-        break
-      case 'uptor':
-        brandConfig = await import('../../brands/uptor/config.ts')
-        break
-      default:
-        console.warn('Unknown brand:', brandSlug)
-        layoutType.value = 'brand-shell'
-        return
-    }
+  console.log(`Loading brand data for: ${currentBrandSlug}`)
 
-    // Map layout types from brand config
-    const brandLayout = brandConfig.default.theme.layout
-    switch (brandLayout) {
-      case 'modern':
-        layoutType.value = 'modern'
-        break
-      case 'bold':
-        layoutType.value = 'bold'
-        break
-      case 'minimal':
-        layoutType.value = 'minimal'
-        break
-      default:
-        layoutType.value = 'brand-shell'
-    }
+  const { config } = await useBrand(currentBrandSlug)
+  console.log(`Brand config loaded for ${currentBrandSlug}:`, config)
 
-    console.log(`🎯 Using layout "${layoutType.value}" for brand "${brandSlug}" (theme: ${brandLayout})`)
-  } catch (error) {
-    console.warn('Could not determine layout for brand:', brandSlug, error)
-    layoutType.value = 'brand-shell'
+  // Apply brand theme tokens on client side
+  if (process.client && config?.theme?.tokens) {
+    console.log(`Applying theme tokens for ${currentBrandSlug}`)
+    const { useTokens } = await import('~/composables/useTokens')
+    const { applyBrandTheme } = useTokens()
+    applyBrandTheme(config.theme, currentBrandSlug)
+    console.log(`✅ Brand theme applied: ${config.name} with layout: ${config.theme.layout}`)
+  }
+
+  // Load sections with brand-specific overrides
+  const { useSectionsConfig } = await import('~/composables/useSectionsConfig')
+  const sections = await useSectionsConfig(currentBrandSlug)
+
+  return {
+    ...config,
+    sections
   }
 }
 
-// Load layout type immediately
-await loadLayoutType()
-
-// Define page meta with reactive layout
-definePageMeta({
-  layout: layoutType.value
-})
-
-// Use useAsyncData for proper async handling in Nuxt 3/4
-const { data: brandData, error, pending: isLoading } = await useAsyncData(
-  `brand-${brandSlug}`,
-  async () => {
-    console.log(`Loading brand data for: ${brandSlug}`)
-
-    const { config } = await useBrand(brandSlug)
-    console.log(`Brand config loaded for ${brandSlug}:`, config)
-
-    // Apply brand theme tokens on client side
-    if (process.client && config?.theme?.tokens) {
-      console.log(`Applying theme tokens for ${brandSlug}`)
-      const { useTokens } = await import('~/composables/useTokens')
-      const { applyBrandTheme } = useTokens()
-      applyBrandTheme(config.theme, brandSlug)
-      console.log(`✅ Brand theme applied: ${config.name} with layout: ${config.theme.layout}`)
-    }
-
-    // Load sections with brand-specific overrides
-    const { useSectionsConfig } = await import('~/composables/useSectionsConfig')
-    const sections = await useSectionsConfig(brandSlug)
-
-    return {
-      ...config,
-      sections
-    }
-  },
+// Use useAsyncData with reactive key to ensure it refetches when brand changes
+const { data: brandData, error, pending: isLoading, refresh } = await useAsyncData(
+  () => `brand-${brandSlug.value}`,
+  loadBrandData,
   {
-    // Key the cache by brand slug to ensure different brands get different data
-    key: () => `brand-${brandSlug}`
+    // Key function ensures refetch when brandSlug changes
+    server: true,
+    client: true
   }
 )
 
 // Create a reactive computed property for the brand config
 const brandConfig = computed(() => brandData.value)
 
+// Watch for route parameter changes and refresh data
+watch(brandSlug, async (newSlug, oldSlug) => {
+  if (newSlug !== oldSlug && newSlug) {
+    console.log(`Route changed from ${oldSlug} to ${newSlug}, refreshing brand data`)
+    await refresh()
+  }
+}, { immediate: false })
+
 // Set the shared brand state for layouts to access
 const { setBrandState } = await import('~/composables/useBrandState')
-setBrandState(brandData.value)
 
 // Update the shared state when brand data changes
 watch(brandData, (newData) => {
   setBrandState(newData)
 
-  // Apply new theme tokens when brand data changes
-  if (process.client && newData?.theme?.tokens) {
-    nextTick(async () => {
-      const { useTokens } = await import('~/composables/useTokens')
-      const { applyBrandTheme } = useTokens()
-      applyBrandTheme(newData.theme, newData.id)
-      console.log(`🔄 Brand theme updated: ${newData.name}`)
-    })
+  // Log layout information for debugging
+  if (newData?.theme?.layout) {
+    console.log(`🎯 Brand "${newData.id}" should use layout "${newData.theme.layout}"`)
+
+    // Apply new theme tokens when brand data changes
+    if (process.client && newData?.theme?.tokens) {
+      nextTick(async () => {
+        const { useTokens } = await import('~/composables/useTokens')
+        const { applyBrandTheme } = useTokens()
+        applyBrandTheme(newData.theme, newData.id)
+        console.log(`🔄 Brand theme updated: ${newData.name} with layout: ${newData.theme.layout}`)
+      })
+    }
   }
 }, { immediate: true })
+
+// Set initial brand state
+if (brandData.value) {
+  setBrandState(brandData.value)
+}
 
 // Sort sections by order
 const sortedSections = computed(() => {
@@ -170,10 +146,11 @@ watchEffect(() => {
 })
 
 // Handle errors
-if (error.value) {
-  console.error('Failed to load brand:', error.value)
-  throw new Error('Brand not found')
-}
+watch(error, (errorValue) => {
+  if (errorValue) {
+    console.error('Failed to load brand:', errorValue)
+  }
+})
 </script>
 
 <style scoped>

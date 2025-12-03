@@ -127,13 +127,17 @@
 
 <script setup lang="ts">
 import type { BrandConfig } from '../../tokens/types'
-import { useSafeBrandConfig } from '~/composables/useBrandState'
 
-// Get brand config from shared state
-const safeBrandConfig = useSafeBrandConfig()
+// Accept brand config as prop from parent
+const props = defineProps<{
+  brandConfig: BrandConfig
+}>()
+
+// Use the passed brand config
+const safeBrandConfig = computed(() => props.brandConfig)
 
 // Debug: Log the brand config value in modern layout
-console.log('Modern Layout - safeBrandConfig:', safeBrandConfig.value)
+console.log('Modern Layout - brandConfig:', props.brandConfig)
 
 // Mobile menu state
 const mobileMenuOpen = ref(false)

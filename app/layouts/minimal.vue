@@ -1,5 +1,5 @@
 <template>
-  <div v-if="safeBrandConfig" class="minimal-layout min-h-screen token-bg" :data-brand="safeBrandConfig.id">
+  <div v-if="safeBrandConfig?.id" class="minimal-layout min-h-screen token-bg" :data-brand="safeBrandConfig.id">
     <!-- Minimal header with just logo -->
     <header class="p-6 border-b" style="border-color: var(--color-border);">
       <div class="max-w-6xl mx-auto flex items-center justify-center">
@@ -42,10 +42,15 @@
 </template>
 
 <script setup lang="ts">
-import { useSafeBrandConfig } from '~/composables/useBrandState'
+import type { BrandConfig } from '../../tokens/types'
 
-// Get brand config from shared state
-const safeBrandConfig = useSafeBrandConfig()
+// Accept brand config as prop from parent
+const props = defineProps<{
+  brandConfig: BrandConfig
+}>()
+
+// Use the passed brand config
+const safeBrandConfig = computed(() => props.brandConfig)
 </script>
 
 <style scoped>

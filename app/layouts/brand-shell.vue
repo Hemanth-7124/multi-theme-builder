@@ -1,53 +1,22 @@
 <template>
-  <!-- Use page-level loading states - just render the content -->
-  <div class="brand-shell" :class="`brand-shell-${safeBrandConfig?.theme?.layout || 'default'}`">
-    <!-- Brand Header -->
-    <header v-if="safeBrandConfig" class="border-b brand-header" style="background-color: var(--color-surface); border-color: var(--color-border);">
-      <nav class="container px-4 py-4 mx-auto">
-        <div class="flex justify-between items-center">
-          <!-- Logo -->
-          <NuxtLink :to="`/${safeBrandConfig.id}`" class="flex items-center space-x-3">
-            <img
-              :src="safeBrandConfig.logo"
-              :alt="`${safeBrandConfig.name} logo`"
-              class="w-auto h-8"
-              loading="lazy"
-            />
-            <span class="text-xl font-semibold" style="color: var(--color-primary);">{{ safeBrandConfig.name }}</span>
-          </NuxtLink>
+  <!-- Dynamic layout rendering based on brand configuration -->
+  <div>
+    <!-- Show loading state while brand config is loading -->
+    <div v-if="!safeBrandConfig?.id" class="flex justify-center items-center min-h-screen">
+      <div class="text-center">
+        <div class="mx-auto mb-4 w-12 h-12 rounded-full border-b-2 animate-spin border-blue-600"></div>
+        <p class="text-gray-600">Loading brand...</p>
+      </div>
+    </div>
 
-          <!-- Navigation -->
-          <div class="hidden items-center space-x-6 md:flex">
-            <a
-              v-for="navItem in safeBrandConfig.navigation"
-              :key="navItem.href"
-              :href="navItem.href"
-              class="transition-colors"
-              style="color: var(--color-text-secondary);"
-              @mouseenter="$event.target.style.color = 'var(--color-primary)'"
-              @mouseleave="$event.target.style.color = 'var(--color-text-secondary)'"
-            >
-              {{ navItem.label }}
-            </a>
-          </div>
-
-          <!-- CTA Button -->
-          <button
-            class="px-4 py-2 font-medium rounded-md"
-            style="background-color: var(--color-primary); color: var(--color-text-inverse);"
-            @mouseenter="$event.target.style.backgroundColor = 'var(--color-primary-hover)'"
-            @mouseleave="$event.target.style.backgroundColor = 'var(--color-primary)'"
-          >
-            {{ safeBrandConfig.cta.primary }}
-          </button>
-        </div>
-      </nav>
-    </header>
-
-    <!-- Main Content -->
-    <main class="brand-main">
+    <!-- Render the appropriate layout component -->
+    <component
+      v-else
+      :is="layoutComponent"
+      :brand-config="safeBrandConfig"
+    >
       <slot />
-    </main>
+    </component>
   </div>
 </template>
 
@@ -55,42 +24,47 @@
 import type { BrandConfig } from '../../tokens/types'
 import { useSafeBrandConfig } from '~/composables/useBrandState'
 
+// Import layout components
+import ModernLayout from './modern.vue'
+import BoldLayout from './bold.vue'
+import MinimalLayout from './minimal.vue'
+
 // Get brand config from shared state
 const safeBrandConfig = useSafeBrandConfig()
 
-// Debug: Log the brand config value
-console.log('BrandShell Layout - safeBrandConfig:', safeBrandConfig.value)
+// Compute which layout component to use based on brand configuration
+const layoutComponent = computed(() => {
+  if (!safeBrandConfig.value?.theme?.layout) {
+    console.warn('No layout specified in brand config, using default')
+    return ModernLayout // fallback to modern
+  }
+
+  const layoutType = safeBrandConfig.value.theme.layout
+  console.log(`🎯 Brand "${safeBrandConfig.value.id}" using layout "${layoutType}"`)
+
+  switch (layoutType) {
+    case 'modern':
+      return ModernLayout
+    case 'bold':
+      return BoldLayout
+    case 'minimal':
+      return MinimalLayout
+    default:
+      console.warn(`Unknown layout "${layoutType}", falling back to modern`)
+      return ModernLayout
+  }
+})
+
+// Debug: Log the brand config value and layout selection
+watchEffect(() => {
+  if (safeBrandConfig.value) {
+    console.log('BrandShell Layout - safeBrandConfig:', safeBrandConfig.value)
+    console.log('BrandShell Layout - layoutComponent:', layoutComponent.value?.__name || 'Unknown')
+  }
+})
 </script>
 
 <style scoped>
-.brand-shell {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.brand-main {
-  flex: 1;
-}
-
-.brand-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  backdrop-filter: blur(8px);
-}
-
-/* Layout variations */
-.brand-shell-minimal .brand-header {
-  border-bottom: none;
-}
-
-.brand-shell-modern .brand-header {
-  box-shadow: var(--shadow-md);
-}
-
-.brand-shell-bold .brand-header {
-  box-shadow: var(--shadow-lg);
-  border-width: 2px;
-}
+/* Brand shell layout is now a dynamic wrapper - no specific styles needed */
+/* Individual layout components handle their own styling */
 </style>
