@@ -21,7 +21,7 @@
               :class="logoImageClasses"
             />
             <span
-              class="font-semibold transition-colors"
+              class="font-semibold transition-colors leading-tight"
               :class="titleClasses"
               :style="{ color: 'var(--color-primary)' }"
             >

@@ -2,10 +2,10 @@
   <section class="py-20 features-section" style="background-color: var(--color-surface);">
     <div class="container px-6 mx-auto">
       <div class="mb-16 text-center">
-        <h2 class="mb-4 text-3xl font-bold md:text-4xl" style="color: var(--color-primary);">
+        <h2 class="mb-4 text-3xl font-bold md:text-4xl font-extrabold leading-tight" style="color: var(--color-primary);">
           {{ content.title }}
         </h2>
-        <p class="mx-auto max-w-2xl text-lg" style="color: var(--color-text-secondary);">
+        <p class="mx-auto max-w-2xl text-lg leading-relaxed" style="color: var(--color-text-secondary);">
           {{ content.subtitle }}
         </p>
       </div>
@@ -14,7 +14,8 @@
         <div
           v-for="(feature, index) in content.features"
           :key="index"
-          class="p-8 text-center rounded-lg shadow-lg transition-shadow feature-card hover:shadow-xl" style="background-color: var(--color-background);"
+          class="p-8 text-center rounded-lg shadow-lg transition-all feature-card hover:shadow-xl hover:-translate-y-1"
+          style="background-color: var(--color-background);"
         >
           <div class="mb-4 feature-icon">
             <img
@@ -32,10 +33,10 @@
               {{ feature.icon }}
             </div>
           </div>
-          <h3 class="mb-3 text-xl font-semibold" style="color: var(--color-primary);">
+          <h3 class="mb-3 text-xl font-semibold leading-normal" style="color: var(--color-primary);">
             {{ feature.title }}
           </h3>
-          <p style="color: var(--color-text-secondary);">
+          <p class="leading-normal" style="color: var(--color-text-secondary);">
             {{ feature.description }}
           </p>
         </div>

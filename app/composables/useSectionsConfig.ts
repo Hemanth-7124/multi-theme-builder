@@ -52,16 +52,43 @@ export const useSectionsConfig = async (brandId: string): Promise<SectionConfig[
       }
     }
 
-    // Convert back to array, filter by visibility, and sort by order
-    const finalSections = Array.from(sectionsMap.values())
-      .filter(section => section.visible !== false)
-      .sort((a, b) => a.order - b.order)
+    // Filter sections based on the 5 visibility rules
+    const visibleSections = Array.from(sectionsMap.values()).filter(section => {
+      const defaultSection = sharedSections.find(s => s.id === section.id)
+      const brandSection = brandOverrides?.[section.id]
+
+      // Rule 5: If section exists in default config but not in brand config, do NOT show
+      if (!brandSection) {
+        return false
+      }
+
+      // Rule 4: If brandSection.visible === true AND defaultSection.visible === false, do NOT show
+      if (brandSection.visible === true && defaultSection.visible === false) {
+        return false
+      }
+
+      // Rule 2: If brandSection.visible === false and defaultSection.visible === true, do NOT show
+      if (brandSection.visible === false && defaultSection.visible === true) {
+        return false
+      }
+
+      // Rule 3: If both brandSection.visible === false AND defaultSection.visible === false, do NOT show
+      if (brandSection.visible === false && defaultSection.visible === false) {
+        return false
+      }
+
+      // Rule 1: If both configs define the section AND brandSection.visible === true AND defaultSection.visible === true, show
+      return brandSection.visible === true && defaultSection.visible === true
+    })
+
+    // Sort visible sections by order
+    const finalSections = visibleSections.sort((a, b) => a.order - b.order)
 
     console.log(`Final sections for brand "${brandId}":`, finalSections.map(s => ({
       id: s.id,
       order: s.order,
-      visible: s.visible,
-      hasOverride: !!brandOverrides?.[s.id]
+      brandVisible: brandOverrides?.[s.id]?.visible,
+      defaultVisible: sharedSections.find(ds => ds.id === s.id)?.visible
     })))
 
     return finalSections

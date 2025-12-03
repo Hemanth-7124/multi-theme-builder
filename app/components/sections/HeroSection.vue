@@ -4,20 +4,20 @@
     :style="heroStyles"
   >
     <div class="container px-6 mx-auto text-center">
-      <h1 class="mb-6 text-4xl font-bold md:text-6xl" style="color: var(--color-text-inverse);">
+      <h1 class="mb-6 text-4xl font-bold md:text-6xl font-extrabold leading-tight" style="color: var(--color-text-inverse);">
         {{ content.title }}
       </h1>
-      <p class="mx-auto mb-8 max-w-3xl text-xl md:text-2xl" style="color: var(--color-text-inverse);">
+      <p class="mx-auto mb-8 max-w-3xl text-xl md:text-2xl leading-normal" style="color: var(--color-text-inverse);">
         {{ content.subtitle }}
       </p>
-      <div v-if="content.description" class="mx-auto mb-8 max-w-2xl text-lg" style="color: var(--color-text-inverse); opacity: 0.9;">
+      <div v-if="content.description" class="mx-auto mb-8 max-w-2xl text-lg leading-relaxed" style="color: var(--color-text-inverse); opacity: 0.9;">
         {{ content.description }}
       </div>
       <div v-if="hasCta" class="flex gap-4 justify-center">
         <button
           v-if="primaryCta"
           @click="handleCtaClick(primaryCta.href)"
-          class="px-8 py-3 font-semibold rounded-lg transition-colors"
+          class="px-8 py-3 font-semibold rounded-lg transition-all hover:shadow-lg font-semibold"
           style="background-color: var(--color-accent); color: var(--color-text-inverse);"
           @mouseenter="$event.target.style.backgroundColor = 'var(--color-accent-hover)'"
           @mouseleave="$event.target.style.backgroundColor = 'var(--color-accent)'"
@@ -27,7 +27,7 @@
         <button
           v-if="secondaryCta"
           @click="handleCtaClick(secondaryCta.href)"
-          class="px-8 py-3 font-semibold rounded-lg border-2 transition-colors"
+          class="px-8 py-3 font-semibold rounded-lg border-2 transition-all hover:shadow-md font-semibold"
           style="background-color: transparent; color: var(--color-text-inverse); border-color: var(--color-text-inverse);"
           @mouseenter="$event.target.style.backgroundColor = 'var(--color-text-inverse)'; $event.target.style.color = 'var(--color-primary)'"
           @mouseleave="$event.target.style.backgroundColor = 'transparent'; $event.target.style.color = 'var(--color-text-inverse)'"
