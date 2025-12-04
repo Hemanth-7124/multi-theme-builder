@@ -17,6 +17,9 @@ import { useSafeBrandConfig } from '~/composables/useBrandState'
 
 // Import layout components
 import ModernLayout from './modern.vue'
+import BoldLayout from './bold.vue'
+import ClassicLayout from './classic.vue'
+import MinimalLayout from './minimal.vue'
 
 
 // Get brand config from shared state
@@ -50,12 +53,22 @@ const layoutComponent = computed(() => {
     return ModernLayout // fallback to modern
   }
 
+
   const layoutType = currentBrandConfig.value.theme.layout
 
   switch (layoutType) {
+    
     case 'modern':
       return ModernLayout
- 
+    case 'bold':
+      return BoldLayout
+    case 'classic':
+      return ClassicLayout
+    case 'minimal':
+      return MinimalLayout
+    default:
+      console.warn(`Unknown layout type: ${layoutType}, falling back to modern`)
+      return ModernLayout
   }
 })
 

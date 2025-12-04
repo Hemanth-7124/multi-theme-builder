@@ -21,5 +21,6 @@ export const useBrandState = () => {
  * Computed property to get current brand config (no defaults)
  */
 export const useSafeBrandConfig = () => {
+  console.log('useSafeBrandConfig called', brandState.value);
   return computed(() => brandState.value)
 }
