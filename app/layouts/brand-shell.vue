@@ -13,7 +13,6 @@
 
 <script setup lang="ts">
 import type { BrandConfig } from '../../tokens/types'
-import { useSafeBrandConfig } from '~/composables/useBrandState'
 
 // Import layout components
 import ModernLayout from './modern.vue'
@@ -21,9 +20,9 @@ import BoldLayout from './bold.vue'
 import ClassicLayout from './classic.vue'
 import MinimalLayout from './minimal.vue'
 
-
-// Get brand config from shared state
-const safeBrandConfig = useSafeBrandConfig()
+// Get the current route to determine brand
+const route = useRoute()
+const brandSlug = computed(() => route.params.brand as string)
 
 // Create a fallback brand config for when no brand is set
 const fallbackBrandConfig: BrandConfig = {
@@ -43,21 +42,40 @@ const fallbackBrandConfig: BrandConfig = {
   }
 }
 
+// Load brand config directly in the layout component
+const { data: brandData } = await useAsyncData(
+  computed(() => `brand-layout-${brandSlug.value}`),
+  async () => {
+    if (!brandSlug.value) return null
+
+    const { useBrand } = await import('~/composables/useBrand')
+    const { config } = await useBrand(brandSlug.value)
+    return config
+  },
+  {
+    server: true
+  }
+)
+
 // Use current brand config or fallback
-const currentBrandConfig = computed(() => safeBrandConfig.value || fallbackBrandConfig)
+const currentBrandConfig = computed(() => brandData.value || fallbackBrandConfig)
 
 // Compute which layout component to use based on brand configuration
 const layoutComponent = computed(() => {
+  console.log('brand-shell: Computing layout component', {
+    brandSlug: brandSlug.value,
+    brandDataId: brandData.value?.id,
+    layoutType: currentBrandConfig.value?.theme?.layout
+  })
+
   if (!currentBrandConfig.value?.theme?.layout) {
-    console.log('No layout specified in brand config',currentBrandConfig.value?.theme?.layout)
+    console.log('No layout specified in brand config', currentBrandConfig.value?.theme?.layout)
     return ModernLayout // fallback to modern
   }
-
 
   const layoutType = currentBrandConfig.value.theme.layout
 
   switch (layoutType) {
-    
     case 'modern':
       return ModernLayout
     case 'bold':
@@ -71,7 +89,6 @@ const layoutComponent = computed(() => {
       return ModernLayout
   }
 })
-
 
 </script>
 

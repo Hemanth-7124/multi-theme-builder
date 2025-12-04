@@ -7,7 +7,7 @@ export default {
   logo: '/brands/pmc/assets/logo.svg',
   favicon: '/brands/pmc/assets/favicon.ico',
   theme: {
-    layout: 'modern',
+    layout: 'minimal',
     assets: {
       logo: '/brands/pmc/assets/logo.svg',
       favicon: '/brands/pmc/assets/favicon.ico',
