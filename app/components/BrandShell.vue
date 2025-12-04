@@ -90,7 +90,7 @@
 </template>
 
 <script setup lang="ts">
-import { BrandConfig } from '../../../tokens/types'
+import type  { BrandConfig } from '../../tokens/types'
 import { useTokens } from '../composables/useTokens'
 
 interface Props {
