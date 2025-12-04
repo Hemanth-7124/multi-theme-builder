@@ -54,13 +54,6 @@ const loadBrandData = async () => {
   }
 
   const { config } = await useBrand(currentBrandSlug)
-  
-  // Apply brand theme tokens on client side
-  if (process.client && config?.theme?.tokens) {
-    const { useTokens } = await import('~/composables/useTokens')
-    const { applyBrandTheme } = useTokens()
-    applyBrandTheme(config.theme, currentBrandSlug)
-  }
 
   // Load sections with brand-specific overrides
   const { useSectionsConfig } = await import('~/composables/useSectionsConfig')
@@ -78,8 +71,7 @@ const { data: brandData, error, pending: isLoading, refresh } = await useAsyncDa
   loadBrandData,
   {
     // Key function ensures refetch when brandSlug changes
-    server: true,
-    client: true
+    server: true
   }
 )
 
@@ -91,10 +83,11 @@ const brandConfig = computed(() => brandData.value)
 const { setBrandState } = await import('~/composables/useBrandState')
 
 // Update the shared state when brand data changes
-watch(brandData, (newData) => {
-  setBrandState(newData)
+watch(brandData, (newData, oldData) => {
+  // Only update if the brand data actually changed
+  if (newData?.id !== oldData?.id) {
+    setBrandState(newData)
 
-  if (newData?.theme?.layout) {
     // Apply new theme tokens when brand data changes
     if (process.client && newData?.theme?.tokens) {
       nextTick(async () => {
@@ -106,9 +99,16 @@ watch(brandData, (newData) => {
   }
 }, { immediate: true })
 
-// Set initial brand state
-if (brandData.value) {
+// Set initial brand state and handle client-side theme application
+if (process.client && brandData.value) {
   setBrandState(brandData.value)
+
+  // Apply theme tokens on initial load
+  if (brandData.value?.theme?.tokens) {
+    const { useTokens } = await import('~/composables/useTokens')
+    const { applyBrandTheme } = useTokens()
+    applyBrandTheme(brandData.value.theme, brandData.value.id)
+  }
 }
 
 // Sort sections by order
