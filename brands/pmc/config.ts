@@ -1,7 +1,7 @@
 import type { BrandConfig } from '../../tokens/types'
 
-export default {
-  id: 'pmc',
+export default { 
+    id: 'pmc',
   name: 'PMC',
   description: 'Enterprise project management and collaboration suite',
   logo: '/brands/pmc/assets/logo.svg',
@@ -135,12 +135,11 @@ export default {
   navigation: [
     { label: 'Features', href: '#features' },
     { label: 'Solutions', href: '#solutions' },
-    { label: 'Enterprise', href: '#enterprise' },
-    { label: 'Pricing', href: '#pricing' },
+
     { label: 'About', href: '#about' }
   ],
   cta: {
     primary: 'Request Demo',
     secondary: 'Contact Sales'
   }
-} as BrandConfig
+}  as BrandConfig

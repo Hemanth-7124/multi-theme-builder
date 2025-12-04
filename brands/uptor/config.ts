@@ -122,13 +122,7 @@ export default {
       }
     }
   },
-  navigation: [
-    { label: 'Courses', href: '#courses' },
-    { label: 'Instructors', href: '#instructors' },
-    { label: 'Pricing', href: '#pricing' },
-    { label: 'About', href: '#about' },
-    { label: 'Contact', href: '#contact' }
-  ],
+
   cta: {
     primary: 'Browse Courses',
     secondary: 'Start Free Trial'
