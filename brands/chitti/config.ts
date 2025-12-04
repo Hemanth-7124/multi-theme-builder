@@ -36,7 +36,7 @@ export default {
 'color-text-primary': '#0c1b30',     // Navy text
 'color-text-secondary': '#3b4a61',
 'color-text-muted': '#98a3b5',
-'color-text-inverse': '#ffffff',
+'color-text-inverse': '#0a1a4f',
 
 'color-border': '#d1d7e2',
 'color-border-hover': '#b9c2d3',
