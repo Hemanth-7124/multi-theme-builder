@@ -21,7 +21,7 @@
               :class="logoImageClasses"
             />
             <span
-              class="font-semibold transition-colors leading-tight"
+              class="font-semibold leading-tight transition-colors"
               :class="titleClasses"
               :style="{ color: 'var(--color-primary)' }"
             >
@@ -106,8 +106,7 @@ const layoutClasses = computed(() => {
   const layout = props.brandConfig.theme.layout
   return {
     'layout-modern': layout === 'modern',
-    'layout-minimal': layout === 'minimal',
-    'layout-bold': layout === 'bold',
+  
   }
 })
 
@@ -116,10 +115,6 @@ const logoClasses = computed(() => {
   switch (props.brandConfig.theme.layout) {
     case 'modern':
       return 'hover:opacity-90'
-    case 'minimal':
-      return 'hover:opacity-80'
-    case 'bold':
-      return 'hover:rotate-1'
     default:
       return ''
   }
@@ -129,10 +124,6 @@ const logoImageClasses = computed(() => {
   switch (props.brandConfig.theme.layout) {
     case 'modern':
       return 'filter drop-shadow-sm'
-    case 'minimal':
-      return 'filter grayscale-0'
-    case 'bold':
-      return 'filter drop-shadow-md'
     default:
       return ''
   }
@@ -143,10 +134,6 @@ const titleClasses = computed(() => {
   switch (props.brandConfig.theme.layout) {
     case 'modern':
       return `${baseClasses} text-xl tracking-tight`
-    case 'minimal':
-      return `${baseClasses} text-lg font-light tracking-wide`
-    case 'bold':
-      return `${baseClasses} text-2xl font-bold tracking-normal`
     default:
       return baseClasses
   }
@@ -157,10 +144,6 @@ const navLinkClasses = computed(() => {
   switch (props.brandConfig.theme.layout) {
     case 'modern':
       return `${baseClasses} hover:token-primary font-medium`
-    case 'minimal':
-      return `${baseClasses} hover:token-primary font-light`
-    case 'bold':
-      return `${baseClasses} hover:token-primary font-semibold text-sm uppercase tracking-wide`
     default:
       return baseClasses
   }
@@ -170,10 +153,6 @@ const ctaButtonClasses = computed(() => {
   switch (props.brandConfig.theme.layout) {
     case 'modern':
       return 'shadow-lg hover:shadow-xl text-white'
-    case 'minimal':
-      return 'shadow-sm hover:shadow-md text-white'
-    case 'bold':
-      return 'shadow-xl hover:shadow-2xl text-white font-bold uppercase tracking-wide'
     default:
       return 'text-white'
   }
@@ -237,14 +216,7 @@ onMounted(() => {
   box-shadow: var(--shadow-md);
 }
 
-.layout-minimal .brand-header {
-  border-bottom-width: 1px;
-}
 
-.layout-bold .brand-header {
-  box-shadow: var(--shadow-lg);
-  border-bottom: 2px solid var(--color-surface);
-}
 
 /* Smooth transitions for all interactive elements */
 button, a {
