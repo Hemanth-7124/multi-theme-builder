@@ -75,7 +75,7 @@
 </template>
 
 <script setup lang="ts">
-import { SectionConfig } from '../../../tokens/types'
+import type { SectionConfig } from '../../../tokens/types'
 
 interface Props {
   section: SectionConfig

@@ -1,9 +1,9 @@
 <template>
-  <section class="faq-section py-16 bg-surface">
-    <div class="container mx-auto px-6">
-      <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+  <section class="py-16 faq-section bg-surface">
+    <div class="container px-6 mx-auto">
+      <div class="mx-auto max-w-4xl">
+        <div class="mb-12 text-center">
+          <h2 class="mb-4 text-3xl font-bold md:text-4xl text-primary">
             {{ content.title || 'Frequently Asked Questions' }}
           </h2>
           <p class="text-lg text-text-secondary" v-if="content.subtitle">
@@ -15,15 +15,15 @@
           <div
             v-for="(faq, index) in content.faqs"
             :key="index"
-            class="bg-background rounded-lg shadow-md border border-gray-200 overflow-hidden"
+            class="overflow-hidden rounded-lg border border-gray-200 shadow-md bg-background"
           >
             <button
               @click="toggleFaq(index)"
-              class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+              class="flex justify-between items-center px-6 py-4 w-full text-left transition-colors hover:bg-gray-50"
             >
               <h3 class="text-lg font-semibold text-primary">{{ faq.question }}</h3>
               <svg
-                class="w-5 h-5 text-text-secondary transition-transform duration-200"
+                class="w-5 h-5 transition-transform duration-200 text-text-secondary"
                 :class="{ 'rotate-180': openFaq === index }"
                 fill="none"
                 stroke="currentColor"
@@ -36,16 +36,16 @@
               v-show="openFaq === index"
               class="px-6 pb-4 text-text-secondary"
             >
-              <p class="leading-relaxed">{{ faq.answer }}</p>
+              <p class="text-base">{{ faq.answer }}</p>
             </div>
           </div>
         </div>
 
-        <div v-if="content.contactCta" class="text-center mt-12">
-          <p class="text-text-secondary mb-4">{{ content.contactCta.text }}</p>
+        <div v-if="content.contactCta" class="mt-12 text-center">
+          <p class="mb-4 text-text-secondary">{{ content.contactCta.text }}</p>
           <a
             :href="content.contactCta.href"
-            class="inline-flex items-center px-6 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+            class="inline-flex items-center px-6 py-3 font-semibold text-white rounded-lg transition-colors bg-primary hover:bg-primary/90"
           >
             {{ content.contactCta.buttonText }}
             <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

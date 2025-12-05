@@ -2,10 +2,10 @@
   <section class="py-20 features-section" style="background-color: var(--color-surface);">
     <div class="container px-6 mx-auto">
       <div class="mb-16 text-center">
-        <h2 class="mb-4 text-3xl font-bold md:text-4xl font-extrabold leading-tight" style="color: var(--color-primary);">
+        <h2 class="mb-4 text-3xl font-extrabold md:text-4xl" style="color: var(--color-primary);">
           {{ content.title }}
         </h2>
-        <p class="mx-auto max-w-2xl text-lg leading-relaxed" style="color: var(--color-text-secondary);">
+        <p class="mx-auto max-w-2xl text-lg" style="color: var(--color-text-secondary);">
           {{ content.subtitle }}
         </p>
       </div>
@@ -33,10 +33,10 @@
               {{ feature.icon }}
             </div>
           </div>
-          <h3 class="mb-3 text-xl font-semibold leading-normal" style="color: var(--color-primary);">
+          <h3 class="mb-3 text-xl font-semibold" style="color: var(--color-primary);">
             {{ feature.title }}
           </h3>
-          <p class="leading-normal" style="color: var(--color-text-secondary);">
+          <p class="text-base" style="color: var(--color-text-secondary);">
             {{ feature.description }}
           </p>
         </div>
@@ -46,7 +46,7 @@
 </template>
 
 <script setup lang="ts">
-import { SectionConfig } from '../../../tokens/types'
+import type { SectionConfig } from '../../../tokens/types'
 
 interface Props { 
   section?: SectionConfig

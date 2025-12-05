@@ -4,10 +4,10 @@
     :style="heroStyles"
   >
     <div class="container px-6 mx-auto text-center">
-      <h1 class="mb-6 text-4xl font-bold font-extrabold leading-tight md:text-6xl" style="color: var(--color-text-inverse);">
+      <h1 class="mb-6 text-xl font-extrabold md:text-6xl" style="color: var(--color-text-inverse);">
         {{ content.title }}
       </h1>
-      <p class="mx-auto mb-8 max-w-3xl text-xl leading-normal md:text-2xl" style="color: var(--color-text-inverse);">
+      <p class="mx-auto mb-8 max-w-3xl text-xl md:text-2xl" style="color: var(--color-text-inverse);">
         {{ content.subtitle }}
       </p>
       <div v-if="content.description" class="mx-auto mb-8 max-w-2xl text-lg leading-relaxed" style="color: var(--color-text-inverse); opacity: 0.9;">
