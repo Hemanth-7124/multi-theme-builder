@@ -4,21 +4,56 @@
     :style="heroStyles"
   >
     <div class="container px-6 mx-auto text-center">
-      <h1 class="mb-6 text-xl font-extrabold md:text-6xl" style="color: var(--color-text-inverse);">
+      <h1
+        class="mb-6"
+        style="
+          font-family: var(--font-family-sans);
+          font-size: var(--font-size-6xl);
+          font-weight: var(--font-weight-extrabold);
+          line-height: var(--line-height-tight);
+          color: var(--color-text-inverse);
+        "
+      >
         {{ content.title }}
       </h1>
-      <p class="mx-auto mb-8 max-w-3xl text-xl md:text-2xl" style="color: var(--color-text-inverse);">
+      <p
+        class="mx-auto mb-8 max-w-3xl"
+        style="
+          font-family: var(--font-family-sans);
+          font-size: var(--font-size-2xl);
+          font-weight: var(--font-weight-normal);
+          line-height: var(--line-height-normal);
+          color: var(--color-text-inverse);
+        "
+      >
         {{ content.subtitle }}
       </p>
-      <div v-if="content.description" class="mx-auto mb-8 max-w-2xl text-lg leading-relaxed" style="color: var(--color-text-inverse); opacity: 0.9;">
+      <div
+        v-if="content.description"
+        class="mx-auto mb-8 max-w-2xl"
+        style="
+          font-family: var(--font-family-sans);
+          font-size: var(--font-size-lg);
+          font-weight: var(--font-weight-normal);
+          line-height: var(--line-height-relaxed);
+          color: var(--color-text-inverse);
+          opacity: 0.9;
+        "
+      >
         {{ content.description }}
       </div>
       <div v-if="hasCta" class="flex gap-4 justify-center">
         <button
           v-if="primaryCta"
           @click="handleCtaClick(primaryCta.href)"
-          class="px-8 py-3 font-semibold rounded-lg transition-all hover:shadow-lg"
-          style="background-color: var(--color-accent); color: var(--color-text-inverse);"
+          class="px-8 py-3 rounded-lg transition-all hover:shadow-lg"
+          style="
+            font-family: var(--font-family-sans);
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-semibold);
+            background-color: var(--color-accent);
+            color: var(--color-text-inverse);
+          "
           @mouseenter="$event.target.style.backgroundColor = 'var(--color-accent-hover)'"
           @mouseleave="$event.target.style.backgroundColor = 'var(--color-accent)'"
         >
@@ -27,8 +62,15 @@
         <button
           v-if="secondaryCta"
           @click="handleCtaClick(secondaryCta.href)"
-          class="px-8 py-3 font-semibold rounded-lg border-2 transition-all hover:shadow-md"
-          style="background-color: transparent; color: var(--color-text-inverse); border-color: var(--color-text-inverse);"
+          class="px-8 py-3 rounded-lg border-2 transition-all hover:shadow-md"
+          style="
+            font-family: var(--font-family-sans);
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-semibold);
+            background-color: transparent;
+            color: var(--color-text-inverse);
+            border-color: var(--color-text-inverse);
+          "
           @mouseenter="$event.target.style.backgroundColor = 'var(--color-text-inverse)'; $event.target.style.color = 'var(--color-primary)'"
           @mouseleave="$event.target.style.backgroundColor = 'transparent'; $event.target.style.color = 'var(--color-text-inverse)'"
         >
@@ -38,8 +80,14 @@
       <div v-if="content.ctaText" class="flex gap-4 justify-center">
         <button
           @click="handleCtaClick('#contact')"
-          class="px-8 py-3 font-semibold rounded-lg transition-colors"
-          style="background-color: var(--color-accent); color: var(--color-text-inverse);"
+          class="px-8 py-3 rounded-lg transition-colors"
+          style="
+            font-family: var(--font-family-sans);
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-semibold);
+            background-color: var(--color-accent);
+            color: var(--color-text-inverse);
+          "
           @mouseenter="$event.target.style.backgroundColor = 'var(--color-accent-hover)'"
           @mouseleave="$event.target.style.backgroundColor = 'var(--color-accent)'"
         >

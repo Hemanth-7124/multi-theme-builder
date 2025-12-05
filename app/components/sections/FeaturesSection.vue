@@ -2,10 +2,28 @@
   <section class="py-20 features-section" style="background-color: var(--color-surface);">
     <div class="container px-6 mx-auto">
       <div class="mb-16 text-center">
-        <h2 class="mb-4 text-3xl font-extrabold md:text-4xl" style="color: var(--color-primary);">
+        <h2
+          class="mb-4"
+          style="
+            font-family: var(--font-family-sans);
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-extrabold);
+            line-height: var(--line-height-tight);
+            color: var(--color-primary);
+          "
+        >
           {{ content.title }}
         </h2>
-        <p class="mx-auto max-w-2xl text-lg" style="color: var(--color-text-secondary);">
+        <p
+          class="mx-auto max-w-2xl"
+          style="
+            font-family: var(--font-family-sans);
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-normal);
+            line-height: var(--line-height-normal);
+            color: var(--color-text-secondary);
+          "
+        >
           {{ content.subtitle }}
         </p>
       </div>
@@ -33,10 +51,28 @@
               {{ feature.icon }}
             </div>
           </div>
-          <h3 class="mb-3 text-xl font-semibold" style="color: var(--color-primary);">
+          <h3
+            class="mb-3"
+            style="
+              font-family: var(--font-family-sans);
+              font-size: var(--font-size-xl);
+              font-weight: var(--font-weight-semibold);
+              line-height: var(--line-height-tight);
+              color: var(--color-primary);
+            "
+          >
             {{ feature.title }}
           </h3>
-          <p class="text-base" style="color: var(--color-text-secondary);">
+          <p
+            class="leading-relaxed"
+            style="
+              font-family: var(--font-family-sans);
+              font-size: var(--font-size-base);
+              font-weight: var(--font-weight-normal);
+              line-height: var(--line-height-relaxed);
+              color: var(--color-text-secondary);
+            "
+          >
             {{ feature.description }}
           </p>
         </div>

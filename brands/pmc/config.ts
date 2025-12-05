@@ -57,6 +57,7 @@ export default {
 'font-size-5xl': '3.5rem',   // 56px
 'font-size-6xl': '4.5rem',   // 72px
 'font-size-7xl': '5.5rem',   // 88px
+'font-size-8xl': '6rem',      // 96px
 
 // Font weights with better UI defaults
 'font-weight-light': '300',

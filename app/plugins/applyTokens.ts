@@ -29,6 +29,18 @@ export function applyBrandTheme(
 }
 
 /**
+ * Apply brand theme from BrandTheme structure
+ */
+export function applyBrandThemeFromConfig(
+  brandTheme: any,
+  brandId: string
+): void {
+  if (process.client && brandTheme?.tokens) {
+    tokenEngine.applyTokens(brandTheme, brandId)
+  }
+}
+
+/**
  * Get computed CSS variable value
  */
 export function getCSSVariable(variableName: string, element: HTMLElement = document.documentElement): string {
@@ -50,6 +62,7 @@ export default defineNuxtPlugin(() => {
         applyTokens,
         generateCSSVariables,
         applyBrandTheme,
+        applyBrandThemeFromConfig,
         getCSSVariable,
         areTokensApplied
       }

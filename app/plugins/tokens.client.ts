@@ -11,13 +11,12 @@ export default defineNuxtPlugin(async (nuxtApp) => {
       const { config: brandConfig } = await useBrand(brandId)
 
       // Apply brand tokens to the document
-      if (brandConfig?.theme?.tokens) {
-        // Apply the brand theme directly
-        const { useTokens } = await import('~/composables/useTokens')
-        const { applyBrandTheme } = useTokens()
-        applyBrandTheme(brandConfig.theme, brandConfig.id)
+      if (brandConfig?.theme) {
+        // Apply the brand theme directly using token engine
+        const { tokenEngine } = await import('../../tokens/engine')
+        tokenEngine.applyTokens(brandConfig.theme, brandConfig.id)
       } else {
-        console.warn('No theme tokens found for brand:', brandConfig)
+        console.warn('No theme found for brand:', brandConfig)
       }
     } catch (error) {
       console.error('Failed to apply brand tokens:', error)
@@ -32,12 +31,11 @@ export default defineNuxtPlugin(async (nuxtApp) => {
       try {
         const { config: brandConfig } = await useBrand(currentBrandId)
 
-        if (brandConfig?.theme?.tokens) {
-          const { useTokens } = await import('~/composables/useTokens')
-          const { applyBrandTheme } = useTokens()
-          applyBrandTheme(brandConfig.theme, brandConfig.id)
+        if (brandConfig?.theme) {
+          const { tokenEngine } = await import('../../tokens/engine')
+          tokenEngine.applyTokens(brandConfig.theme, brandConfig.id)
         } else {
-          console.warn('No theme tokens found for brand (route change):', brandConfig)
+          console.warn('No theme found for brand (route change):', brandConfig)
         }
       } catch (error) {
         console.error('Failed to switch brand tokens:', error)

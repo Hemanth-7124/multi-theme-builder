@@ -1,10 +1,28 @@
 <template>
   <section class="py-20 cta-section">
     <div class="container px-6 mx-auto text-center">
-      <h2 class="mb-6 text-3xl font-extrabold md:text-4xl" style="color: var(--color-text-inverse);">
+      <h2
+        class="mb-6"
+        style="
+          font-family: var(--font-family-sans);
+          font-size: var(--font-size-4xl);
+          font-weight: var(--font-weight-extrabold);
+          line-height: var(--line-height-tight);
+          color: var(--color-text-inverse);
+        "
+      >
         {{ content.title }}
       </h2>
-      <p class="mx-auto mb-8 max-w-2xl text-xl" style="color: var(--color-text-inverse);">
+      <p
+        class="mx-auto mb-8 max-w-2xl"
+        style="
+          font-family: var(--font-family-sans);
+          font-size: var(--font-size-xl);
+          font-weight: var(--font-weight-normal);
+          line-height: var(--line-height-normal);
+          color: var(--color-text-inverse);
+        "
+      >
         {{ content.subtitle }}
       </p>
 
@@ -12,8 +30,14 @@
         <button
           v-if="content.primaryButton"
           @click="handleButtonClick(content.primaryButton.url)"
-          class="px-8 py-4 text-lg font-semibold rounded-lg transition-all hover:shadow-lg"
-          style="background-color: var(--color-accent); color: var(--color-text-inverse);"
+          class="px-8 py-4 rounded-lg transition-all hover:shadow-lg"
+          style="
+            font-family: var(--font-family-sans);
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-semibold);
+            background-color: var(--color-accent);
+            color: var(--color-text-inverse);
+          "
           @mouseenter="$event.target.style.backgroundColor = 'var(--color-accent-hover)'"
           @mouseleave="$event.target.style.backgroundColor = 'var(--color-accent)'"
         >
@@ -22,8 +46,15 @@
         <button
           v-if="content.secondaryButton"
           @click="handleButtonClick(content.secondaryButton.url)"
-          class="px-8 py-4 text-lg font-semibold rounded-lg border-2 transition-all hover:shadow-md"
-          style="background-color: transparent; color: var(--color-text-inverse); border-color: var(--color-text-inverse);"
+          class="px-8 py-4 rounded-lg border-2 transition-all hover:shadow-md"
+          style="
+            font-family: var(--font-family-sans);
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-semibold);
+            background-color: transparent;
+            color: var(--color-text-inverse);
+            border-color: var(--color-text-inverse);
+          "
           @mouseenter="$event.target.style.backgroundColor = 'var(--color-text-inverse)'; $event.target.style.color = 'var(--color-primary)'"
           @mouseleave="$event.target.style.backgroundColor = 'transparent'; $event.target.style.color = 'var(--color-text-inverse)'"
         >

@@ -43,16 +43,15 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
 
   // Apply brand tokens when brand changes
   if (process.client && from.params.brand !== brandParam) {
-    const { applyBrandTheme } = await import('~/plugins/applyTokens')
-
     try {
       // Load brand configuration dynamically
       const { useBrand } = await import('../composables/useBrand')
       const { config: brandConfig } = await useBrand(brandParam)
 
-      if (brandConfig?.theme?.tokens) {
-        // Apply brand-specific theme tokens
-        applyBrandTheme(brandConfig.theme.tokens, brandParam)
+      if (brandConfig?.theme) {
+        // Apply brand-specific theme using the token engine
+        const { tokenEngine } = await import('../../tokens/engine')
+        tokenEngine.applyTokens(brandConfig.theme, brandParam)
       }
     } catch (error) {
       console.error(`Failed to apply tokens for brand "${brandParam}":`, error)

@@ -16,36 +16,34 @@ export default {
     },
     tokens: {
       colors: {
-      // Navy Blue Flow theme
+        // Navy Blue Flow theme
+        'color-primary': '#0a1a4f',          // Deep Navy
+        'color-primary-hover': '#102764',    // Slightly brighter navy
+        'color-primary-active': '#19357a',   // More active state
 
-'color-primary': '#0a1a4f',          // Deep Navy
-'color-primary-hover': '#102764',    // Slightly brighter navy
-'color-primary-active': '#19357a',   // More active state
+        'color-secondary': '#1e3a8a',        // Royal Navy
+        'color-secondary-hover': '#2749a0',
 
-'color-secondary': '#1e3a8a',        // Royal Navy
-'color-secondary-hover': '#2749a0',
+        'color-accent': '#3a7bd5',           // Modern accent blue
+        'color-accent-hover': '#2e6ac1',
 
-'color-accent': '#3a7bd5',           // Modern accent blue
-'color-accent-hover': '#2e6ac1',
+        'color-background': '#f7f9fc',       // Very light bluish white
+        'color-surface': '#eff3f9',
+        'color-surface-hover': '#e2e8f0',
+        'color-surface-active': '#cbd5e1',
 
-'color-background': '#f7f9fc',       // Very light bluish white
-'color-surface': '#eff3f9',
-'color-surface-hover': '#e2e8f0',
-'color-surface-active': '#cbd5e1',
+        'color-text-primary': '#0c1b30',     // Navy text
+        'color-text-secondary': '#3b4a61',
+        'color-text-muted': '#98a3b5',
+        'color-text-inverse': '#ffffff',
 
-'color-text-primary': '#0c1b30',     // Navy text
-'color-text-secondary': '#3b4a61',
-'color-text-muted': '#98a3b5',
-'color-text-inverse': '#0a1a4f',
+        'color-border': '#d1d7e2',
+        'color-border-hover': '#b9c2d3',
 
-'color-border': '#d1d7e2',
-'color-border-hover': '#b9c2d3',
-
-'color-error': '#ef4444',
-'color-warning': '#f59e0b',
-'color-success': '#10b981',
-'color-info': '#2563eb'
-
+        'color-error': '#ef4444',
+        'color-warning': '#f59e0b',
+        'color-success': '#10b981',
+        'color-info': '#2563eb'
       },
       typography: {
         'font-family-sans': 'Inter, system-ui, sans-serif',
