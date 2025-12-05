@@ -4,12 +4,12 @@ export default {
     id: 'pmc',
   name: 'PMC',
   description: 'Enterprise project management and collaboration suite',
-  logo: '/brands/pmc/assets/logo.svg',
-  favicon: '/brands/pmc/assets/favicon.ico',
+  logo: 'https://pickmycareer.in/_nuxt/logo.DKjpfYtx.png',
+  favicon: 'https://pickmycareer.in/_nuxt/favicon.ico',
   theme: {
     layout: 'minimal',
     assets: {
-      logo: '/brands/pmc/assets/logo.svg',
+      logo: 'https://pickmycareer.in/_nuxt/logo.DKjpfYtx.png',
       favicon: '/brands/pmc/assets/favicon.ico',
       hero: '/brands/pmc/assets/hero.webp'
     },

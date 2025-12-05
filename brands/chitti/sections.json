@@ -12,10 +12,10 @@
         "title": "<p>Automate Your Workflow with Chitti</p>",
         "description": "<p>Transform how your team works with intelligent automation. Save time, reduce errors, and boost productivity with our cutting-edge AI platform.</p>",
         "mentor": {
-          "image": "/brands/chitti/assets/ceo.jpg",
-          "highlight": "<p>Founder & CEO</p>",
-          "name": "<p>Sarah Chen</p>",
-          "tagline": "<p>15+ years in AI and automation</p>"
+          "image": "https://hubble.cdn.chittiapp.com/cdn/2025/7/56a899e0-6c32-11f0-91d2-b30b013b8f51_hero-illustration_min.webp",
+          "name": "<p>Premanand Sethurajan.</p>",
+        "tagline": "<p>Co Founder of LMES Academy</p>",
+        "highlight": "<p>10+ Years of Experience</p>"
         },
         "workshop": {
           "cards": [
@@ -47,8 +47,8 @@
       "content": {
         "title": "<p>See Chitti in Action</p>",
         "subtitle": "<p>Watch how our AI-powered automation can transform your workflow</p>",
-        "videoUrl": "https://example.com/chitti-demo.mp4",
-        "thumbnailUrl": "/brands/chitti/assets/video-thumbnail.jpg",
+        "videoUrl": "https://hubble.cdn.chittiapp.com/cdn/2025/2/019e74f0-e8f8-11ef-a78a-d1ac75d3cfd7_cms-electronics-one-on-one-tamil_720.mp4",
+        "thumbnailUrl": "https://hubble.cdn.chittiapp.com/cdn/2025/2/c2af5100-e911-11ef-bf5e-29e4dbd297f4_cms-electronics-one-on-one-tamil-thumbnail_min.webp",
         "duration": "3:45",
         "description": "<p>Discover how Chitti leverages advanced AI to learn your workflows, identify automation opportunities, and execute tasks seamlessly. See real examples of teams saving hours of work daily.</p>",
         "stats": [
@@ -78,7 +78,7 @@
         "subtitle": "<p>Perfect for teams of all sizes - from startups to enterprises</p>",
         "items": [
           {
-            "image": "/brands/chitti/assets/starter-plan.jpg",
+            "image": "https://hubble.cdn.chittiapp.com/cdn/2023/10/0bfd8400-64eb-11ee-88bf-9f949b4cdf86_Bonus-2-image_min.webp?width=400&height=300",
             "price": "<p>$49/mo</p>",
             "points": [
               "<p>Up to 10 users</p>",
@@ -91,7 +91,7 @@
             "offText": "<p>OFF</p>"
           },
           {
-            "image": "/brands/chitti/assets/pro-plan.jpg",
+            "image": "https://hubble.cdn.chittiapp.com/cdn/2023/10/0bfd8400-64eb-11ee-88bf-9f949b4cdf86_Bonus-2-image_min.webp?width=400&height=300",
             "price": "<p>$99/mo</p>",
             "points": [
               "<p>Up to 50 users</p>",
@@ -105,7 +105,7 @@
             "offText": "<p>OFF</p>"
           },
           {
-            "image": "/brands/chitti/assets/enterprise-plan.jpg",
+            "image": "https://hubble.cdn.chittiapp.com/cdn/2023/10/0bfd8400-64eb-11ee-88bf-9f949b4cdf86_Bonus-2-image_min.webp?width=400&height=300",
             "price": "<p>Custom</p>",
             "points": [
               "<p>Unlimited users</p>",
@@ -188,27 +188,27 @@
         "items": [
           {
             "title": "<p>Quick Start Package</p>",
-            "image": "/brands/chitti/assets/bonus-1.jpg",
+            "image": "https://hubble.cdn.chittiapp.com/cdn/2025/7/edccf3f0-6d3d-11f0-9b1f-096d38b63715_bonus-pdf_min.webp",
             "name": "<p>Automation Templates</p>",
             "type": "<p>50+ Pre-built Workflows</p>",
             "price": "<p>Value: $499</p>",
-            "footerImage": "/icons/gift.svg"
+            "footerImage": "https://hubble.cdn.chittiapp.com/cdn_uploads/71126650-780b-11f0-9085-a3e1af1c2ccb_lock.png"
           },
           {
             "title": "<p>Advanced Training</p>",
-            "image": "/brands/chitti/assets/bonus-2.jpg",
+            "image": "https://hubble.cdn.chittiapp.com/cdn/2025/7/a79d4000-6d2a-11f0-b62a-d1c04c560a01_bonus-certificate_min.webp",
             "name": "<p>AI Masterclass</p>",
             "type": "<p>12 Video Modules</p>",
             "price": "<p>Value: $799</p>",
-            "footerImage": "/icons/gift.svg"
+            "footerImage": "https://hubble.cdn.chittiapp.com/cdn_uploads/71126650-780b-11f0-9085-a3e1af1c2ccb_lock.png"
           },
           {
             "title": "<p>Priority Support</p>",
-            "image": "/brands/chitti/assets/bonus-3.jpg",
+            "image": "https://hubble.cdn.chittiapp.com/cdn/2025/7/a79d6710-6d2a-11f0-9b1f-096d38b63715_bonus-presentation_min.webp",
             "name": "<p>Expert Assistance</p>",
             "type": "<p>1 Month Premium</p>",
             "price": "<p>Value: $299</p>",
-            "footerImage": "/icons/gift.svg"
+            "footerImage": "https://hubble.cdn.chittiapp.com/cdn_uploads/71126650-780b-11f0-9085-a3e1af1c2ccb_lock.png"
           }
         ]
       }
@@ -225,25 +225,19 @@
             "name": "<p>Dr. Alex Thompson</p>",
             "role": "<p>AI Research Director</p>",
             "company": "<p>Chitti Labs</p>",
-            "image": "/brands/chitti/assets/mentor-1.jpg"
+            "image": "https://images.unsplash.com/photo-1738750908048-14200459c3c9?w=400&h=400&fit=crop"
           },
           {
             "name": "<p>Maria Garcia</p>",
             "role": "<p>Automation Strategist</p>",
             "company": "<p>Enterprise Solutions</p>",
-            "image": "/brands/chitti/assets/mentor-2.jpg"
+            "image": "https://images.unsplash.com/photo-1752859951149-7d3fc700a7ec?w=400&h=400&fit=crop"
           },
           {
             "name": "<p>James Lee</p>",
             "role": "<p>Machine Learning Engineer</p>",
             "company": "<p>AI Innovation Team</p>",
-            "image": "/brands/chitti/assets/mentor-3.jpg"
-          },
-          {
-            "name": "<p>Sophia Chen</p>",
-            "role": "<p>Product Designer</p>",
-            "company": "<p>User Experience</p>",
-            "image": "/brands/chitti/assets/mentor-4.jpg"
+            "image": "https://images.unsplash.com/photo-1758639842445-b58f639119d2?w=400&h=400&fit=crop"
           }
         ]
       }
@@ -260,46 +254,24 @@
             "description": "<p>Chitti transformed how our team operates. We've reduced manual tasks by 80% and our team can now focus on strategic initiatives.</p>",
             "name": "<p>Robert Martinez</p>",
             "role": "<p>Operations Manager, TechCorp</p>",
-            "image": "/brands/chitti/assets/testimonial-1.jpg"
+            "image": "https://hubble.cdn.chittiapp.com/cdn/2025/7/0b28a600-6d2b-11f0-9b1f-096d38b63715_mentor-cta_min.webp"
           },
           {
             "title": "<p>Exceptional ROI</p>",
             "description": "<p>We saw a 300% ROI within the first 6 months. Chitti's AI capabilities have revolutionized our workflow automation.</p>",
             "name": "<p>Lisa Wang</p>",
             "role": "<p>CTO, StartupHub</p>",
-            "image": "/brands/chitti/assets/testimonial-2.jpg"
+            "image": "https://hubble.cdn.chittiapp.com/cdn/2025/7/0b28a600-6d2b-11f0-9b1f-096d38b63715_mentor-cta_min.webp"
           },
           {
             "title": "<p>Best Decision Ever</p>",
             "description": "<p>Implementing Chitti was the best business decision we made this year. The time savings alone justify the investment tenfold.</p>",
             "name": "<p>David Kim</p>",
             "role": "<p>CEO, GrowthCo</p>",
-            "image": "/brands/chitti/assets/testimonial-3.jpg"
-          }
-        ],
-        "items2": [
-          {
-            "title": "<p>Incredibly Powerful</p>",
-            "description": "<p>The AI capabilities in Chitti are mind-blowing. It's like having a team of experts working 24/7 on your business processes.</p>",
-            "name": "<p>Amanda Foster</p>",
-            "role": "<p>Process Engineer, InnovateInc</p>",
-            "image": "/brands/chitti/assets/testimonial-4.jpg"
-          },
-          {
-            "title": "<p>Seamless Integration</p>",
-            "description": "<p>Chitti integrated perfectly with our existing stack. The implementation was smooth and the support team was incredible.</p>",
-            "name": "<p>Michael Torres</p>",
-            "role": "<p>IT Director, EnterpriseCo</p>",
-            "image": "/brands/chitti/assets/testimonial-5.jpg"
-          },
-          {
-            "title": "<p>Competitive Advantage</p>",
-            "description": "<p>Chitti has given us a significant competitive advantage. We're now operating more efficiently than ever before.</p>",
-            "name": "<p>Jennifer Liu</p>",
-            "role": "<p>VP Operations, ScaleUp</p>",
-            "image": "/brands/chitti/assets/testimonial-6.jpg"
+            "image": "https://hubble.cdn.chittiapp.com/cdn/2025/7/0b28a600-6d2b-11f0-9b1f-096d38b63715_mentor-cta_min.webp"
           }
         ]
+  
       }
     },
     "cta": {

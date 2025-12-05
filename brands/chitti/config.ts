@@ -4,13 +4,13 @@ export default {
   id: 'chitti',
   name: 'Chitti',
   description: 'Modern AI-powered platform for intelligent automation',
-  logo: '/brands/chitti/assets/logo.svg',
+  logo: 'https://hubble.cdn.chittiapp.com/cdn_uploads/1d653db0-7da7-11f0-a8e3-d132b62eef67_chitti-future-school-logo.png',
   favicon: '/brands/chitti/assets/favicon.ico',
 
   theme: {
     layout: 'modern',
     assets: {
-      logo: '/brands/chitti/assets/logo.svg',
+      logo: 'https://hubble.cdn.chittiapp.com/cdn_uploads/1d653db0-7da7-11f0-a8e3-d132b62eef67_chitti-future-school-logo.png',
       favicon: '/brands/chitti/assets/favicon.ico',
       hero: '/brands/chitti/assets/hero.webp'
     },

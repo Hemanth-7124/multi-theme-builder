@@ -4,224 +4,287 @@
       "visible": true,
       "order": 1,
       "content": {
-        "title": "Learn Without Limits",
-        "subtitle": "Uptor - Premium educational platform for skill development",
-        "description": "Discover a world of knowledge with our comprehensive learning platform. Master new skills, advance your career, and achieve your goals.",
-        "ctaText": "Start Learning",
-        "backgroundImage": "/brands/uptor/assets/hero.webp"
+        "badge": {
+          "showStars": true,
+          "text": "<p>Trusted by 1,000+ companies</p>"
+        },
+        "secondaryTitle": "<p>AI-POWERED AUTOMATION</p>",
+        "title": "<p>Automate Your Workflow with Uptor</p>",
+        "description": "<p>Transform how your team works with intelligent automation. Save time, reduce errors, and boost productivity with our cutting-edge AI platform.</p>",
+        "mentor": {
+          "image": "https://hubble.cdn.chittiapp.com/cdn/2025/7/56a899e0-6c32-11f0-91d2-b30b013b8f51_hero-illustration_min.webp",
+          "name": "<p>Premanand Sethurajan.</p>",
+        "tagline": "<p>Co Founder of LMES Academy</p>",
+        "highlight": "<p>10+ Years of Experience</p>"
+        },
+        "workshop": {
+          "cards": [
+            {
+              "title": "<p>Quick Setup</p>",
+              "content": "<p>Get started in 30 minutes</p>"
+            },
+            {
+              "title": "<p>100+ Integrations</p>",
+              "content": "<p>Connect all your favorite tools</p>"
+            },
+            {
+              "title": "<p>24/7 Support</p>",
+              "content": "<p>Expert help whenever you need it</p>"
+            }
+          ],
+          "button": {
+            "text": "<p>Start Free Trial</p>",
+            "href": "#signup"
+          },
+          "showTimer": true,
+          "timerPrefix": "<p>Limited time offer - Sign up now and get:</p>"
+        }
       }
     },
-    "features": {
-      "visible": false,
+    "video": {
+      "visible": true,
       "order": 2,
       "content": {
-        "title": "Learning Features",
-        "subtitle": "Everything you need for successful learning",
-        "features": [
+        "title": "<p>See Uptor in Action</p>",
+        "subtitle": "<p>Watch how our AI-powered automation can transform your workflow</p>",
+        "videoUrl": "https://hubble.cdn.chittiapp.com/cdn/2025/2/019e74f0-e8f8-11ef-a78a-d1ac75d3cfd7_cms-electronics-one-on-one-tamil_720.mp4",
+        "thumbnailUrl": "https://hubble.cdn.chittiapp.com/cdn/2025/2/c2af5100-e911-11ef-bf5e-29e4dbd297f4_cms-electronics-one-on-one-tamil-thumbnail_min.webp",
+        "duration": "3:45",
+        "description": "<p>Discover how Uptor leverages advanced AI to learn your workflows, identify automation opportunities, and execute tasks seamlessly. See real examples of teams saving hours of work daily.</p>",
+        "stats": [
           {
-            "icon": "/brands/uptor/assets/icons/feature1.svg",
-            "title": "Expert Instructors",
-            "description": "Learn from industry experts and thought leaders"
+            "icon": "play",
+            "value": "<p>25K+</p>",
+            "label": "<p>Video Views</p>"
           },
           {
-            "icon": "/brands/uptor/assets/icons/feature2.svg",
-            "title": "Interactive Learning",
-            "description": "Engaging content with hands-on practice and projects"
+            "icon": "clock",
+            "value": "<p>4 min</p>",
+            "label": "<p>Avg. Watch Time</p>"
           },
           {
-            "icon": "/brands/uptor/assets/icons/feature3.svg",
-            "title": "Certification Programs",
-            "description": "Earn recognized certificates to advance your career"
+            "icon": "users",
+            "value": "<p>96%</p>",
+            "label": "<p>Completion Rate</p>"
           }
         ]
       }
     },
-    "about": {
+    "features": {
       "visible": true,
       "order": 3,
       "content": {
-        "title": "About Uptor",
-        "subtitle": "Transforming education through technology",
-        "story": "Uptor is revolutionizing online education by making high-quality learning accessible to everyone. Our platform combines cutting-edge technology with proven teaching methods.",
-        "image": "/brands/uptor/assets/hero.webp",
-        "imageAlt": "Uptor learning platform",
-        "stats": [
-          { "value": "100K+", "label": "Active Learners" },
-          { "value": "500+", "label": "Expert Instructors" },
-          { "value": "1000+", "label": "Courses Available" },
-          { "value": "98%", "label": "Satisfaction Rate" }
+        "title": "<p>Choose Your Automation Plan</p>",
+        "subtitle": "<p>Perfect for teams of all sizes - from startups to enterprises</p>",
+        "items": [
+          {
+            "image": "https://hubble.cdn.chittiapp.com/cdn/2023/10/0bfd8400-64eb-11ee-88bf-9f949b4cdf86_Bonus-2-image_min.webp?width=400&height=300",
+            "price": "<p>$49/mo</p>",
+            "points": [
+              "<p>Up to 10 users</p>",
+              "<p>500 automations/month</p>",
+              "<p>Basic integrations</p>",
+              "<p>Email support</p>"
+            ],
+            "background": "green",
+            "offerPercentage": "<p>25%</p>",
+            "offText": "<p>OFF</p>"
+          },
+          {
+            "image": "https://hubble.cdn.chittiapp.com/cdn/2023/10/0bfd8400-64eb-11ee-88bf-9f949b4cdf86_Bonus-2-image_min.webp?width=400&height=300",
+            "price": "<p>$99/mo</p>",
+            "points": [
+              "<p>Up to 50 users</p>",
+              "<p>Unlimited automations</p>",
+              "<p>All integrations</p>",
+              "<p>Priority support</p>",
+              "<p>Custom workflows</p>"
+            ],
+            "background": "primary",
+            "offerPercentage": "<p>35%</p>",
+            "offText": "<p>OFF</p>"
+          },
+          {
+            "image": "https://hubble.cdn.chittiapp.com/cdn/2023/10/0bfd8400-64eb-11ee-88bf-9f949b4cdf86_Bonus-2-image_min.webp?width=400&height=300",
+            "price": "<p>Custom</p>",
+            "points": [
+              "<p>Unlimited users</p>",
+              "<p>Everything in Pro</p>",
+              "<p>SSO & advanced security</p>",
+              "<p>Dedicated account manager</p>",
+              "<p>Custom development</p>"
+            ],
+            "background": "black"
+          }
         ]
+      }
+    },
+    "stats": {
+      "visible": true,
+      "order": 4,
+      "content": {
+        "title": "<p>Trusted by Innovative Teams</p>",
+        "subtitle": "<p>Join thousands of companies automating their workflows with Uptor</p>",
+        "stats": [
+          {
+            "value": "<p>1,000+</p>",
+            "label": "<p>Companies</p>"
+          },
+          {
+            "value": "<p>10M+</p>",
+            "label": "<p>Hours Saved Monthly</p>"
+          },
+          {
+            "value": "<p>40%</p>",
+            "label": "<p>Average Efficiency Gain</p>"
+          },
+          {
+            "value": "<p>99.9%</p>",
+            "label": "<p>Uptime</p>"
+          }
+        ],
+        "cta": {
+          "text": "<p>Start Your Free Trial</p>",
+          "href": "#signup"
+        }
       }
     },
     "faq": {
       "visible": true,
-      "order": 4,
+      "order": 5,
       "content": {
         "title": "<p>Frequently Asked Questions</p>",
-        "subtitle": "<p>Everything you need to know about Uptor's learning platform</p>",
+        "subtitle": "<p>Everything you need to know about Uptor's AI automation platform</p>",
         "items": [
           {
-            "question": "<p>How long do I have access to courses?</p>",
-            "answer": "<p>Once enrolled, you get lifetime access to course materials, including all updates and new content added in the future.</p>"
+            "question": "<p>How quickly can I get started?</p>",
+            "answer": "<p>You can get started in as little as 30 minutes. Our streamlined onboarding process and intuitive interface make it easy to set up your first automation workflow.</p>"
           },
           {
-            "question": "<p>Are certificates recognized?</p>",
-            "answer": "<p>Yes, our certificates are industry-recognized and can be shared on LinkedIn, added to resumes, and verified by employers.</p>"
+            "question": "<p>Can Uptor integrate with our existing tools?</p>",
+            "answer": "<p>Yes! Uptor offers 100+ native integrations with popular business tools like Slack, Salesforce, Jira, and more. We also provide REST APIs for custom integrations.</p>"
           },
           {
-            "question": "<p>What if I'm not satisfied?</p>",
-            "answer": "<p>We offer a 30-day money-back guarantee. If you're not satisfied with your course, we'll refund your purchase.</p>"
+            "question": "<p>Is my data secure with Uptor?</p>",
+            "answer": "<p>Absolutely. We use enterprise-grade encryption, comply with SOC 2 Type II standards, and provide GDPR compliance. Your data is always protected and backed up.</p>"
           },
           {
-            "question": "<p>Can I learn at my own pace?</p>",
-            "answer": "<p>Absolutely! Our courses are self-paced, allowing you to learn anytime, anywhere, and fit your education around your schedule.</p>"
+            "question": "<p>What kind of support do you offer?</p>",
+            "answer": "<p>We provide 24/7 customer support via chat, email, and phone. Enterprise plans include dedicated account managers and priority support.</p>"
           },
           {
-            "question": "<p>Do you offer corporate plans?</p>",
-            "answer": "<p>Yes, we provide customized corporate training solutions with volume discounts for teams and organizations.</p>"
+            "question": "<p>Can I cancel anytime?</p>",
+            "answer": "<p>Yes, you can cancel your subscription at any time. We also offer a 14-day free trial so you can test Uptor risk-free.</p>"
           }
         ]
       }
     },
     "bonuses": {
       "visible": true,
-      "order": 5,
+      "order": 6,
       "content": {
-        "title": "<p>Exclusive Learning Bonuses</p>",
-        "subtitle": "<p>Enroll today and get these valuable resources for free</p>",
+        "title": "<p>AI Automation Bonuses</p>",
+        "subtitle": "<p>Start your free trial today and get these exclusive resources</p>",
         "items": [
           {
-            "title": "<p>Starter Kit</p>",
-            "image": "/brands/uptor/assets/bonus-1.jpg",
-            "name": "<p>Learning Resources</p>",
-            "type": "<p>Free Resource Pack</p>",
-            "price": "<p>Value: $199</p>",
-            "footerImage": "/icons/gift.svg"
+            "title": "<p>Quick Start Package</p>",
+            "image": "https://hubble.cdn.chittiapp.com/cdn/2025/7/edccf3f0-6d3d-11f0-9b1f-096d38b63715_bonus-pdf_min.webp",
+            "name": "<p>Automation Templates</p>",
+            "type": "<p>50+ Pre-built Workflows</p>",
+            "price": "<p>Value: $499</p>",
+            "footerImage": "https://hubble.cdn.chittiapp.com/cdn_uploads/71126650-780b-11f0-9085-a3e1af1c2ccb_lock.png"
           },
           {
-            "title": "<p>Advanced Course</p>",
-            "image": "/brands/uptor/assets/bonus-2.jpg",
-            "name": "<p>Premium Masterclass</p>",
-            "type": "<p>15 Video Lessons</p>",
-            "price": "<p>Value: $399</p>",
-            "footerImage": "/icons/gift.svg"
+            "title": "<p>Advanced Training</p>",
+            "image": "https://hubble.cdn.chittiapp.com/cdn/2025/7/a79d4000-6d2a-11f0-b62a-d1c04c560a01_bonus-certificate_min.webp",
+            "name": "<p>AI Masterclass</p>",
+            "type": "<p>12 Video Modules</p>",
+            "price": "<p>Value: $799</p>",
+            "footerImage": "https://hubble.cdn.chittiapp.com/cdn_uploads/71126650-780b-11f0-9085-a3e1af1c2ccb_lock.png"
           },
           {
-            "title": "<p>Community Access</p>",
-            "image": "/brands/uptor/assets/bonus-3.jpg",
-            "name": "<p>Student Network</p>",
-            "type": "<p>Lifetime Membership</p>",
+            "title": "<p>Priority Support</p>",
+            "image": "https://hubble.cdn.chittiapp.com/cdn/2025/7/a79d6710-6d2a-11f0-9b1f-096d38b63715_bonus-presentation_min.webp",
+            "name": "<p>Expert Assistance</p>",
+            "type": "<p>1 Month Premium</p>",
             "price": "<p>Value: $299</p>",
-            "footerImage": "/icons/gift.svg"
+            "footerImage": "https://hubble.cdn.chittiapp.com/cdn_uploads/71126650-780b-11f0-9085-a3e1af1c2ccb_lock.png"
           }
         ]
       }
     },
     "mentors": {
       "visible": true,
-      "order": 6,
+      "order": 7,
       "content": {
         "designVariant": "alternative",
-        "alternativeTitle": "<p>Learn from Expert Instructors</p>",
-        "alternativeSubtitle": "<p>Our mentors are industry professionals with real-world experience and teaching expertise</p>",
+        "alternativeTitle": "<p>Learn from AI & Automation Experts</p>",
+        "alternativeSubtitle": "<p>Our team consists of industry veterans with deep expertise in AI, automation, and enterprise transformation</p>",
         "mentors": [
           {
-            "name": "<p>Dr. Sarah Mitchell</p>",
-            "role": "<p>Senior Data Scientist</p>",
-            "company": "<p>Tech Corp</p>",
-            "image": "/brands/uptor/assets/mentor-1.jpg"
+            "name": "<p>Dr. Alex Thompson</p>",
+            "role": "<p>AI Research Director</p>",
+            "company": "<p>Uptor Labs</p>",
+            "image": "https://images.unsplash.com/photo-1738750908048-14200459c3c9?w=400&h=400&fit=crop"
           },
           {
-            "name": "<p>Prof. James Chen</p>",
-            "role": "<p>Machine Learning Expert</p>",
-            "company": "<p>AI Research Lab</p>",
-            "image": "/brands/uptor/assets/mentor-2.jpg"
+            "name": "<p>Maria Garcia</p>",
+            "role": "<p>Automation Strategist</p>",
+            "company": "<p>Enterprise Solutions</p>",
+            "image": "https://images.unsplash.com/photo-1752859951149-7d3fc700a7ec?w=400&h=400&fit=crop"
           },
           {
-            "name": "<p>Lisa Thompson</p>",
-            "role": "<p>UX Design Lead</p>",
-            "company": "<p>Digital Agency</p>",
-            "image": "/brands/uptor/assets/mentor-3.jpg"
-          },
-          {
-            "name": "<p>Mark Rodriguez</p>",
-            "role": "<p>Full Stack Developer</p>",
-            "company": "<p>Startup Inc</p>",
-            "image": "/brands/uptor/assets/mentor-4.jpg"
+            "name": "<p>James Lee</p>",
+            "role": "<p>Machine Learning Engineer</p>",
+            "company": "<p>AI Innovation Team</p>",
+            "image": "https://images.unsplash.com/photo-1758639842445-b58f639119d2?w=400&h=400&fit=crop"
           }
         ]
       }
     },
     "testimonials": {
       "visible": true,
-      "order": 7,
+      "order": 8,
       "content": {
-        "badge": "<p>Student Success Stories</p>",
-        "title": "<p>What Our Learners Say</p>",
+        "badge": "<p>Customer Success Stories</p>",
+        "title": "<p>How Companies Are Transforming with Uptor</p>",
         "items": [
           {
-            "title": "<p>Life-Changing Experience</p>",
-            "description": "<p>Uptor completely transformed my career. The courses are well-structured and the instructors are amazing!</p>",
-            "name": "<p>Amanda Foster</p>",
-            "role": "<p>Data Analyst</p>",
-            "image": "/brands/uptor/assets/testimonial-1.jpg"
+            "title": "<p>Game-Changing Automation</p>",
+            "description": "<p>Uptor transformed how our team operates. We've reduced manual tasks by 80% and our team can now focus on strategic initiatives.</p>",
+            "name": "<p>Robert Martinez</p>",
+            "role": "<p>Operations Manager, TechCorp</p>",
+            "image": "https://hubble.cdn.chittiapp.com/cdn/2025/7/0b28a600-6d2b-11f0-9b1f-096d38b63715_mentor-cta_min.webp"
           },
           {
-            "title": "<p>Best Learning Platform</p>",
-            "description": "<p>The quality of content and support is exceptional. I've learned more in 3 months than in years of traditional education.</p>",
-            "name": "<p>Robert Kim</p>",
-            "role": "<p>Web Developer</p>",
-            "image": "/brands/uptor/assets/testimonial-2.jpg"
+            "title": "<p>Exceptional ROI</p>",
+            "description": "<p>We saw a 300% ROI within the first 6 months. Uptor's AI capabilities have revolutionized our workflow automation.</p>",
+            "name": "<p>Lisa Wang</p>",
+            "role": "<p>CTO, StartupHub</p>",
+            "image": "https://hubble.cdn.chittiapp.com/cdn/2025/7/0b28a600-6d2b-11f0-9b1f-096d38b63715_mentor-cta_min.webp"
           },
           {
-            "title": "<p>Career Game-Changer</p>",
-            "description": "<p>Thanks to Uptor's courses and certification, I landed my dream job. Highly recommend!</p>",
-            "name": "<p>Emily Watson</p>",
-            "role": "<p>UX Designer</p>",
-            "image": "/brands/uptor/assets/testimonial-3.jpg"
-          }
-        ],
-        "items2": [
-          {
-            "title": "<p>Outstanding Quality</p>",
-            "description": "<p>The instructors are knowledgeable and the curriculum is up-to-date with industry standards.</p>",
-            "name": "<p>David Park</p>",
-            "role": "<p>Software Engineer</p>",
-            "image": "/brands/uptor/assets/testimonial-4.jpg"
-          },
-          {
-            "title": "<p>Worth Every Penny</p>",
-            "description": "<p>I've tried many online learning platforms, but Uptor stands out for its quality and support.</p>",
-            "name": "<p>Jennifer Liu</p>",
-            "role": "<p>Product Manager</p>",
-            "image": "/brands/uptor/assets/testimonial-5.jpg"
-          },
-          {
-            "title": "<p>Highly Recommended</p>",
-            "description": "<p>If you're serious about advancing your skills, Uptor is the perfect choice. Can't recommend enough!</p>",
-            "name": "<p>Michael Torres</p>",
-            "role": "<p>DevOps Engineer</p>",
-            "image": "/brands/uptor/assets/testimonial-6.jpg"
+            "title": "<p>Best Decision Ever</p>",
+            "description": "<p>Implementing Uptor was the best business decision we made this year. The time savings alone justify the investment tenfold.</p>",
+            "name": "<p>David Kim</p>",
+            "role": "<p>CEO, GrowthCo</p>",
+            "image": "https://hubble.cdn.chittiapp.com/cdn/2025/7/0b28a600-6d2b-11f0-9b1f-096d38b63715_mentor-cta_min.webp"
           }
         ]
+  
       }
     },
     "cta": {
       "visible": true,
-      "order": 8,
+      "order": 9,
       "content": {
-        "title": "Ready to Start Your Learning Journey?",
-        "subtitle": "Join thousands of learners advancing their careers with Uptor",
-        "primaryText": "Browse Courses",
-        "secondaryText": "Start Free Trial"
-      }
-    },
-    "footer": {
-      "visible": true,
-      "order": 5,
-      "content": {
-        "companyName": "Uptor Education",
-        "tagline": "Premium Educational Platform for Skill Development"
+        "text": "<p>Ready to Transform Your Workflow?</p>",
+        "button": {
+          "text": "<p>Start Your Free Trial</p>",
+          "href": "#signup"
+        },
+        "showStars": true,
+        "ratingText": "<p>Join 1,000+ companies saving 10M+ hours monthly</p>"
       }
     }
   }

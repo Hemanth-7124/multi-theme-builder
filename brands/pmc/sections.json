@@ -4,225 +4,287 @@
       "visible": true,
       "order": 1,
       "content": {
-        "title": "Enterprise Project Management Excellence",
-        "subtitle": "PMC delivers powerful tools for modern project teams",
-        "description": "Streamline your project workflows with our comprehensive enterprise management suite. Track progress, manage resources, and deliver results on time.",
-        "ctaText": "Start Free Trial",
-        "backgroundImage": "/brands/pmc/assets/hero.webp"
+        "badge": {
+          "showStars": true,
+          "text": "<p>Trusted by 1,000+ companies</p>"
+        },
+        "secondaryTitle": "<p>AI-POWERED AUTOMATION</p>",
+        "title": "<p>Automate Your Workflow with PMC</p>",
+        "description": "<p>Transform how your team works with intelligent automation. Save time, reduce errors, and boost productivity with our cutting-edge AI platform.</p>",
+        "mentor": {
+          "image": "https://hubble.cdn.chittiapp.com/cdn/2025/7/56a899e0-6c32-11f0-91d2-b30b013b8f51_hero-illustration_min.webp",
+          "name": "<p>Premanand Sethurajan.</p>",
+        "tagline": "<p>Co Founder of LMES Academy</p>",
+        "highlight": "<p>10+ Years of Experience</p>"
+        },
+        "workshop": {
+          "cards": [
+            {
+              "title": "<p>Quick Setup</p>",
+              "content": "<p>Get started in 30 minutes</p>"
+            },
+            {
+              "title": "<p>100+ Integrations</p>",
+              "content": "<p>Connect all your favorite tools</p>"
+            },
+            {
+              "title": "<p>24/7 Support</p>",
+              "content": "<p>Expert help whenever you need it</p>"
+            }
+          ],
+          "button": {
+            "text": "<p>Start Free Trial</p>",
+            "href": "#signup"
+          },
+          "showTimer": true,
+          "timerPrefix": "<p>Limited time offer - Sign up now and get:</p>"
+        }
       }
     },
-      "features": {
+    "video": {
       "visible": true,
       "order": 2,
       "content": {
-        "title": "Enterprise Features",
-        "subtitle": "Powerful tools for project success",
-        "features": [
+        "title": "<p>See PMC in Action</p>",
+        "subtitle": "<p>Watch how our AI-powered automation can transform your workflow</p>",
+        "videoUrl": "https://hubble.cdn.chittiapp.com/cdn/2025/2/019e74f0-e8f8-11ef-a78a-d1ac75d3cfd7_cms-electronics-one-on-one-tamil_720.mp4",
+        "thumbnailUrl": "https://hubble.cdn.chittiapp.com/cdn/2025/2/c2af5100-e911-11ef-bf5e-29e4dbd297f4_cms-electronics-one-on-one-tamil-thumbnail_min.webp",
+        "duration": "3:45",
+        "description": "<p>Discover how PMC leverages advanced AI to learn your workflows, identify automation opportunities, and execute tasks seamlessly. See real examples of teams saving hours of work daily.</p>",
+        "stats": [
           {
-            "icon": "/brands/pmc/assets/icons/feature1.svg",
-            "title": "Resource Management",
-            "description": "Optimize resource allocation and utilization across projects"
+            "icon": "play",
+            "value": "<p>25K+</p>",
+            "label": "<p>Video Views</p>"
           },
           {
-            "icon": "/brands/pmc/assets/icons/feature2.svg",
-            "title": "Advanced Reporting",
-            "description": "Comprehensive analytics and reporting for data-driven decisions"
+            "icon": "clock",
+            "value": "<p>4 min</p>",
+            "label": "<p>Avg. Watch Time</p>"
           },
           {
-            "icon": "/brands/pmc/assets/icons/feature3.svg",
-            "title": "Team Collaboration",
-            "description": "Seamless collaboration tools for distributed teams"
+            "icon": "users",
+            "value": "<p>96%</p>",
+            "label": "<p>Completion Rate</p>"
           }
         ]
       }
     },
-
-    "about": {
+    "features": {
       "visible": true,
       "order": 3,
       "content": {
-        "title": "About PMC",
-        "subtitle": "Your trusted enterprise project management partner",
-        "story": "PMC has been at the forefront of enterprise project management solutions for over a decade. We serve Fortune 500 companies and innovative startups alike.",
-        "image": "/brands/pmc/assets/hero.webp",
-        "imageAlt": "PMC team and clients",
-        "stats": [
-          { "value": "500+", "label": "Enterprise Clients" },
-          { "value": "50K+", "label": "Active Projects" },
-          { "value": "95%", "label": "On-Time Delivery" },
-          { "value": "24/7", "label": "Enterprise Support" }
+        "title": "<p>Choose Your Automation Plan</p>",
+        "subtitle": "<p>Perfect for teams of all sizes - from startups to enterprises</p>",
+        "items": [
+          {
+            "image": "https://hubble.cdn.chittiapp.com/cdn/2023/10/0bfd8400-64eb-11ee-88bf-9f949b4cdf86_Bonus-2-image_min.webp?width=400&height=300",
+            "price": "<p>$49/mo</p>",
+            "points": [
+              "<p>Up to 10 users</p>",
+              "<p>500 automations/month</p>",
+              "<p>Basic integrations</p>",
+              "<p>Email support</p>"
+            ],
+            "background": "green",
+            "offerPercentage": "<p>25%</p>",
+            "offText": "<p>OFF</p>"
+          },
+          {
+            "image": "https://hubble.cdn.chittiapp.com/cdn/2023/10/0bfd8400-64eb-11ee-88bf-9f949b4cdf86_Bonus-2-image_min.webp?width=400&height=300",
+            "price": "<p>$99/mo</p>",
+            "points": [
+              "<p>Up to 50 users</p>",
+              "<p>Unlimited automations</p>",
+              "<p>All integrations</p>",
+              "<p>Priority support</p>",
+              "<p>Custom workflows</p>"
+            ],
+            "background": "primary",
+            "offerPercentage": "<p>35%</p>",
+            "offText": "<p>OFF</p>"
+          },
+          {
+            "image": "https://hubble.cdn.chittiapp.com/cdn/2023/10/0bfd8400-64eb-11ee-88bf-9f949b4cdf86_Bonus-2-image_min.webp?width=400&height=300",
+            "price": "<p>Custom</p>",
+            "points": [
+              "<p>Unlimited users</p>",
+              "<p>Everything in Pro</p>",
+              "<p>SSO & advanced security</p>",
+              "<p>Dedicated account manager</p>",
+              "<p>Custom development</p>"
+            ],
+            "background": "black"
+          }
         ]
+      }
+    },
+    "stats": {
+      "visible": true,
+      "order": 4,
+      "content": {
+        "title": "<p>Trusted by Innovative Teams</p>",
+        "subtitle": "<p>Join thousands of companies automating their workflows with PMC</p>",
+        "stats": [
+          {
+            "value": "<p>1,000+</p>",
+            "label": "<p>Companies</p>"
+          },
+          {
+            "value": "<p>10M+</p>",
+            "label": "<p>Hours Saved Monthly</p>"
+          },
+          {
+            "value": "<p>40%</p>",
+            "label": "<p>Average Efficiency Gain</p>"
+          },
+          {
+            "value": "<p>99.9%</p>",
+            "label": "<p>Uptime</p>"
+          }
+        ],
+        "cta": {
+          "text": "<p>Start Your Free Trial</p>",
+          "href": "#signup"
+        }
       }
     },
     "faq": {
       "visible": true,
-      "order": 4,
+      "order": 5,
       "content": {
         "title": "<p>Frequently Asked Questions</p>",
-        "subtitle": "<p>Everything you need to know about PMC's enterprise solutions</p>",
+        "subtitle": "<p>Everything you need to know about PMC's AI automation platform</p>",
         "items": [
           {
-            "question": "<p>How scalable is PMC for large enterprises?</p>",
-            "answer": "<p>PMC is designed for enterprise scale, supporting unlimited projects, users, and resources. Our cloud infrastructure can handle millions of tasks and provides 99.9% uptime SLA.</p>"
+            "question": "<p>How quickly can I get started?</p>",
+            "answer": "<p>You can get started in as little as 30 minutes. Our streamlined onboarding process and intuitive interface make it easy to set up your first automation workflow.</p>"
           },
           {
-            "question": "<p>Can PMC integrate with our existing systems?</p>",
-            "answer": "<p>Yes, PMC offers seamless integration with ERP, CRM, HR systems, and over 100+ enterprise applications through APIs and pre-built connectors.</p>"
+            "question": "<p>Can PMC integrate with our existing tools?</p>",
+            "answer": "<p>Yes! PMC offers 100+ native integrations with popular business tools like Slack, Salesforce, Jira, and more. We also provide REST APIs for custom integrations.</p>"
           },
           {
-            "question": "<p>What kind of support do you provide?</p>",
-            "answer": "<p>We offer 24/7 enterprise support with dedicated account managers, priority response times, and comprehensive training programs for your teams.</p>"
+            "question": "<p>Is my data secure with PMC?</p>",
+            "answer": "<p>Absolutely. We use enterprise-grade encryption, comply with SOC 2 Type II standards, and provide GDPR compliance. Your data is always protected and backed up.</p>"
           },
           {
-            "question": "<p>Is PMC compliant with industry standards?</p>",
-            "answer": "<p>Absolutely. PMC is SOC 2 Type II certified, GDPR compliant, and meets ISO 27001 security standards for enterprise data protection.</p>"
+            "question": "<p>What kind of support do you offer?</p>",
+            "answer": "<p>We provide 24/7 customer support via chat, email, and phone. Enterprise plans include dedicated account managers and priority support.</p>"
           },
           {
-            "question": "<p>Can we customize PMC for our specific needs?</p>",
-            "answer": "<p>Yes, PMC offers extensive customization options, workflows, and reporting capabilities tailored to your organization's unique requirements.</p>"
+            "question": "<p>Can I cancel anytime?</p>",
+            "answer": "<p>Yes, you can cancel your subscription at any time. We also offer a 14-day free trial so you can test PMC risk-free.</p>"
           }
         ]
       }
     },
     "bonuses": {
       "visible": true,
-      "order": 5,
+      "order": 6,
       "content": {
-        "title": "<p>Enterprise Implementation Bonuses</p>",
-        "subtitle": "<p>Sign up today and get these premium enterprise resources</p>",
+        "title": "<p>AI Automation Bonuses</p>",
+        "subtitle": "<p>Start your free trial today and get these exclusive resources</p>",
         "items": [
           {
-            "title": "<p>Implementation Package</p>",
-            "image": "/brands/pmc/assets/bonus-1.jpg",
-            "name": "<p>Enterprise Setup</p>",
-            "type": "<p>Premium Onboarding</p>",
-            "price": "<p>Value: $5,000</p>",
-            "footerImage": "/icons/gift.svg"
+            "title": "<p>Quick Start Package</p>",
+            "image": "https://hubble.cdn.chittiapp.com/cdn/2025/7/edccf3f0-6d3d-11f0-9b1f-096d38b63715_bonus-pdf_min.webp",
+            "name": "<p>Automation Templates</p>",
+            "type": "<p>50+ Pre-built Workflows</p>",
+            "price": "<p>Value: $499</p>",
+            "footerImage": "https://hubble.cdn.chittiapp.com/cdn_uploads/71126650-780b-11f0-9085-a3e1af1c2ccb_lock.png"
           },
           {
-            "title": "<p>Training Suite</p>",
-            "image": "/brands/pmc/assets/bonus-2.jpg",
-            "name": "<p>Team Certification</p>",
-            "type": "<p>25 Training Modules</p>",
-            "price": "<p>Value: $3,000</p>",
-            "footerImage": "/icons/gift.svg"
+            "title": "<p>Advanced Training</p>",
+            "image": "https://hubble.cdn.chittiapp.com/cdn/2025/7/a79d4000-6d2a-11f0-b62a-d1c04c560a01_bonus-certificate_min.webp",
+            "name": "<p>AI Masterclass</p>",
+            "type": "<p>12 Video Modules</p>",
+            "price": "<p>Value: $799</p>",
+            "footerImage": "https://hubble.cdn.chittiapp.com/cdn_uploads/71126650-780b-11f0-9085-a3e1af1c2ccb_lock.png"
           },
           {
-            "title": "<p>Consulting Credits</p>",
-            "image": "/brands/pmc/assets/bonus-3.jpg",
-            "name": "<p>Expert Services</p>",
-            "type": "<p>20 Hours Consulting</p>",
-            "price": "<p>Value: $4,000</p>",
-            "footerImage": "/icons/gift.svg"
+            "title": "<p>Priority Support</p>",
+            "image": "https://hubble.cdn.chittiapp.com/cdn/2025/7/a79d6710-6d2a-11f0-9b1f-096d38b63715_bonus-presentation_min.webp",
+            "name": "<p>Expert Assistance</p>",
+            "type": "<p>1 Month Premium</p>",
+            "price": "<p>Value: $299</p>",
+            "footerImage": "https://hubble.cdn.chittiapp.com/cdn_uploads/71126650-780b-11f0-9085-a3e1af1c2ccb_lock.png"
           }
         ]
       }
     },
     "mentors": {
       "visible": true,
-      "order": 6,
+      "order": 7,
       "content": {
         "designVariant": "alternative",
-        "alternativeTitle": "<p>Learn from Project Management Experts</p>",
-        "alternativeSubtitle": "<p>Our consultants are certified PMP professionals with decades of enterprise experience</p>",
+        "alternativeTitle": "<p>Learn from AI & Automation Experts</p>",
+        "alternativeSubtitle": "<p>Our team consists of industry veterans with deep expertise in AI, automation, and enterprise transformation</p>",
         "mentors": [
           {
-            "name": "<p>Richard Harrison</p>",
-            "role": "<p>Senior PM Consultant</p>",
-            "company": "<p>PMC Advisory</p>",
-            "image": "/brands/pmc/assets/mentor-1.jpg"
+            "name": "<p>Dr. Alex Thompson</p>",
+            "role": "<p>AI Research Director</p>",
+            "company": "<p>PMC Labs</p>",
+            "image": "https://images.unsplash.com/photo-1738750908048-14200459c3c9?w=400&h=400&fit=crop"
           },
           {
-            "name": "<p>Patricia Morgan</p>",
-            "role": "<p>Agile Transformation Lead</p>",
+            "name": "<p>Maria Garcia</p>",
+            "role": "<p>Automation Strategist</p>",
             "company": "<p>Enterprise Solutions</p>",
-            "image": "/brands/pmc/assets/mentor-2.jpg"
+            "image": "https://images.unsplash.com/photo-1752859951149-7d3fc700a7ec?w=400&h=400&fit=crop"
           },
           {
-            "name": "<p>William Anderson</p>",
-            "role": "<p>Portfolio Strategy Director</p>",
-            "company": "<p>Strategic PMO</p>",
-            "image": "/brands/pmc/assets/mentor-3.jpg"
-          },
-          {
-            "name": "<p>Barbara Chen</p>",
-            "role": "<p>Enterprise Implementation Specialist</p>",
-            "company": "<p>Global Consulting</p>",
-            "image": "/brands/pmc/assets/mentor-4.jpg"
+            "name": "<p>James Lee</p>",
+            "role": "<p>Machine Learning Engineer</p>",
+            "company": "<p>AI Innovation Team</p>",
+            "image": "https://images.unsplash.com/photo-1758639842445-b58f639119d2?w=400&h=400&fit=crop"
           }
         ]
       }
     },
     "testimonials": {
       "visible": true,
-      "order": 7,
+      "order": 8,
       "content": {
-        "badge": "<p>Client Success Stories</p>",
-        "title": "<p>What Our Enterprise Clients Say</p>",
+        "badge": "<p>Customer Success Stories</p>",
+        "title": "<p>How Companies Are Transforming with PMC</p>",
         "items": [
           {
-            "title": "<p>Revolutionized Project Management</p>",
-            "description": "<p>PMC has revolutionized how we manage complex enterprise projects. The resource optimization features alone saved us 30% in operational costs.</p>",
-            "name": "<p>Sarah Williams</p>",
-            "role": "<p>VP of Operations, Global Tech Solutions</p>",
-            "image": "/brands/pmc/assets/testimonial-1.jpg"
+            "title": "<p>Game-Changing Automation</p>",
+            "description": "<p>PMC transformed how our team operates. We've reduced manual tasks by 80% and our team can now focus on strategic initiatives.</p>",
+            "name": "<p>Robert Martinez</p>",
+            "role": "<p>Operations Manager, TechCorp</p>",
+            "image": "https://hubble.cdn.chittiapp.com/cdn/2025/7/0b28a600-6d2b-11f0-9b1f-096d38b63715_mentor-cta_min.webp"
           },
           {
-            "title": "<p>Exceptional Reporting Capabilities</p>",
-            "description": "<p>The advanced reporting capabilities give us real-time visibility into project health. We've improved our on-time delivery rate from 75% to 98%.</p>",
-            "name": "<p>Michael Chen</p>",
-            "role": "<p>Program Director, Innovation Labs Inc</p>",
-            "image": "/brands/pmc/assets/testimonial-2.jpg"
+            "title": "<p>Exceptional ROI</p>",
+            "description": "<p>We saw a 300% ROI within the first 6 months. PMC's AI capabilities have revolutionized our workflow automation.</p>",
+            "name": "<p>Lisa Wang</p>",
+            "role": "<p>CTO, StartupHub</p>",
+            "image": "https://hubble.cdn.chittiapp.com/cdn/2025/7/0b28a600-6d2b-11f0-9b1f-096d38b63715_mentor-cta_min.webp"
           },
           {
-            "title": "<p>Unmatched Scalability</p>",
-            "description": "<p>We manage over 500 concurrent projects across 20 countries, and PMC handles it seamlessly. The collaboration tools are unmatched.</p>",
-            "name": "<p>Emily Rodriguez</p>",
-            "role": "<p>CTO, Digital Dynamics</p>",
-            "image": "/brands/pmc/assets/testimonial-3.jpg"
-          }
-        ],
-        "items2": [
-          {
-            "title": "<p>Enterprise-Grade Support</p>",
-            "description": "<p>PMC's enterprise support is exceptional. They understand the unique challenges of large-scale project management.</p>",
-            "name": "<p>David Kumar</p>",
-            "role": "<p>CEO, Strategic Ventures</p>",
-            "image": "/brands/pmc/assets/testimonial-4.jpg"
-          },
-          {
-            "title": "<p>Strategic Planning Transformation</p>",
-            "description": "<p>The portfolio management features give us insights we never had before. It's transformed our strategic planning.</p>",
-            "name": "<p>Lisa Thompson</p>",
-            "role": "<p>Portfolio Manager, Quantum Industries</p>",
-            "image": "/brands/pmc/assets/testimonial-5.jpg"
-          },
-          {
-            "title": "<p>Seamless Integration</p>",
-            "description": "<p>PMC integrates seamlessly with our existing ERP and CRM systems. The implementation was smooth and comprehensive.</p>",
-            "name": "<p>James Wilson</p>",
-            "role": "<p>Head of PMO, Fortune 500 Financial</p>",
-            "image": "/brands/pmc/assets/testimonial-6.jpg"
+            "title": "<p>Best Decision Ever</p>",
+            "description": "<p>Implementing PMC was the best business decision we made this year. The time savings alone justify the investment tenfold.</p>",
+            "name": "<p>David Kim</p>",
+            "role": "<p>CEO, GrowthCo</p>",
+            "image": "https://hubble.cdn.chittiapp.com/cdn/2025/7/0b28a600-6d2b-11f0-9b1f-096d38b63715_mentor-cta_min.webp"
           }
         ]
+  
       }
     },
     "cta": {
       "visible": true,
-      "order": 8,
-      "content": {
-        "title": "Ready to Elevate Your Project Management?",
-        "subtitle": "Join industry leaders who trust PMC for their project success",
-        "primaryText": "Request Demo",
-        "secondaryText": "Contact Sales"
-      }
-    },
-    "footer": {
-      "visible": true,
       "order": 9,
       "content": {
-        "companyName": "PMC Solutions",
-        "tagline": "Enterprise Project Management Excellence"
+        "text": "<p>Ready to Transform Your Workflow?</p>",
+        "button": {
+          "text": "<p>Start Your Free Trial</p>",
+          "href": "#signup"
+        },
+        "showStars": true,
+        "ratingText": "<p>Join 1,000+ companies saving 10M+ hours monthly</p>"
       }
     }
   }

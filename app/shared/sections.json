@@ -225,30 +225,8 @@
             "role": "<p>Data Scientist</p>",
             "image": "/brands/chitti/assets/testimonial-3.jpg"
           }
-        ],
-        "items2": [
-          {
-            "title": "<p>Game-Changer</p>",
-            "description": "<p>I went from beginner to professional in just 8 weeks. This program is a true game-changer.</p>",
-            "name": "<p>Emily Johnson</p>",
-            "role": "<p>UX Researcher</p>",
-            "image": "/brands/chitti/assets/testimonial-4.jpg"
-          },
-          {
-            "title": "<p>Incredible Value</p>",
-            "description": "<p>The hands-on projects and real-world experience provided are unmatched anywhere else.</p>",
-            "name": "<p>Robert Taylor</p>",
-            "role": "<p>Backend Engineer</p>",
-            "image": "/brands/chitti/assets/testimonial-5.jpg"
-          },
-          {
-            "title": "<p>Highly Recommended</p>",
-            "description": "<p>If you're serious about advancing your career, this is the program for you. Absolutely recommended!</p>",
-            "name": "<p>Lisa Wang</p>",
-            "role": "<p>DevOps Engineer</p>",
-            "image": "/brands/chitti/assets/testimonial-6.jpg"
-          }
         ]
+
       }
     },
     {

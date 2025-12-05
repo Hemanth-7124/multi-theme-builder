@@ -4,12 +4,12 @@ export default {
   id: 'uptor',
   name: 'Uptor',
   description: 'Premium educational platform for skill development',
-  logo: '/brands/uptor/assets/logo.svg',
-  favicon: '/brands/uptor/assets/favicon.ico',
+  logo: 'https://hubble.cdn.chittiapp.com/cdn_uploads/c91a5ed0-6537-11ef-ac6f-574bab04c119_Uptor-Logo.png',
+  favicon: 'https://hubble.cdn.chittiapp.com/cdn_uploads/c91a5ed0-6537-11ef-ac6f-574bab04c119_Uptor-Logo.png',
   theme: {
     layout: 'classic',
     assets: {
-      logo: '/brands/uptor/assets/logo.svg',
+      logo: 'https://hubble.cdn.chittiapp.com/cdn_uploads/c91a5ed0-6537-11ef-ac6f-574bab04c119_Uptor-Logo.png',
       favicon: '/brands/uptor/assets/favicon.ico',
       hero: '/brands/uptor/assets/hero.webp'
     },
