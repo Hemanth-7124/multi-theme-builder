@@ -6,145 +6,156 @@
       "visible": true,
       "order": 1,
       "content": {
-        "title": "Welcome to Our Platform",
-        "subtitle": "Discover amazing possibilities",
-        "description": "Transform your business with our innovative solutions",
-        "ctaText": "Get Started",
-        "backgroundImage": null
+        "badge": {
+          "showStars": true,
+          "text": "<p>14K+ reviews</p>"
+        },
+        "secondaryTitle": "<p>WORKSHOP WITH MENTOR</p>",
+        "title": "<p>Master the Skills You Need to Succeed</p>",
+        "description": "<p>Learn from industry experts and transform your career with our comprehensive workshop program.</p>",
+        "mentor": {
+          "image": "/brands/chitti/assets/mentor.jpg",
+          "highlight": "<p>Industry Expert</p>",
+          "name": "<p>Alex Johnson</p>",
+          "tagline": "<p>10+ years of experience</p>"
+        },
+        "workshop": {
+          "cards": [
+            {
+              "title": "<p>Start Date</p>",
+              "content": "<p>January 15, 2024</p>"
+            },
+            {
+              "title": "<p>Duration</p>",
+              "content": "<p>8 weeks intensive</p>"
+            },
+            {
+              "title": "<p>Format</p>",
+              "content": "<p>Online + Live Sessions</p>"
+            }
+          ],
+          "button": {
+            "text": "<p>Enroll Now</p>",
+            "href": "#enroll"
+          },
+          "showTimer": true,
+          "timerPrefix": "<p>Limited spots available - Registration closes in:</p>"
+        }
+      }
+    },
+    {
+      "id": "video",
+      "type": "video",
+      "visible": true,
+      "order": 2,
+      "content": {
+        "title": "<p>See How It Works</p>",
+        "subtitle": "<p>Get a comprehensive overview of our platform and features</p>",
+        "videoUrl": "https://example.com/intro-video.mp4",
+        "thumbnailUrl": "/brands/chitti/assets/video-thumbnail.jpg",
+        "duration": "5:42",
+        "description": "<p>Watch this quick demo to see how our platform can transform your workflow. Learn about key features, integration capabilities, and see real-world use cases.</p>",
+        "stats": [
+          {
+            "icon": "play",
+            "value": "<p>10K+</p>",
+            "label": "<p>Video Views</p>"
+          },
+          {
+            "icon": "clock",
+            "value": "<p>5 min</p>",
+            "label": "<p>Avg. Watch Time</p>"
+          },
+          {
+            "icon": "users",
+            "value": "<p>98%</p>",
+            "label": "<p>Completion Rate</p>"
+          }
+        ]
       }
     },
     {
       "id": "features",
       "type": "features",
       "visible": true,
-      "order": 2,
-      "content": {
-        "title": "Powerful Features",
-        "subtitle": "Everything you need to succeed",
-        "features": [
-          {
-            "icon": "/app/shared/icons/feature1.svg",
-            "title": "Smart Automation",
-            "description": "Intelligent workflow automation that learns from your patterns"
-          },
-          {
-            "icon": "/app/shared/icons/feature2.svg",
-            "title": "Real-time Collaboration",
-            "description": "Work together seamlessly with your team in real-time"
-          },
-          {
-            "icon": "/app/shared/icons/feature3.svg",
-            "title": "Advanced Analytics",
-            "description": "Deep insights into your workflow performance and optimization"
-          }
-        ]
-      }
-    },
-    {
-      "id": "about",
-      "type": "about",
-      "visible": true,
       "order": 3,
       "content": {
-        "title": "About Us",
-        "subtitle": "Our story and mission",
-        "story": "We are dedicated to providing innovative solutions that transform how businesses operate. Our team brings together expertise from various fields to create comprehensive solutions that drive real results.",
-        "image": "/app/shared/assets/team.jpg",
-        "imageAlt": "Our team",
-        "stats": [
-          { "value": "1000+", "label": "Happy Clients" },
-          { "value": "99%", "label": "Satisfaction Rate" },
-          { "value": "24/7", "label": "Support Available" }
-        ],
-        "values": [
+        "title": "<p>Choose Your Learning Path</p>",
+        "subtitle": "<p>Select the package that best fits your goals and budget</p>",
+        "items": [
           {
-            "title": "Innovation",
-            "description": "Pushing boundaries and creating cutting-edge solutions"
+            "image": "/brands/chitti/assets/basic-plan.jpg",
+            "price": "<p>$99</p>",
+            "points": [
+              "<p>8 weeks of video content</p>",
+              "<p>Downloadable resources</p>",
+              "<p>Community access</p>",
+              "<p>Certificate of completion</p>"
+            ],
+            "background": "green",
+            "offerPercentage": "<p>20%</p>",
+            "offText": "<p>OFF</p>"
           },
           {
-            "title": "Quality",
-            "description": "Delivering excellence in everything we do"
+            "image": "/brands/chitti/assets/pro-plan.jpg",
+            "price": "<p>$199</p>",
+            "points": [
+              "<p>Everything in Basic</p>",
+              "<p>Live weekly sessions</p>",
+              "<p>1-on-1 mentoring</p>",
+              "<p>Project reviews</p>",
+              "<p>Priority support</p>"
+            ],
+            "background": "primary",
+            "offerPercentage": "<p>30%</p>",
+            "offText": "<p>OFF</p>"
           },
           {
-            "title": "Customer Focus",
-            "description": "Putting our clients at the center of everything"
+            "image": "/brands/chitti/assets/premium-plan.jpg",
+            "price": "<p>$299</p>",
+            "points": [
+              "<p>Everything in Pro</p>",
+              "<p>Unlimited mentoring</p>",
+              "<p>Job placement assistance</p>",
+              "<p>Lifetime access</p>",
+              "<p>Exclusive workshops</p>"
+            ],
+            "background": "black",
+            "offerPercentage": "<p>40%</p>",
+            "offText": "<p>OFF</p>"
           }
         ]
       }
     },
     {
-      "id": "testimonials",
-      "type": "testimonials",
+      "id": "stats",
+      "type": "stats",
       "visible": true,
       "order": 4,
       "content": {
-        "title": "Client Testimonials",
-        "subtitle": "Hear what our clients have to say about their experience",
-        "testimonials": [
-          {
-            "id": "1",
-            "name": "John Doe",
-            "role": "Project Manager",
-            "company": "Tech Corp",
-            "rating": 5,
-            "content": "This platform has transformed how we manage projects. Our productivity has increased significantly."
-          },
-          {
-            "id": "2",
-            "name": "Jane Smith",
-            "role": "CEO",
-            "company": "Startup Inc",
-            "rating": 5,
-            "content": "Excellent service and support. The team went above and beyond to meet our needs."
-          },
-          {
-            "id": "3",
-            "name": "Mike Johnson",
-            "role": "CTO",
-            "company": "Enterprise Co",
-            "rating": 5,
-            "content": "Best investment we've made. The ROI has been outstanding."
-          }
-        ],
+        "title": "<p>Trusted by Thousands Worldwide</p>",
+        "subtitle": "<p>Join the community of professionals transforming their careers</p>",
         "stats": [
-          { "value": "500+", "label": "Happy Clients" },
-          { "value": "99%", "label": "Satisfaction Rate" },
-          { "value": "24/7", "label": "Support Available" },
-          { "value": "50+", "label": "Countries Served" }
+          {
+            "value": "<p>10,000+</p>",
+            "label": "<p>Active Learners</p>"
+          },
+          {
+            "value": "<p>95%</p>",
+            "label": "<p>Success Rate</p>"
+          },
+          {
+            "value": "<p>500+</p>",
+            "label": "<p>Expert Mentors</p>"
+          },
+          {
+            "value": "<p>50+</p>",
+            "label": "<p>Countries</p>"
+          }
         ],
         "cta": {
-          "text": "Ready to join our successful clients?",
-          "buttonText": "Get Started",
-          "href": "#contact"
-        }
-      }
-    },
-    {
-      "id": "faq",
-      "type": "faq",
-      "visible": true,
-      "order": 5,
-      "content": {
-        "title": "Frequently Asked Questions",
-        "subtitle": "Find answers to common questions",
-        "faqs": [
-          {
-            "question": "What services do you offer?",
-            "answer": "We offer a comprehensive range of digital solutions including web development, mobile applications, and consulting services tailored to your business needs."
-          },
-          {
-            "question": "How can I get started?",
-            "answer": "Getting started is easy! Simply sign up for a free account, choose your plan, and follow our step-by-step onboarding process."
-          },
-          {
-            "question": "Do you provide customer support?",
-            "answer": "Yes, we provide 24/7 customer support through email, live chat, and phone for all premium plans."
-          }
-        ],
-        "contactCta": {
-          "text": "Still have questions?",
-          "buttonText": "Contact Us",
-          "href": "mailto:support@example.com"
+          "text": "<p>Start Your Journey Today</p>",
+          "href": "#enroll"
         }
       }
     },
@@ -152,22 +163,15 @@
       "id": "cta",
       "type": "cta",
       "visible": true,
-      "order": 6,
+      "order": 5,
       "content": {
-        "title": "Ready to Get Started?",
-        "subtitle": "Join thousands of satisfied customers",
-        "primaryText": "Start Free Trial",
-        "secondaryText": "Schedule Demo"
-      }
-    },
-    {
-      "id": "footer",
-      "type": "footer",
-      "visible": true,
-      "order": 7,
-      "content": {
-        "companyName": "Company Name",
-        "tagline": "Your trusted partner for digital solutions"
+        "text": "<p>Ready to Transform Your Career?</p>",
+        "button": {
+          "text": "<p>Get Started Today</p>",
+          "href": "#enroll"
+        },
+        "showStars": true,
+        "ratingText": "<p>Join 10,000+ successful learners</p>"
       }
     }
   ]

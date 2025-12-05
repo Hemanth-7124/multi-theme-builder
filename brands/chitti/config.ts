@@ -43,12 +43,17 @@ export default {
         'color-error': '#ef4444',
         'color-warning': '#f59e0b',
         'color-success': '#10b981',
-        'color-info': '#2563eb'
+        'color-info': '#2563eb',
+
+        // Additional design tokens
+        'star-color': '#fbbf24',             // Gold stars
+        'badge-background': 'rgba(255, 255, 255, 0.1)'
       },
       typography: {
         'font-family-sans': 'Inter, system-ui, sans-serif',
         'font-family-serif': 'Georgia, serif',
         'font-family-mono': 'JetBrains Mono, Consolas, monospace',
+        'heading-font-family': 'Sora, Inter, system-ui, sans-serif',
         'font-size-xs': '0.75rem',
         'font-size-sm': '0.875rem',
         'font-size-base': '1rem',
@@ -105,6 +110,14 @@ export default {
         'spacing-72': '18rem',
         'spacing-80': '20rem',
         'spacing-96': '24rem'
+      },
+      transitions: {
+        'transition-fast': '0.3s ease',
+        'transition-normal': '0.5s ease',
+        'transition-slow': '0.7s ease'
+      },
+      container: {
+        'container-max': '1200px'
       },
       borderRadius: {
         'radius-none': '0',

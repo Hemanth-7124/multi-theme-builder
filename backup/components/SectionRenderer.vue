@@ -36,16 +36,26 @@ const props = defineProps<Props>()
 const HeroSection = defineAsyncComponent(() => import('./sections/HeroSection.vue'))
 const FeaturesSection = defineAsyncComponent(() => import('./sections/FeaturesSection.vue'))
 const CtaSection = defineAsyncComponent(() => import('./sections/CtaSection.vue'))
-const StatsSection = defineAsyncComponent(() => import('./sections/StatsSection.vue'))
-const VideoSection = defineAsyncComponent(() => import('./sections/VideoSection.vue'))
+const FooterSection = defineAsyncComponent(() => import('./sections/FooterSection.vue'))
+const FaqSection = defineAsyncComponent(() => import('./sections/FaqSection.vue'))
+const AboutSection = defineAsyncComponent(() => import('./sections/AboutSection.vue'))
+const ServicesSection = defineAsyncComponent(() => import('./sections/ServicesSection.vue'))
+const TestimonialsSection = defineAsyncComponent(() => import('./sections/TestimonialsSection.vue'))
+const HighlightsSection = defineAsyncComponent(() => import('./sections/HighlightsSection.vue'))
+const PartnersSection = defineAsyncComponent(() => import('./sections/PartnersSection.vue'))
 
 // Map section types to components
 const sectionComponents = {
   hero: HeroSection,
   features: FeaturesSection,
   cta: CtaSection,
-  stats: StatsSection,
-  video: VideoSection
+  footer: FooterSection,
+  faq: FaqSection,
+  about: AboutSection,
+  services: ServicesSection,
+  testimonials: TestimonialsSection,
+  highlights: HighlightsSection,
+  partners: PartnersSection
 }
 
 // Get CSS classes for section

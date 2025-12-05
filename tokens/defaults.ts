@@ -1,4 +1,4 @@
-import { DesignTokens, FlattenedTokens } from './types'
+import type { DesignTokens, FlattenedTokens } from './types'
 
 // Default design tokens - serves as fallback
 export const defaultTokens: DesignTokens = {

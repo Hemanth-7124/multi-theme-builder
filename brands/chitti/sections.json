@@ -4,116 +4,148 @@
       "visible": true,
       "order": 1,
       "content": {
-        "title": "Automate Your Workflow with AI",
-        "subtitle": "Chitti transforms how teams work with intelligent automation",
-        "description": "Experience the power of AI-driven workflow automation. Save time, reduce errors, and boost productivity with our cutting-edge platform.",
-        "ctaText": "Get Started Free",
-        "backgroundImage": "/brands/chitti/assets/hero.webp"
+        "badge": {
+          "showStars": true,
+          "text": "<p>Trusted by 1,000+ companies</p>"
+        },
+        "secondaryTitle": "<p>AI-POWERED AUTOMATION</p>",
+        "title": "<p>Automate Your Workflow with Chitti</p>",
+        "description": "<p>Transform how your team works with intelligent automation. Save time, reduce errors, and boost productivity with our cutting-edge AI platform.</p>",
+        "mentor": {
+          "image": "/brands/chitti/assets/ceo.jpg",
+          "highlight": "<p>Founder & CEO</p>",
+          "name": "<p>Sarah Chen</p>",
+          "tagline": "<p>15+ years in AI and automation</p>"
+        },
+        "workshop": {
+          "cards": [
+            {
+              "title": "<p>Quick Setup</p>",
+              "content": "<p>Get started in 30 minutes</p>"
+            },
+            {
+              "title": "<p>100+ Integrations</p>",
+              "content": "<p>Connect all your favorite tools</p>"
+            },
+            {
+              "title": "<p>24/7 Support</p>",
+              "content": "<p>Expert help whenever you need it</p>"
+            }
+          ],
+          "button": {
+            "text": "<p>Start Free Trial</p>",
+            "href": "#signup"
+          },
+          "showTimer": true,
+          "timerPrefix": "<p>Limited time offer - Sign up now and get:</p>"
+        }
+      }
+    },
+    "video": {
+      "visible": true,
+      "order": 2,
+      "content": {
+        "title": "<p>See Chitti in Action</p>",
+        "subtitle": "<p>Watch how our AI-powered automation can transform your workflow</p>",
+        "videoUrl": "https://example.com/chitti-demo.mp4",
+        "thumbnailUrl": "/brands/chitti/assets/video-thumbnail.jpg",
+        "duration": "3:45",
+        "description": "<p>Discover how Chitti leverages advanced AI to learn your workflows, identify automation opportunities, and execute tasks seamlessly. See real examples of teams saving hours of work daily.</p>",
+        "stats": [
+          {
+            "icon": "play",
+            "value": "<p>25K+</p>",
+            "label": "<p>Video Views</p>"
+          },
+          {
+            "icon": "clock",
+            "value": "<p>4 min</p>",
+            "label": "<p>Avg. Watch Time</p>"
+          },
+          {
+            "icon": "users",
+            "value": "<p>96%</p>",
+            "label": "<p>Completion Rate</p>"
+          }
+        ]
       }
     },
     "features": {
       "visible": true,
-      "order": 2,
+      "order": 3,
       "content": {
-        "title": "Powerful Features",
-        "subtitle": "Everything you need to supercharge your productivity",
-        "features": [
+        "title": "<p>Choose Your Automation Plan</p>",
+        "subtitle": "<p>Perfect for teams of all sizes - from startups to enterprises</p>",
+        "items": [
           {
-            "icon": "/brands/chitti/assets/icons/feature1.svg",
-            "title": "Smart Automation",
-            "description": "Intelligent workflow automation that learns from your patterns"
+            "image": "/brands/chitti/assets/starter-plan.jpg",
+            "price": "<p>$49/mo</p>",
+            "points": [
+              "<p>Up to 10 users</p>",
+              "<p>500 automations/month</p>",
+              "<p>Basic integrations</p>",
+              "<p>Email support</p>"
+            ],
+            "background": "green",
+            "offerPercentage": "<p>25%</p>",
+            "offText": "<p>OFF</p>"
           },
           {
-            "icon": "/brands/chitti/assets/icons/feature2.svg",
-            "title": "Real-time Collaboration",
-            "description": "Work together seamlessly with your team in real-time"
+            "image": "/brands/chitti/assets/pro-plan.jpg",
+            "price": "<p>$99/mo</p>",
+            "points": [
+              "<p>Up to 50 users</p>",
+              "<p>Unlimited automations</p>",
+              "<p>All integrations</p>",
+              "<p>Priority support</p>",
+              "<p>Custom workflows</p>"
+            ],
+            "background": "primary",
+            "offerPercentage": "<p>35%</p>",
+            "offText": "<p>OFF</p>"
           },
           {
-            "icon": "/brands/chitti/assets/icons/feature3.svg",
-            "title": "Advanced Analytics",
-            "description": "Deep insights into your workflow performance and optimization"
+            "image": "/brands/chitti/assets/enterprise-plan.jpg",
+            "price": "<p>Custom</p>",
+            "points": [
+              "<p>Unlimited users</p>",
+              "<p>Everything in Pro</p>",
+              "<p>SSO & advanced security</p>",
+              "<p>Dedicated account manager</p>",
+              "<p>Custom development</p>"
+            ],
+            "background": "black"
           }
         ]
       }
     },
-    "about": {
-      "visible": true,
-      "order": 3,
-      "content": {
-        "title": "About Chitti",
-        "subtitle": "Pioneering the future of intelligent automation",
-        "story": "Founded in 2020, Chitti emerged from a simple vision: to make intelligent automation accessible to every business. Our team of AI experts and automation specialists has helped over 1,000 companies transform their operations.",
-        "image": "/brands/chitti/assets/hero.webp",
-        "imageAlt": "Chitti team collaboration",
-        "stats": [
-          { "value": "1,000+", "label": "Companies Served" },
-          { "value": "10M+", "label": "Hours Saved" },
-          { "value": "40%", "label": "Average Cost Reduction" },
-          { "value": "99.9%", "label": "Uptime" }
-        ]
-      }
-    },
-    "about": {
-      "visible": true,
-      "order": 3,
-      "content": {
-        "title": "About Chitti",
-        "subtitle": "Pioneering the future of intelligent automation",
-        "story": "Founded in 2020, Chitti emerged from a simple vision: to make intelligent automation accessible to every business. Our team of AI experts and automation specialists has helped over 1,000 companies transform their operations.",
-        "image": "/brands/chitti/assets/hero.webp",
-        "imageAlt": "Chitti team collaboration",
-        "stats": [
-          { "value": "1,000+", "label": "Companies Served" },
-          { "value": "10M+", "label": "Hours Saved" },
-          { "value": "40%", "label": "Average Cost Reduction" },
-          { "value": "99.9%", "label": "Uptime" }
-        ]
-      }
-    },
-    "faq": {
+    "stats": {
       "visible": true,
       "order": 4,
       "content": {
-        "title": "Frequently Asked Questions",
-        "subtitle": "Everything you need to know about Chitti",
-        "faqs": [
+        "title": "<p>Trusted by Innovative Teams</p>",
+        "subtitle": "<p>Join thousands of companies automating their workflows with Chitti</p>",
+        "stats": [
           {
-            "question": "What is Chitti and how does it work?",
-            "answer": "Chitti is an AI-powered workflow automation platform that helps teams streamline their processes. It uses machine learning to understand your workflows, identify automation opportunities, and execute tasks automatically, saving you time and reducing errors."
+            "value": "<p>1,000+</p>",
+            "label": "<p>Companies</p>"
           },
           {
-            "question": "How long does it take to set up Chitti?",
-            "answer": "Setup is quick and easy! Most teams are fully operational within 30 minutes. Our intuitive onboarding process guides you through connecting your tools and configuring your first automated workflows."
+            "value": "<p>10M+</p>",
+            "label": "<p>Hours Saved Monthly</p>"
           },
           {
-            "question": "Which tools and platforms does Chitti integrate with?",
-            "answer": "Chitti integrates with over 100+ popular tools including Slack, Microsoft Teams, Google Workspace, Salesforce, Jira, Asana, Trello, and many more. We're constantly adding new integrations based on customer needs."
+            "value": "<p>40%</p>",
+            "label": "<p>Average Efficiency Gain</p>"
           },
           {
-            "question": "Is my data secure with Chitti?",
-            "answer": "Absolutely. We use enterprise-grade encryption for all data transmission and storage. Chitti is SOC 2 Type II certified, GDPR compliant, and we never store your sensitive credentials. Your data is yours and yours alone."
-          },
-          {
-            "question": "Can I customize workflows for my specific needs?",
-            "answer": "Yes! Chitti offers highly customizable workflows. You can create custom automation rules, set conditional logic, and build multi-step workflows that match your unique business processes. No coding required."
-          },
-          {
-            "question": "What kind of support do you offer?",
-            "answer": "We provide 24/7 email support, live chat during business hours, and a comprehensive knowledge base. Premium plans include dedicated account managers and priority support with guaranteed response times."
-          },
-          {
-            "question": "Is there a free trial available?",
-            "answer": "Yes, we offer a 14-day free trial with full access to all features. No credit card required. After the trial, you can choose the plan that best fits your needs or continue with our free tier."
-          },
-          {
-            "question": "How does Chitti pricing work?",
-            "answer": "We offer flexible pricing based on your team size and automation needs. Plans start with a free tier for small teams, with paid plans offering advanced features, higher limits, and priority support. Contact our sales team for enterprise pricing."
+            "value": "<p>99.9%</p>",
+            "label": "<p>Uptime</p>"
           }
         ],
-        "contactCta": {
-          "text": "Still have questions? We're here to help!",
-          "buttonText": "Contact Support",
-          "href": "mailto:support@chitti.com"
+        "cta": {
+          "text": "<p>Start Your Free Trial</p>",
+          "href": "#signup"
         }
       }
     },
@@ -121,18 +153,13 @@
       "visible": true,
       "order": 5,
       "content": {
-        "title": "Ready to Transform Your Workflow?",
-        "subtitle": "Join thousands of teams already using Chitti to automate their work",
-        "primaryText": "Start Free Trial",
-        "secondaryText": "Schedule Demo"
-      }
-    },
-    "footer": {
-      "visible": true,
-      "order": 6,
-      "content": {
-        "companyName": "Chitti Inc.",
-        "tagline": "Intelligent Automation for Modern Teams"
+        "text": "<p>Ready to Transform Your Workflow?</p>",
+        "button": {
+          "text": "<p>Start Your Free Trial</p>",
+          "href": "#signup"
+        },
+        "showStars": true,
+        "ratingText": "<p>Join 1,000+ companies saving 10M+ hours monthly</p>"
       }
     }
   }
