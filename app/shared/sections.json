@@ -73,10 +73,39 @@
       }
     },
     {
+      "id": "faq",
+      "type": "faq",
+      "visible": true,
+      "order": 4,
+      "content": {
+        "title": "Frequently Asked Questions",
+        "subtitle": "Find answers to common questions",
+        "faqs": [
+          {
+            "question": "What services do you offer?",
+            "answer": "We offer a comprehensive range of digital solutions including web development, mobile applications, and consulting services tailored to your business needs."
+          },
+          {
+            "question": "How can I get started?",
+            "answer": "Getting started is easy! Simply sign up for a free account, choose your plan, and follow our step-by-step onboarding process."
+          },
+          {
+            "question": "Do you provide customer support?",
+            "answer": "Yes, we provide 24/7 customer support through email, live chat, and phone for all premium plans."
+          }
+        ],
+        "contactCta": {
+          "text": "Still have questions?",
+          "buttonText": "Contact Us",
+          "href": "mailto:support@example.com"
+        }
+      }
+    },
+    {
       "id": "cta",
       "type": "cta",
       "visible": true,
-      "order": 4,
+      "order": 5,
       "content": {
         "title": "Ready to Get Started?",
         "subtitle": "Join thousands of satisfied customers",
@@ -88,7 +117,7 @@
       "id": "footer",
       "type": "footer",
       "visible": true,
-      "order": 5,
+      "order": 6,
       "content": {
         "companyName": "Company Name",
         "tagline": "Your trusted partner for digital solutions"
