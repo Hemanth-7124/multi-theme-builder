@@ -53,9 +53,162 @@
         ]
       }
     },
-    "cta": {
+    "faq": {
       "visible": true,
       "order": 4,
+      "content": {
+        "title": "<p>Frequently Asked Questions</p>",
+        "subtitle": "<p>Everything you need to know about Uptor's learning platform</p>",
+        "items": [
+          {
+            "question": "<p>How long do I have access to courses?</p>",
+            "answer": "<p>Once enrolled, you get lifetime access to course materials, including all updates and new content added in the future.</p>"
+          },
+          {
+            "question": "<p>Are certificates recognized?</p>",
+            "answer": "<p>Yes, our certificates are industry-recognized and can be shared on LinkedIn, added to resumes, and verified by employers.</p>"
+          },
+          {
+            "question": "<p>What if I'm not satisfied?</p>",
+            "answer": "<p>We offer a 30-day money-back guarantee. If you're not satisfied with your course, we'll refund your purchase.</p>"
+          },
+          {
+            "question": "<p>Can I learn at my own pace?</p>",
+            "answer": "<p>Absolutely! Our courses are self-paced, allowing you to learn anytime, anywhere, and fit your education around your schedule.</p>"
+          },
+          {
+            "question": "<p>Do you offer corporate plans?</p>",
+            "answer": "<p>Yes, we provide customized corporate training solutions with volume discounts for teams and organizations.</p>"
+          }
+        ]
+      }
+    },
+    "bonuses": {
+      "visible": true,
+      "order": 5,
+      "content": {
+        "title": "<p>Exclusive Learning Bonuses</p>",
+        "subtitle": "<p>Enroll today and get these valuable resources for free</p>",
+        "items": [
+          {
+            "title": "<p>Starter Kit</p>",
+            "image": "/brands/uptor/assets/bonus-1.jpg",
+            "name": "<p>Learning Resources</p>",
+            "type": "<p>Free Resource Pack</p>",
+            "price": "<p>Value: $199</p>",
+            "footerImage": "/icons/gift.svg"
+          },
+          {
+            "title": "<p>Advanced Course</p>",
+            "image": "/brands/uptor/assets/bonus-2.jpg",
+            "name": "<p>Premium Masterclass</p>",
+            "type": "<p>15 Video Lessons</p>",
+            "price": "<p>Value: $399</p>",
+            "footerImage": "/icons/gift.svg"
+          },
+          {
+            "title": "<p>Community Access</p>",
+            "image": "/brands/uptor/assets/bonus-3.jpg",
+            "name": "<p>Student Network</p>",
+            "type": "<p>Lifetime Membership</p>",
+            "price": "<p>Value: $299</p>",
+            "footerImage": "/icons/gift.svg"
+          }
+        ]
+      }
+    },
+    "mentors": {
+      "visible": true,
+      "order": 6,
+      "content": {
+        "designVariant": "alternative",
+        "alternativeTitle": "<p>Learn from Expert Instructors</p>",
+        "alternativeSubtitle": "<p>Our mentors are industry professionals with real-world experience and teaching expertise</p>",
+        "mentors": [
+          {
+            "name": "<p>Dr. Sarah Mitchell</p>",
+            "role": "<p>Senior Data Scientist</p>",
+            "company": "<p>Tech Corp</p>",
+            "image": "/brands/uptor/assets/mentor-1.jpg"
+          },
+          {
+            "name": "<p>Prof. James Chen</p>",
+            "role": "<p>Machine Learning Expert</p>",
+            "company": "<p>AI Research Lab</p>",
+            "image": "/brands/uptor/assets/mentor-2.jpg"
+          },
+          {
+            "name": "<p>Lisa Thompson</p>",
+            "role": "<p>UX Design Lead</p>",
+            "company": "<p>Digital Agency</p>",
+            "image": "/brands/uptor/assets/mentor-3.jpg"
+          },
+          {
+            "name": "<p>Mark Rodriguez</p>",
+            "role": "<p>Full Stack Developer</p>",
+            "company": "<p>Startup Inc</p>",
+            "image": "/brands/uptor/assets/mentor-4.jpg"
+          }
+        ]
+      }
+    },
+    "testimonials": {
+      "visible": true,
+      "order": 7,
+      "content": {
+        "badge": "<p>Student Success Stories</p>",
+        "title": "<p>What Our Learners Say</p>",
+        "items": [
+          {
+            "title": "<p>Life-Changing Experience</p>",
+            "description": "<p>Uptor completely transformed my career. The courses are well-structured and the instructors are amazing!</p>",
+            "name": "<p>Amanda Foster</p>",
+            "role": "<p>Data Analyst</p>",
+            "image": "/brands/uptor/assets/testimonial-1.jpg"
+          },
+          {
+            "title": "<p>Best Learning Platform</p>",
+            "description": "<p>The quality of content and support is exceptional. I've learned more in 3 months than in years of traditional education.</p>",
+            "name": "<p>Robert Kim</p>",
+            "role": "<p>Web Developer</p>",
+            "image": "/brands/uptor/assets/testimonial-2.jpg"
+          },
+          {
+            "title": "<p>Career Game-Changer</p>",
+            "description": "<p>Thanks to Uptor's courses and certification, I landed my dream job. Highly recommend!</p>",
+            "name": "<p>Emily Watson</p>",
+            "role": "<p>UX Designer</p>",
+            "image": "/brands/uptor/assets/testimonial-3.jpg"
+          }
+        ],
+        "items2": [
+          {
+            "title": "<p>Outstanding Quality</p>",
+            "description": "<p>The instructors are knowledgeable and the curriculum is up-to-date with industry standards.</p>",
+            "name": "<p>David Park</p>",
+            "role": "<p>Software Engineer</p>",
+            "image": "/brands/uptor/assets/testimonial-4.jpg"
+          },
+          {
+            "title": "<p>Worth Every Penny</p>",
+            "description": "<p>I've tried many online learning platforms, but Uptor stands out for its quality and support.</p>",
+            "name": "<p>Jennifer Liu</p>",
+            "role": "<p>Product Manager</p>",
+            "image": "/brands/uptor/assets/testimonial-5.jpg"
+          },
+          {
+            "title": "<p>Highly Recommended</p>",
+            "description": "<p>If you're serious about advancing your skills, Uptor is the perfect choice. Can't recommend enough!</p>",
+            "name": "<p>Michael Torres</p>",
+            "role": "<p>DevOps Engineer</p>",
+            "image": "/brands/uptor/assets/testimonial-6.jpg"
+          }
+        ]
+      }
+    },
+    "cta": {
+      "visible": true,
+      "order": 8,
       "content": {
         "title": "Ready to Start Your Learning Journey?",
         "subtitle": "Join thousands of learners advancing their careers with Uptor",

@@ -149,9 +149,162 @@
         }
       }
     },
-    "cta": {
+    "faq": {
       "visible": true,
       "order": 5,
+      "content": {
+        "title": "<p>Frequently Asked Questions</p>",
+        "subtitle": "<p>Everything you need to know about Chitti's AI automation platform</p>",
+        "items": [
+          {
+            "question": "<p>How quickly can I get started?</p>",
+            "answer": "<p>You can get started in as little as 30 minutes. Our streamlined onboarding process and intuitive interface make it easy to set up your first automation workflow.</p>"
+          },
+          {
+            "question": "<p>Can Chitti integrate with our existing tools?</p>",
+            "answer": "<p>Yes! Chitti offers 100+ native integrations with popular business tools like Slack, Salesforce, Jira, and more. We also provide REST APIs for custom integrations.</p>"
+          },
+          {
+            "question": "<p>Is my data secure with Chitti?</p>",
+            "answer": "<p>Absolutely. We use enterprise-grade encryption, comply with SOC 2 Type II standards, and provide GDPR compliance. Your data is always protected and backed up.</p>"
+          },
+          {
+            "question": "<p>What kind of support do you offer?</p>",
+            "answer": "<p>We provide 24/7 customer support via chat, email, and phone. Enterprise plans include dedicated account managers and priority support.</p>"
+          },
+          {
+            "question": "<p>Can I cancel anytime?</p>",
+            "answer": "<p>Yes, you can cancel your subscription at any time. We also offer a 14-day free trial so you can test Chitti risk-free.</p>"
+          }
+        ]
+      }
+    },
+    "bonuses": {
+      "visible": true,
+      "order": 6,
+      "content": {
+        "title": "<p>AI Automation Bonuses</p>",
+        "subtitle": "<p>Start your free trial today and get these exclusive resources</p>",
+        "items": [
+          {
+            "title": "<p>Quick Start Package</p>",
+            "image": "/brands/chitti/assets/bonus-1.jpg",
+            "name": "<p>Automation Templates</p>",
+            "type": "<p>50+ Pre-built Workflows</p>",
+            "price": "<p>Value: $499</p>",
+            "footerImage": "/icons/gift.svg"
+          },
+          {
+            "title": "<p>Advanced Training</p>",
+            "image": "/brands/chitti/assets/bonus-2.jpg",
+            "name": "<p>AI Masterclass</p>",
+            "type": "<p>12 Video Modules</p>",
+            "price": "<p>Value: $799</p>",
+            "footerImage": "/icons/gift.svg"
+          },
+          {
+            "title": "<p>Priority Support</p>",
+            "image": "/brands/chitti/assets/bonus-3.jpg",
+            "name": "<p>Expert Assistance</p>",
+            "type": "<p>1 Month Premium</p>",
+            "price": "<p>Value: $299</p>",
+            "footerImage": "/icons/gift.svg"
+          }
+        ]
+      }
+    },
+    "mentors": {
+      "visible": true,
+      "order": 7,
+      "content": {
+        "designVariant": "alternative",
+        "alternativeTitle": "<p>Learn from AI & Automation Experts</p>",
+        "alternativeSubtitle": "<p>Our team consists of industry veterans with deep expertise in AI, automation, and enterprise transformation</p>",
+        "mentors": [
+          {
+            "name": "<p>Dr. Alex Thompson</p>",
+            "role": "<p>AI Research Director</p>",
+            "company": "<p>Chitti Labs</p>",
+            "image": "/brands/chitti/assets/mentor-1.jpg"
+          },
+          {
+            "name": "<p>Maria Garcia</p>",
+            "role": "<p>Automation Strategist</p>",
+            "company": "<p>Enterprise Solutions</p>",
+            "image": "/brands/chitti/assets/mentor-2.jpg"
+          },
+          {
+            "name": "<p>James Lee</p>",
+            "role": "<p>Machine Learning Engineer</p>",
+            "company": "<p>AI Innovation Team</p>",
+            "image": "/brands/chitti/assets/mentor-3.jpg"
+          },
+          {
+            "name": "<p>Sophia Chen</p>",
+            "role": "<p>Product Designer</p>",
+            "company": "<p>User Experience</p>",
+            "image": "/brands/chitti/assets/mentor-4.jpg"
+          }
+        ]
+      }
+    },
+    "testimonials": {
+      "visible": true,
+      "order": 8,
+      "content": {
+        "badge": "<p>Customer Success Stories</p>",
+        "title": "<p>How Companies Are Transforming with Chitti</p>",
+        "items": [
+          {
+            "title": "<p>Game-Changing Automation</p>",
+            "description": "<p>Chitti transformed how our team operates. We've reduced manual tasks by 80% and our team can now focus on strategic initiatives.</p>",
+            "name": "<p>Robert Martinez</p>",
+            "role": "<p>Operations Manager, TechCorp</p>",
+            "image": "/brands/chitti/assets/testimonial-1.jpg"
+          },
+          {
+            "title": "<p>Exceptional ROI</p>",
+            "description": "<p>We saw a 300% ROI within the first 6 months. Chitti's AI capabilities have revolutionized our workflow automation.</p>",
+            "name": "<p>Lisa Wang</p>",
+            "role": "<p>CTO, StartupHub</p>",
+            "image": "/brands/chitti/assets/testimonial-2.jpg"
+          },
+          {
+            "title": "<p>Best Decision Ever</p>",
+            "description": "<p>Implementing Chitti was the best business decision we made this year. The time savings alone justify the investment tenfold.</p>",
+            "name": "<p>David Kim</p>",
+            "role": "<p>CEO, GrowthCo</p>",
+            "image": "/brands/chitti/assets/testimonial-3.jpg"
+          }
+        ],
+        "items2": [
+          {
+            "title": "<p>Incredibly Powerful</p>",
+            "description": "<p>The AI capabilities in Chitti are mind-blowing. It's like having a team of experts working 24/7 on your business processes.</p>",
+            "name": "<p>Amanda Foster</p>",
+            "role": "<p>Process Engineer, InnovateInc</p>",
+            "image": "/brands/chitti/assets/testimonial-4.jpg"
+          },
+          {
+            "title": "<p>Seamless Integration</p>",
+            "description": "<p>Chitti integrated perfectly with our existing stack. The implementation was smooth and the support team was incredible.</p>",
+            "name": "<p>Michael Torres</p>",
+            "role": "<p>IT Director, EnterpriseCo</p>",
+            "image": "/brands/chitti/assets/testimonial-5.jpg"
+          },
+          {
+            "title": "<p>Competitive Advantage</p>",
+            "description": "<p>Chitti has given us a significant competitive advantage. We're now operating more efficiently than ever before.</p>",
+            "name": "<p>Jennifer Liu</p>",
+            "role": "<p>VP Operations, ScaleUp</p>",
+            "image": "/brands/chitti/assets/testimonial-6.jpg"
+          }
+        ]
+      }
+    },
+    "cta": {
+      "visible": true,
+      "order": 9,
       "content": {
         "text": "<p>Ready to Transform Your Workflow?</p>",
         "button": {

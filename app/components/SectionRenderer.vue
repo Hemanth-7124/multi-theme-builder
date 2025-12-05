@@ -38,6 +38,10 @@ const FeaturesSection = defineAsyncComponent(() => import('./sections/FeaturesSe
 const CtaSection = defineAsyncComponent(() => import('./sections/CtaSection.vue'))
 const StatsSection = defineAsyncComponent(() => import('./sections/StatsSection.vue'))
 const VideoSection = defineAsyncComponent(() => import('./sections/VideoSection.vue'))
+const BonusesSection = defineAsyncComponent(() => import('./sections/BonusesSection.vue'))
+const TestimonialsSection = defineAsyncComponent(() => import('./sections/TestimonialsSection.vue'))
+const FaqSection = defineAsyncComponent(() => import('./sections/FaqSection.vue'))
+const MentorsSection = defineAsyncComponent(() => import('./sections/MentorsSection.vue'))
 
 // Map section types to components
 const sectionComponents = {
@@ -45,7 +49,11 @@ const sectionComponents = {
   features: FeaturesSection,
   cta: CtaSection,
   stats: StatsSection,
-  video: VideoSection
+  video: VideoSection,
+  bonuses: BonusesSection,
+  testimonials: TestimonialsSection,
+  faq: FaqSection,
+  mentors: MentorsSection
 }
 
 // Get CSS classes for section

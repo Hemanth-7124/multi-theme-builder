@@ -54,108 +54,162 @@
         ]
       }
     },
-    "testimonials": {
+    "faq": {
       "visible": true,
       "order": 4,
       "content": {
-        "title": "What Our Clients Say",
-        "subtitle": "Trusted by leading enterprises worldwide for project management excellence",
-        "testimonials": [
+        "title": "<p>Frequently Asked Questions</p>",
+        "subtitle": "<p>Everything you need to know about PMC's enterprise solutions</p>",
+        "items": [
           {
-            "id": "1",
-            "name": "Sarah Williams",
-            "role": "VP of Operations",
-            "company": "Global Tech Solutions",
-            "avatar": "/brands/pmc/assets/testimonials/sarah.jpg",
-            "rating": 5,
-            "content": "PMC has revolutionized how we manage complex enterprise projects. The resource optimization features alone saved us 30% in operational costs. It's an indispensable tool for any large organization.",
-            "result": {
-              "label": "ROI Improvement",
-              "value": "45%"
-            }
+            "question": "<p>How scalable is PMC for large enterprises?</p>",
+            "answer": "<p>PMC is designed for enterprise scale, supporting unlimited projects, users, and resources. Our cloud infrastructure can handle millions of tasks and provides 99.9% uptime SLA.</p>"
           },
           {
-            "id": "2",
-            "name": "Michael Chen",
-            "role": "Program Director",
-            "company": "Innovation Labs Inc",
-            "avatar": "/brands/pmc/assets/testimonials/michael.jpg",
-            "rating": 5,
-            "content": "The advanced reporting capabilities give us real-time visibility into project health. We've improved our on-time delivery rate from 75% to 98% since implementing PMC.",
-            "result": {
-              "label": "On-Time Delivery",
-              "value": "98%"
-            }
+            "question": "<p>Can PMC integrate with our existing systems?</p>",
+            "answer": "<p>Yes, PMC offers seamless integration with ERP, CRM, HR systems, and over 100+ enterprise applications through APIs and pre-built connectors.</p>"
           },
           {
-            "id": "3",
-            "name": "Emily Rodriguez",
-            "role": "CTO",
-            "company": "Digital Dynamics",
-            "avatar": "/brands/pmc/assets/testimonials/emily.jpg",
-            "rating": 5,
-            "content": "What sets PMC apart is its scalability. We manage over 500 concurrent projects across 20 countries, and PMC handles it seamlessly. The collaboration tools are unmatched for distributed teams.",
-            "result": {
-              "label": "Team Productivity",
-              "value": "+60%"
-            }
+            "question": "<p>What kind of support do you provide?</p>",
+            "answer": "<p>We offer 24/7 enterprise support with dedicated account managers, priority response times, and comprehensive training programs for your teams.</p>"
           },
           {
-            "id": "4",
-            "name": "David Kumar",
-            "role": "CEO",
-            "company": "Strategic Ventures",
-            "avatar": "/brands/pmc/assets/testimonials/david.jpg",
-            "rating": 5,
-            "content": "PMC's enterprise support is exceptional. They understand the unique challenges of large-scale project management and provide solutions that truly work. The customization options are fantastic.",
-            "result": {
-              "label": "Client Satisfaction",
-              "value": "99%"
-            }
+            "question": "<p>Is PMC compliant with industry standards?</p>",
+            "answer": "<p>Absolutely. PMC is SOC 2 Type II certified, GDPR compliant, and meets ISO 27001 security standards for enterprise data protection.</p>"
           },
           {
-            "id": "5",
-            "name": "Lisa Thompson",
-            "role": "Portfolio Manager",
-            "company": "Quantum Industries",
-            "avatar": "/brands/pmc/assets/testimonials/lisa.jpg",
-            "rating": 5,
-            "content": "The portfolio management features give us insights we never had before. We can now make data-driven decisions about resource allocation and project prioritization. It's transformed our strategic planning.",
-            "result": {
-              "label": "Efficiency Gain",
-              "value": "75%"
-            }
+            "question": "<p>Can we customize PMC for our specific needs?</p>",
+            "answer": "<p>Yes, PMC offers extensive customization options, workflows, and reporting capabilities tailored to your organization's unique requirements.</p>"
+          }
+        ]
+      }
+    },
+    "bonuses": {
+      "visible": true,
+      "order": 5,
+      "content": {
+        "title": "<p>Enterprise Implementation Bonuses</p>",
+        "subtitle": "<p>Sign up today and get these premium enterprise resources</p>",
+        "items": [
+          {
+            "title": "<p>Implementation Package</p>",
+            "image": "/brands/pmc/assets/bonus-1.jpg",
+            "name": "<p>Enterprise Setup</p>",
+            "type": "<p>Premium Onboarding</p>",
+            "price": "<p>Value: $5,000</p>",
+            "footerImage": "/icons/gift.svg"
           },
           {
-            "id": "6",
-            "name": "James Wilson",
-            "role": "Head of PMO",
-            "company": "Fortune 500 Financial",
-            "avatar": "/brands/pmc/assets/testimonials/james.jpg",
-            "rating": 5,
-            "content": "PMC integrates seamlessly with our existing ERP and CRM systems. The implementation was smooth, and the training resources were comprehensive. Our PMO has never been more effective.",
-            "result": {
-              "label": "Process Improvement",
-              "value": "85%"
-            }
+            "title": "<p>Training Suite</p>",
+            "image": "/brands/pmc/assets/bonus-2.jpg",
+            "name": "<p>Team Certification</p>",
+            "type": "<p>25 Training Modules</p>",
+            "price": "<p>Value: $3,000</p>",
+            "footerImage": "/icons/gift.svg"
+          },
+          {
+            "title": "<p>Consulting Credits</p>",
+            "image": "/brands/pmc/assets/bonus-3.jpg",
+            "name": "<p>Expert Services</p>",
+            "type": "<p>20 Hours Consulting</p>",
+            "price": "<p>Value: $4,000</p>",
+            "footerImage": "/icons/gift.svg"
+          }
+        ]
+      }
+    },
+    "mentors": {
+      "visible": true,
+      "order": 6,
+      "content": {
+        "designVariant": "alternative",
+        "alternativeTitle": "<p>Learn from Project Management Experts</p>",
+        "alternativeSubtitle": "<p>Our consultants are certified PMP professionals with decades of enterprise experience</p>",
+        "mentors": [
+          {
+            "name": "<p>Richard Harrison</p>",
+            "role": "<p>Senior PM Consultant</p>",
+            "company": "<p>PMC Advisory</p>",
+            "image": "/brands/pmc/assets/mentor-1.jpg"
+          },
+          {
+            "name": "<p>Patricia Morgan</p>",
+            "role": "<p>Agile Transformation Lead</p>",
+            "company": "<p>Enterprise Solutions</p>",
+            "image": "/brands/pmc/assets/mentor-2.jpg"
+          },
+          {
+            "name": "<p>William Anderson</p>",
+            "role": "<p>Portfolio Strategy Director</p>",
+            "company": "<p>Strategic PMO</p>",
+            "image": "/brands/pmc/assets/mentor-3.jpg"
+          },
+          {
+            "name": "<p>Barbara Chen</p>",
+            "role": "<p>Enterprise Implementation Specialist</p>",
+            "company": "<p>Global Consulting</p>",
+            "image": "/brands/pmc/assets/mentor-4.jpg"
+          }
+        ]
+      }
+    },
+    "testimonials": {
+      "visible": true,
+      "order": 7,
+      "content": {
+        "badge": "<p>Client Success Stories</p>",
+        "title": "<p>What Our Enterprise Clients Say</p>",
+        "items": [
+          {
+            "title": "<p>Revolutionized Project Management</p>",
+            "description": "<p>PMC has revolutionized how we manage complex enterprise projects. The resource optimization features alone saved us 30% in operational costs.</p>",
+            "name": "<p>Sarah Williams</p>",
+            "role": "<p>VP of Operations, Global Tech Solutions</p>",
+            "image": "/brands/pmc/assets/testimonial-1.jpg"
+          },
+          {
+            "title": "<p>Exceptional Reporting Capabilities</p>",
+            "description": "<p>The advanced reporting capabilities give us real-time visibility into project health. We've improved our on-time delivery rate from 75% to 98%.</p>",
+            "name": "<p>Michael Chen</p>",
+            "role": "<p>Program Director, Innovation Labs Inc</p>",
+            "image": "/brands/pmc/assets/testimonial-2.jpg"
+          },
+          {
+            "title": "<p>Unmatched Scalability</p>",
+            "description": "<p>We manage over 500 concurrent projects across 20 countries, and PMC handles it seamlessly. The collaboration tools are unmatched.</p>",
+            "name": "<p>Emily Rodriguez</p>",
+            "role": "<p>CTO, Digital Dynamics</p>",
+            "image": "/brands/pmc/assets/testimonial-3.jpg"
           }
         ],
-        "stats": [
-          { "value": "500+", "label": "Enterprise Clients" },
-          { "value": "98%", "label": "Client Retention" },
-          { "value": "4.9/5", "label": "Average Rating" },
-          { "value": "2M+", "label": "Projects Managed" }
-        ],
-        "cta": {
-          "text": "Ready to achieve similar results for your organization?",
-          "buttonText": "Schedule Your Demo",
-          "href": "#contact"
-        }
+        "items2": [
+          {
+            "title": "<p>Enterprise-Grade Support</p>",
+            "description": "<p>PMC's enterprise support is exceptional. They understand the unique challenges of large-scale project management.</p>",
+            "name": "<p>David Kumar</p>",
+            "role": "<p>CEO, Strategic Ventures</p>",
+            "image": "/brands/pmc/assets/testimonial-4.jpg"
+          },
+          {
+            "title": "<p>Strategic Planning Transformation</p>",
+            "description": "<p>The portfolio management features give us insights we never had before. It's transformed our strategic planning.</p>",
+            "name": "<p>Lisa Thompson</p>",
+            "role": "<p>Portfolio Manager, Quantum Industries</p>",
+            "image": "/brands/pmc/assets/testimonial-5.jpg"
+          },
+          {
+            "title": "<p>Seamless Integration</p>",
+            "description": "<p>PMC integrates seamlessly with our existing ERP and CRM systems. The implementation was smooth and comprehensive.</p>",
+            "name": "<p>James Wilson</p>",
+            "role": "<p>Head of PMO, Fortune 500 Financial</p>",
+            "image": "/brands/pmc/assets/testimonial-6.jpg"
+          }
+        ]
       }
     },
     "cta": {
       "visible": true,
-      "order": 5,
+      "order": 8,
       "content": {
         "title": "Ready to Elevate Your Project Management?",
         "subtitle": "Join industry leaders who trust PMC for their project success",
@@ -165,7 +219,7 @@
     },
     "footer": {
       "visible": true,
-      "order": 6,
+      "order": 9,
       "content": {
         "companyName": "PMC Solutions",
         "tagline": "Enterprise Project Management Excellence"

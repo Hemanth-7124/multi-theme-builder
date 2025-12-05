@@ -160,10 +160,171 @@
       }
     },
     {
+      "id": "bonuses",
+      "type": "bonuses",
+      "visible": true,
+      "order": 5,
+      "content": {
+        "title": "<p>Special Bonuses for Early Birds</p>",
+        "subtitle": "<p>Sign up today and get these exclusive resources</p>",
+        "items": [
+          {
+            "title": "<p>Quick Start Bonus</p>",
+            "image": "/brands/chitti/assets/bonus-1.jpg",
+            "name": "<p>Starter Kit</p>",
+            "type": "<p>Free Resource Pack</p>",
+            "price": "<p>Value: $299</p>",
+            "footerImage": "/icons/gift.svg"
+          },
+          {
+            "title": "<p>Advanced Training</p>",
+            "image": "/brands/chitti/assets/bonus-2.jpg",
+            "name": "<p>Masterclass Course</p>",
+            "type": "<p>10 Video Lessons</p>",
+            "price": "<p>Value: $499</p>",
+            "footerImage": "/icons/gift.svg"
+          },
+          {
+            "title": "<p>Community Access</p>",
+            "image": "/brands/chitti/assets/bonus-3.jpg",
+            "name": "<p>Private Network</p>",
+            "type": "<p>Lifetime Membership</p>",
+            "price": "<p>Value: $199</p>",
+            "footerImage": "/icons/gift.svg"
+          }
+        ]
+      }
+    },
+    {
+      "id": "testimonials",
+      "type": "testimonials",
+      "visible": true,
+      "order": 6,
+      "content": {
+        "badge": "<p>Success Stories</p>",
+        "title": "<p>What Our Students Say</p>",
+        "items": [
+          {
+            "title": "<p>Life-Changing Experience</p>",
+            "description": "<p>This workshop completely transformed my career. The skills I learned helped me land my dream job within 3 months.</p>",
+            "name": "<p>Michael Rodriguez</p>",
+            "role": "<p>Senior Developer</p>",
+            "image": "/brands/chitti/assets/testimonial-1.jpg"
+          },
+          {
+            "title": "<p>Worth Every Penny</p>",
+            "description": "<p>The quality of instruction and mentorship is exceptional. I've gained practical skills that I use daily in my work.</p>",
+            "name": "<p>Sarah Kim</p>",
+            "role": "<p>Product Designer</p>",
+            "image": "/brands/chitti/assets/testimonial-2.jpg"
+          },
+          {
+            "title": "<p>Above and Beyond</p>",
+            "description": "<p>The instructors go above and beyond to ensure student success. The community support is invaluable.</p>",
+            "name": "<p>David Chen</p>",
+            "role": "<p>Data Scientist</p>",
+            "image": "/brands/chitti/assets/testimonial-3.jpg"
+          }
+        ],
+        "items2": [
+          {
+            "title": "<p>Game-Changer</p>",
+            "description": "<p>I went from beginner to professional in just 8 weeks. This program is a true game-changer.</p>",
+            "name": "<p>Emily Johnson</p>",
+            "role": "<p>UX Researcher</p>",
+            "image": "/brands/chitti/assets/testimonial-4.jpg"
+          },
+          {
+            "title": "<p>Incredible Value</p>",
+            "description": "<p>The hands-on projects and real-world experience provided are unmatched anywhere else.</p>",
+            "name": "<p>Robert Taylor</p>",
+            "role": "<p>Backend Engineer</p>",
+            "image": "/brands/chitti/assets/testimonial-5.jpg"
+          },
+          {
+            "title": "<p>Highly Recommended</p>",
+            "description": "<p>If you're serious about advancing your career, this is the program for you. Absolutely recommended!</p>",
+            "name": "<p>Lisa Wang</p>",
+            "role": "<p>DevOps Engineer</p>",
+            "image": "/brands/chitti/assets/testimonial-6.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "id": "faq",
+      "type": "faq",
+      "visible": true,
+      "order": 7,
+      "content": {
+        "title": "<p>Frequently Asked Questions</p>",
+        "subtitle": "<p>Everything you need to know about our workshop</p>",
+        "items": [
+          {
+            "question": "<p>How long is the workshop?</p>",
+            "answer": "<p>The workshop runs for 8 weeks with flexible scheduling to accommodate different time zones and work commitments.</p>"
+          },
+          {
+            "question": "<p>Do I need prior experience?</p>",
+            "answer": "<p>No prior experience is required. We welcome beginners and provide foundational training to get you started.</p>"
+          },
+          {
+            "question": "<p>What if I miss a live session?</p>",
+            "answer": "<p>All sessions are recorded and available for lifetime access. You can catch up at your own pace.</p>"
+          },
+          {
+            "question": "<p>Is there job placement assistance?</p>",
+            "answer": "<p>Yes, we provide career coaching, resume reviews, and connect you with our network of hiring partners.</p>"
+          },
+          {
+            "question": "<p>Can I pay in installments?</p>",
+            "answer": "<p>Yes, we offer flexible payment plans to make the workshop accessible to everyone.</p>"
+          }
+        ]
+      }
+    },
+    {
+      "id": "mentors",
+      "type": "mentors",
+      "visible": true,
+      "order": 8,
+      "content": {
+        "designVariant": "alternative",
+        "alternativeTitle": "<p>Learn from Industry Experts</p>",
+        "alternativeSubtitle": "<p>Our mentors are professionals from top tech companies with real-world experience</p>",
+        "mentors": [
+          {
+            "name": "<p>Alex Thompson</p>",
+            "role": "<p>Principal Engineer</p>",
+            "company": "<p>Tech Company A</p>",
+            "image": "/brands/chitti/assets/mentor-1.jpg"
+          },
+          {
+            "name": "<p>Jessica Martinez</p>",
+            "role": "<p>Senior Product Manager</p>",
+            "company": "<p>Tech Company B</p>",
+            "image": "/brands/chitti/assets/mentor-2.jpg"
+          },
+          {
+            "name": "<p>David Park</p>",
+            "role": "<p>Lead Designer</p>",
+            "company": "<p>Tech Company C</p>",
+            "image": "/brands/chitti/assets/mentor-3.jpg"
+          },
+          {
+            "name": "<p>Rachel Green</p>",
+            "role": "<p>Data Science Lead</p>",
+            "company": "<p>Tech Company D</p>",
+            "image": "/brands/chitti/assets/mentor-4.jpg"
+          }
+        ]
+      }
+    },
+    {
       "id": "cta",
       "type": "cta",
       "visible": true,
-      "order": 5,
+      "order": 9,
       "content": {
         "text": "<p>Ready to Transform Your Career?</p>",
         "button": {
