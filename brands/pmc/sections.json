@@ -54,9 +54,108 @@
         ]
       }
     },
-    "cta": {
+    "testimonials": {
       "visible": true,
       "order": 4,
+      "content": {
+        "title": "What Our Clients Say",
+        "subtitle": "Trusted by leading enterprises worldwide for project management excellence",
+        "testimonials": [
+          {
+            "id": "1",
+            "name": "Sarah Williams",
+            "role": "VP of Operations",
+            "company": "Global Tech Solutions",
+            "avatar": "/brands/pmc/assets/testimonials/sarah.jpg",
+            "rating": 5,
+            "content": "PMC has revolutionized how we manage complex enterprise projects. The resource optimization features alone saved us 30% in operational costs. It's an indispensable tool for any large organization.",
+            "result": {
+              "label": "ROI Improvement",
+              "value": "45%"
+            }
+          },
+          {
+            "id": "2",
+            "name": "Michael Chen",
+            "role": "Program Director",
+            "company": "Innovation Labs Inc",
+            "avatar": "/brands/pmc/assets/testimonials/michael.jpg",
+            "rating": 5,
+            "content": "The advanced reporting capabilities give us real-time visibility into project health. We've improved our on-time delivery rate from 75% to 98% since implementing PMC.",
+            "result": {
+              "label": "On-Time Delivery",
+              "value": "98%"
+            }
+          },
+          {
+            "id": "3",
+            "name": "Emily Rodriguez",
+            "role": "CTO",
+            "company": "Digital Dynamics",
+            "avatar": "/brands/pmc/assets/testimonials/emily.jpg",
+            "rating": 5,
+            "content": "What sets PMC apart is its scalability. We manage over 500 concurrent projects across 20 countries, and PMC handles it seamlessly. The collaboration tools are unmatched for distributed teams.",
+            "result": {
+              "label": "Team Productivity",
+              "value": "+60%"
+            }
+          },
+          {
+            "id": "4",
+            "name": "David Kumar",
+            "role": "CEO",
+            "company": "Strategic Ventures",
+            "avatar": "/brands/pmc/assets/testimonials/david.jpg",
+            "rating": 5,
+            "content": "PMC's enterprise support is exceptional. They understand the unique challenges of large-scale project management and provide solutions that truly work. The customization options are fantastic.",
+            "result": {
+              "label": "Client Satisfaction",
+              "value": "99%"
+            }
+          },
+          {
+            "id": "5",
+            "name": "Lisa Thompson",
+            "role": "Portfolio Manager",
+            "company": "Quantum Industries",
+            "avatar": "/brands/pmc/assets/testimonials/lisa.jpg",
+            "rating": 5,
+            "content": "The portfolio management features give us insights we never had before. We can now make data-driven decisions about resource allocation and project prioritization. It's transformed our strategic planning.",
+            "result": {
+              "label": "Efficiency Gain",
+              "value": "75%"
+            }
+          },
+          {
+            "id": "6",
+            "name": "James Wilson",
+            "role": "Head of PMO",
+            "company": "Fortune 500 Financial",
+            "avatar": "/brands/pmc/assets/testimonials/james.jpg",
+            "rating": 5,
+            "content": "PMC integrates seamlessly with our existing ERP and CRM systems. The implementation was smooth, and the training resources were comprehensive. Our PMO has never been more effective.",
+            "result": {
+              "label": "Process Improvement",
+              "value": "85%"
+            }
+          }
+        ],
+        "stats": [
+          { "value": "500+", "label": "Enterprise Clients" },
+          { "value": "98%", "label": "Client Retention" },
+          { "value": "4.9/5", "label": "Average Rating" },
+          { "value": "2M+", "label": "Projects Managed" }
+        ],
+        "cta": {
+          "text": "Ready to achieve similar results for your organization?",
+          "buttonText": "Schedule Your Demo",
+          "href": "#contact"
+        }
+      }
+    },
+    "cta": {
+      "visible": true,
+      "order": 5,
       "content": {
         "title": "Ready to Elevate Your Project Management?",
         "subtitle": "Join industry leaders who trust PMC for their project success",
@@ -66,7 +165,7 @@
     },
     "footer": {
       "visible": true,
-      "order": 5,
+      "order": 6,
       "content": {
         "companyName": "PMC Solutions",
         "tagline": "Enterprise Project Management Excellence"

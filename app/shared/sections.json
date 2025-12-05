@@ -73,10 +73,57 @@
       }
     },
     {
+      "id": "testimonials",
+      "type": "testimonials",
+      "visible": true,
+      "order": 4,
+      "content": {
+        "title": "Client Testimonials",
+        "subtitle": "Hear what our clients have to say about their experience",
+        "testimonials": [
+          {
+            "id": "1",
+            "name": "John Doe",
+            "role": "Project Manager",
+            "company": "Tech Corp",
+            "rating": 5,
+            "content": "This platform has transformed how we manage projects. Our productivity has increased significantly."
+          },
+          {
+            "id": "2",
+            "name": "Jane Smith",
+            "role": "CEO",
+            "company": "Startup Inc",
+            "rating": 5,
+            "content": "Excellent service and support. The team went above and beyond to meet our needs."
+          },
+          {
+            "id": "3",
+            "name": "Mike Johnson",
+            "role": "CTO",
+            "company": "Enterprise Co",
+            "rating": 5,
+            "content": "Best investment we've made. The ROI has been outstanding."
+          }
+        ],
+        "stats": [
+          { "value": "500+", "label": "Happy Clients" },
+          { "value": "99%", "label": "Satisfaction Rate" },
+          { "value": "24/7", "label": "Support Available" },
+          { "value": "50+", "label": "Countries Served" }
+        ],
+        "cta": {
+          "text": "Ready to join our successful clients?",
+          "buttonText": "Get Started",
+          "href": "#contact"
+        }
+      }
+    },
+    {
       "id": "faq",
       "type": "faq",
       "visible": true,
-      "order": 4,
+      "order": 5,
       "content": {
         "title": "Frequently Asked Questions",
         "subtitle": "Find answers to common questions",
@@ -105,7 +152,7 @@
       "id": "cta",
       "type": "cta",
       "visible": true,
-      "order": 5,
+      "order": 6,
       "content": {
         "title": "Ready to Get Started?",
         "subtitle": "Join thousands of satisfied customers",
@@ -117,7 +164,7 @@
       "id": "footer",
       "type": "footer",
       "visible": true,
-      "order": 6,
+      "order": 7,
       "content": {
         "companyName": "Company Name",
         "tagline": "Your trusted partner for digital solutions"
