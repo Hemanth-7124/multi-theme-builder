@@ -196,7 +196,6 @@ export default defineComponent({
     });
 
     await this.refreshBrands();
-    await this.clearBrandState();
   },
 
   methods: {
@@ -212,11 +211,6 @@ export default defineComponent({
       } finally {
         this.pending = false;
       }
-    },
-
-    async clearBrandState() {
-      const { setBrandState } = await import("~/composables/useBrandState");
-      setBrandState(null);
     },
   },
 });

@@ -106,7 +106,7 @@ export default defineComponent({
           sections
         }
 
-        await this.updateBrandState()
+        await this.applyBrandTheme()
         this.applyMetaTags()
 
       } catch (err: any) {
@@ -117,15 +117,11 @@ export default defineComponent({
       }
     },
 
-    async updateBrandState() {
-      const { setBrandState } = await import('~/composables/useBrandState')
-      setBrandState(this.brandData)
-
+    async applyBrandTheme() {
       if (process.client && this.brandData?.theme?.tokens) {
         nextTick(async () => {
-          const { useTokens } = await import('~/composables/useTokens')
-          const { applyBrandTheme } = useTokens()
-          applyBrandTheme(this.brandData.theme, this.brandData.id)
+          const { tokenEngine } = await import('../../tokens/engine')
+          tokenEngine.applyTokens(this.brandData.theme, this.brandData.id)
         })
       }
     },

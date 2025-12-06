@@ -1,3 +1,20 @@
+/**
+ * COMPOSABLE RATIONALE:
+ *
+ * WHY NEEDED:
+ * - Shared across 3+ components (pages/[brand].vue, layouts/brand-shell.vue, pages/index.vue)
+ * - Complex business logic with caching, validation, and dynamic imports
+ * - Performance optimization through configuration caching
+ * - Centralized error handling for brand operations
+ *
+ * PROBLEM SOLVED:
+ * - Eliminates code duplication for brand discovery and loading
+ * - Provides consistent API for brand-related operations
+ * - Handles brand configuration validation and caching at appropriate level
+ *
+ * REUSABILITY: High - Multiple components need to load and validate brand configs
+ */
+
 import type { BrandConfig } from '../../tokens/types'
 
 // Cache for brand configurations

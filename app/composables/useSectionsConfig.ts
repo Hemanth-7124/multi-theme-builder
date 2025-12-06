@@ -1,3 +1,22 @@
+/**
+ * COMPOSABLE RATIONALE:
+ *
+ * WHY NEEDED:
+ * - Complex business logic for section configuration merging and filtering
+ * - Implements specific visibility rules that would be cumbersome in components
+ * - Single responsibility focused on section configuration logic
+ *
+ * PROBLEMS SOLVED:
+ * - Handles deep merging of shared and brand-specific section configurations
+ * - Implements 5 specific visibility rules for section display
+ * - Centralizes complex business logic that shouldn't be in UI components
+ * - Provides consistent section filtering and sorting across brand pages
+ *
+ * REUSABILITY: High - Critical for brand page rendering, could be used in other contexts
+ *
+ * COMPLEXITY: Justified - The visibility rules and deep merging logic are non-trivial
+ */
+
 import type { SectionConfig } from '../../tokens/types'
 
 // Deep merge function for objects
