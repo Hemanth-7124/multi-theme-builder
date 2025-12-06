@@ -147,9 +147,7 @@
 import { defineComponent } from "vue";
 import { useRoute, useHead } from "#imports";
 
-definePageMeta({
-  layout: "default",
-});
+// Using default Nuxt layout
 
 export default defineComponent({
   name: "BrandRouterPage",
