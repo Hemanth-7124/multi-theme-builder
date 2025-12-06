@@ -107,7 +107,7 @@ export default defineComponent({
         }
 
         await this.applyBrandTheme()
-        this.applyMetaTags()
+     
 
       } catch (err: any) {
         this.error = err
@@ -126,19 +126,7 @@ export default defineComponent({
       }
     },
 
-    applyMetaTags() {
-      if (!this.brandConfig) return
 
-      useHead({
-        title: this.brandConfig.name,
-        meta: [
-          { name: 'description', content: this.brandConfig.description },
-          { name: 'og:title', content: this.brandConfig.name },
-          { name: 'og:description', content: this.brandConfig.description },
-          { name: 'og:image', content: this.brandConfig.logo }
-        ]
-      })
-    }
   }
 })
 </script>

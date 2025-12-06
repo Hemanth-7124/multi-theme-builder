@@ -39,7 +39,7 @@ export default defineComponent({
         id: 'unknown',
         name: 'Unknown Brand',
         description: 'Brand configuration not available',
-        logo: '/placeholder-logo.svg',
+       
         favicon: '/favicon.ico',
         theme: {
           layout: 'modern',
