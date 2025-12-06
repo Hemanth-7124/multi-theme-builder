@@ -147,6 +147,7 @@ export default {
   ],
   cta: {
     primary: 'Request Demo',
+    
     secondary: 'Contact Sales'
   }
 }  as BrandConfig
