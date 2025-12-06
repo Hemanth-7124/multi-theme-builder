@@ -8,63 +8,84 @@
     :style="computedStyles"
     :data-section-id="section.id"
   >
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="container px-4 mx-auto sm:px-6 lg:px-8">
       <!-- Slot for component content -->
       <slot />
     </div>
   </section>
 </template>
 
-<script setup lang="ts">
+
+<script lang="ts">
+import { defineComponent, computed, provide } from 'vue'
 import type { SectionConfig } from '../../../tokens/types'
 
-interface Props {
-  section: SectionConfig
-  content?: any
-  isVisible?: boolean
-  customStyles?: Record<string, any>
-}
+export default defineComponent({
+  name: 'SectionWrapper',
 
-const props = withDefaults(defineProps<Props>(), {
-  isVisible: true,
-  customStyles: () => ({})
-})
+  props: {
+    section: {
+      type: Object as () => SectionConfig,
+      required: true
+    },
+    content: {
+      type: Object as () => any,
+      default: () => ({})
+    },
+    isVisible: {
+      type: Boolean,
+      default: true
+    },
+    customStyles: {
+      type: Object as () => Record<string, any>,
+      default: () => ({})
+    }
+  },
 
-// Extract section type from section config
-const sectionType = computed(() => props.section.type || 'unknown')
+  setup(props) {
+    // Compute section type
+    const sectionType = computed(() => props.section.type || 'unknown')
 
-// Compute section styles based on tokens and custom styles
-const computedStyles = computed(() => {
-  const styles: Record<string, any> = {}
+    // Compute final styles
+    const computedStyles = computed(() => {
+      const styles: Record<string, any> = {}
 
-  // Apply custom background if specified
-  if (props.content?.backgroundImage) {
-    styles.backgroundImage = `url(${props.content.backgroundImage})`
-    styles.backgroundSize = 'cover'
-    styles.backgroundPosition = 'center'
-    styles.backgroundRepeat = 'no-repeat'
-  }
-
-  // Apply custom styles from props
-  Object.assign(styles, props.customStyles)
-
-  // Apply section-specific styles from section config
-  if (props.section.styles) {
-    Object.entries(props.section.styles).forEach(([key, value]) => {
-      if (key !== 'className') {
-        styles[key] = value
+      // Background image
+      if (props.content?.backgroundImage) {
+        styles.backgroundImage = `url(${props.content.backgroundImage})`
+        styles.backgroundSize = 'cover'
+        styles.backgroundPosition = 'center'
+        styles.backgroundRepeat = 'no-repeat'
       }
+
+      // Custom style overrides from props
+      Object.assign(styles, props.customStyles)
+
+      // Style overrides from section config
+      if (props.section.styles) {
+        Object.entries(props.section.styles).forEach(([key, value]) => {
+          if (key !== 'className') {
+            styles[key] = value
+          }
+        })
+      }
+
+      return styles
     })
+
+    // Provide to children
+    provide('sectionContent', computed(() => props.content))
+    provide('sectionConfig', computed(() => props.section))
+    provide('sectionType', sectionType)
+
+    return {
+      sectionType,
+      computedStyles
+    }
   }
-
-  return styles
 })
-
-// Provide common reactive values to child components
-provide('sectionContent', computed(() => props.content))
-provide('sectionConfig', computed(() => props.section))
-provide('sectionType', sectionType)
 </script>
+
 
 <style scoped>
 .section-adapter {

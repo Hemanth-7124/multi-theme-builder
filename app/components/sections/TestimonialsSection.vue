@@ -77,30 +77,54 @@
   </BaseAdapter>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
+import { defineComponent } from 'vue'
 import type { SectionConfig } from '../../../tokens/types'
 import BaseAdapter from './BaseAdapter.vue'
 
-interface Props {
-  section: SectionConfig
-  content?: any
-}
+export default defineComponent({
+  name: 'TestimonialsInfiniteScrollAdapter',
 
-const props = defineProps<Props>()
+  components: {
+    BaseAdapter
+  },
 
-// Create scrollable arrays by duplicating items for continuous effect
-const scrollableTestimonials = computed(() => {
-  if (!props.content?.items) return []
-  // Duplicate items 6 times for continuous scroll
-  return [...props.content.items, ...props.content.items, ...props.content.items,
-          ...props.content.items, ...props.content.items, ...props.content.items]
-})
+  props: {
+    section: {
+      type: Object as () => SectionConfig,
+      required: true
+    },
+    content: {
+      type: Object as () => any,
+      default: () => ({})
+    }
+  },
 
-const scrollableTestimonialsSecondary = computed(() => {
-  if (!props.content?.items2) return []
-  // Duplicate secondary items 6 times for continuous scroll in opposite direction
-  return [...props.content.items2, ...props.content.items2, ...props.content.items2,
-          ...props.content.items2, ...props.content.items2, ...props.content.items2]
+  computed: {
+    scrollableTestimonials(): any[] {
+      if (!this.content?.items) return []
+      return [
+        ...this.content.items,
+        ...this.content.items,
+        ...this.content.items,
+        ...this.content.items,
+        ...this.content.items,
+        ...this.content.items
+      ]
+    },
+
+    scrollableTestimonialsSecondary(): any[] {
+      if (!this.content?.items2) return []
+      return [
+        ...this.content.items2,
+        ...this.content.items2,
+        ...this.content.items2,
+        ...this.content.items2,
+        ...this.content.items2,
+        ...this.content.items2
+      ]
+    }
+  }
 })
 </script>
 

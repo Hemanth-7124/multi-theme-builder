@@ -70,70 +70,82 @@
   </BaseAdapter>
 </template>
 
-<script setup lang="ts">
-import { h } from 'vue'
+<script lang="ts">
+import { defineComponent, h, nextTick } from 'vue'
 import type { SectionConfig } from '../../../tokens/types'
 import BaseAdapter from './BaseAdapter.vue'
 
-interface Props {
-  section: SectionConfig
-  content?: any
-}
+export default defineComponent({
+  name: 'VideoStatsAdapter',
 
-const props = defineProps<Props>()
+  components: {
+    BaseAdapter
+  },
 
-// Video state
-const isPlaying = ref(false)
-const videoRef = ref<HTMLVideoElement | null>(null)
+  props: {
+    section: {
+      type: Object as () => SectionConfig,
+      required: true
+    },
+    content: {
+      type: Object as () => any,
+      default: () => ({})
+    }
+  },
 
-// Play video
-const playVideo = () => {
-  if (props.content?.videoUrl) {
-    isPlaying.value = true
-    nextTick(() => {
-      if (videoRef.value) {
-        videoRef.value.play()
+  data() {
+    return {
+      isPlaying: false,
+      videoRef: null as HTMLVideoElement | null
+    }
+  },
+
+  methods: {
+    playVideo() {
+      if (this.content?.videoUrl) {
+        this.isPlaying = true
+        nextTick(() => {
+          if (this.videoRef) {
+            this.videoRef.play()
+          }
+        })
       }
-    })
+    },
+
+    handleVideoEnd() {
+      this.isPlaying = false
+    },
+
+    handleVideoPause() {
+      if (this.videoRef && !this.videoRef.ended) {
+        this.isPlaying = false
+      }
+    },
+
+    handleVideoPlay() {
+      this.isPlaying = true
+    },
+
+    getStatIcon(iconType: string) {
+      switch (iconType) {
+        case 'play':
+          return h('svg', { viewBox: '0 0 24 24', fill: 'currentColor', class: 'icon' }, [
+            h('path', { d: 'M8 5v14l11-7z' })
+          ])
+        case 'clock':
+          return h('svg', { viewBox: '0 0 24 24', fill: 'currentColor', class: 'icon' }, [
+            h('path', { d: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z' })
+          ])
+        case 'users':
+          return h('svg', { viewBox: '0 0 24 24', fill: 'currentColor', class: 'icon' }, [
+            h('path', { d: 'M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z' })
+          ])
+        default:
+          return null
+      }
+    }
   }
-}
-
-// Handle video events
-const handleVideoEnd = () => {
-  isPlaying.value = false
-}
-
-const handleVideoPause = () => {
-  // Only set isPlaying to false if user paused (not video ended)
-  if (videoRef.value && !videoRef.value.ended) {
-    isPlaying.value = false
-  }
-}
-
-const handleVideoPlay = () => {
-  isPlaying.value = true
-}
-
-// Get stat icon component
-const getStatIcon = (iconType: string) => {
-  // Return different SVG icons based on type
-  switch (iconType) {
-    case 'play':
-      return h('svg', { viewBox: '0 0 24 24', fill: 'currentColor', class: 'icon' }, [
-        h('path', { d: 'M8 5v14l11-7z' })
-      ])
-    case 'clock':
-      return h('svg', { viewBox: '0 0 24 24', fill: 'currentColor', class: 'icon' }, [
-        h('path', { d: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z' })
-      ])
-    case 'users':
-      return h('svg', { viewBox: '0 0 24 24', fill: 'currentColor', class: 'icon' }, [
-        h('path', { d: 'M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z' })
-      ])
-    default:
-      return null
-  }
-}
+})
 </script>
 
 <style scoped>

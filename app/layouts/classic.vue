@@ -12,7 +12,7 @@
               class="w-auto h-12"
             />
             <div>
-              <h1 class="text-2xl font-serif font-bold" :style="{ color: 'var(--color-primary)' }">
+              <h1 class="font-serif text-2xl font-bold" :style="{ color: 'var(--color-primary)' }">
                 {{ safeBrandConfig.name }}
               </h1>
               <p class="text-sm italic" :style="{ color: 'var(--color-text-secondary)' }">
@@ -86,12 +86,12 @@
     <footer class="mt-16 border-t token-surface" style="border-color: var(--color-surface);">
       <div class="container px-4 py-8 mx-auto text-center">
         <div class="mb-4">
-          <img :src="safeBrandConfig.logo" :alt="`${safeBrandConfig.name} logo`" class="w-auto h-8 mx-auto" />
+          <img :src="safeBrandConfig.logo" :alt="`${safeBrandConfig.name} logo`" class="mx-auto w-auto h-8" />
         </div>
         <p class="font-serif text-sm" :style="{ color: 'var(--color-text-muted)' }">
           © {{ new Date().getFullYear() }} {{ safeBrandConfig.name }}. All rights reserved.
         </p>
-        <div class="mt-4 flex justify-center space-x-6">
+        <div class="flex justify-center mt-4 space-x-6">
           <a href="#" class="font-serif hover:underline" :style="{ color: 'var(--color-text-secondary)' }">Privacy Policy</a>
           <a href="#" class="font-serif hover:underline" :style="{ color: 'var(--color-text-secondary)' }">Terms of Service</a>
           <a href="#" class="font-serif hover:underline" :style="{ color: 'var(--color-text-secondary)' }">Contact Us</a>
@@ -101,24 +101,40 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
+import { defineComponent } from 'vue'
 import type { BrandConfig } from '../../tokens/types'
 
-// Accept brand config as prop from parent
-const props = defineProps<{
-  brandConfig: BrandConfig
-}>()
+export default defineComponent({
+  name: 'BrandHeader',
 
-// Use the passed brand config
-const safeBrandConfig = computed(() => props.brandConfig)
+  props: {
+    brandConfig: {
+      type: Object as () => BrandConfig,
+      required: true
+    }
+  },
 
-// Mobile menu state
-const mobileMenuOpen = ref(false)
+  data() {
+    return {
+      mobileMenuOpen: false
+    }
+  },
 
-const toggleMobileMenu = () => {
-  mobileMenuOpen.value = !mobileMenuOpen.value
-}
+  computed: {
+    safeBrandConfig(): BrandConfig {
+      return this.brandConfig
+    }
+  },
+
+  methods: {
+    toggleMobileMenu() {
+      this.mobileMenuOpen = !this.mobileMenuOpen
+    }
+  }
+})
 </script>
+
 
 <style scoped>
 .brand-classic {

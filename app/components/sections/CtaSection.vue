@@ -47,79 +47,95 @@
   </BaseAdapter>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
+import { defineComponent } from 'vue'
 import type { SectionConfig } from '../../../tokens/types'
 import BaseAdapter from './BaseAdapter.vue'
 
-interface Props {
-  section: SectionConfig
-  content?: any
-}
+export default defineComponent({
+  name: 'HeroAdapter',
+  
+  components: {
+    BaseAdapter
+  },
 
-const props = defineProps<Props>()
+  props: {
+    section: {
+      type: Object as () => SectionConfig,
+      required: true
+    },
+    content: {
+      type: Object as () => any,
+      default: () => ({})
+    }
+  },
 
-// Computed styles for the section
-const computedStyles = computed(() => {
-  const styles: Record<string, any> = {}
+  emits: ['cta-click'],
 
-  // Apply section background if specified
-  if (props.content?.backgroundColor) {
-    styles.backgroundColor = props.content.backgroundColor
+  computed: {
+    // Computed styles for section background
+    computedStyles(): Record<string, any> {
+      const styles: Record<string, any> = {}
+
+      if (this.content?.backgroundColor) {
+        styles.backgroundColor = this.content.backgroundColor
+      }
+
+      return styles
+    },
+
+    // Gradient card style
+    cardStyles(): Record<string, any> {
+      return {
+        background: `linear-gradient(119deg,
+          rgba(255, 255, 255, 0.05) 0.05%,
+          ${this.getPrimaryColorWithOpacity('30%')} 50.05%,
+          rgba(255, 255, 255, 0.05) 100.05%
+        )`,
+        boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.1)'
+      }
+    },
+
+    // CTA Button style
+    buttonStyles(): Record<string, any> {
+      return {
+        background: `linear-gradient(180deg, var(--color-primary), var(--color-primary-hover))`,
+        boxShadow: `
+          inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+          0 6px 12px ${this.getPrimaryColorWithOpacity('20%')},
+          inset -2px -2px 4px rgba(0, 0, 0, 0.2),
+          inset 2px 2px 4px rgba(0, 0, 0, 0.2)
+        `
+      }
+    },
+
+    // Social proof visibility
+    showSocialProof(): boolean {
+      return this.content?.showStars !== false || !!this.content?.ratingText
+    }
+  },
+
+  methods: {
+    // fallback gradient primary color processor
+    getPrimaryColorWithOpacity(opacity: string) {
+      return `rgba(5, 150, 105, ${opacity})`
+    },
+
+    handleCtaClick() {
+      this.$emit('cta-click', {
+        sectionId: this.section.id,
+        sectionType: this.section.type,
+        buttonData: this.content?.button
+      })
+
+      // Optional router navigation
+      if (this.content?.button?.href) {
+        // depends on nuxt/router usage — keeping same concept
+        navigateTo?.(this.content.button.href)
+      }
+    }
   }
-
-  return styles
 })
-
-// Card styles with gradient background
-const cardStyles = computed(() => ({
-  background: `linear-gradient(119deg,
-    rgba(255, 255, 255, 0.05) 0.05%,
-    ${getPrimaryColorWithOpacity('30%')} 50.05%,
-    rgba(255, 255, 255, 0.05) 100.05%
-  )`,
-  boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.1)'
-}))
-
-// Button styles with gradient background
-const buttonStyles = computed(() => ({
-  background: `linear-gradient(180deg, var(--color-primary), var(--color-primary-hover))`,
-  boxShadow: `
-    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
-    0 6px 12px ${getPrimaryColorWithOpacity('20%')},
-    inset -2px -2px 4px rgba(0, 0, 0, 0.2),
-    inset 2px 2px 4px rgba(0, 0, 0, 0.2)
-  `
-}))
-
-// Get primary color with opacity for gradients
-const getPrimaryColorWithOpacity = (opacity: string) => {
-  // This is a simplified approach - in production you might want to parse the CSS variable
-  // and apply opacity programmatically
-  return `rgba(5, 150, 105, ${opacity})` // Fallback green with opacity
-}
-
-// Computed property for social proof visibility
-const showSocialProof = computed(() => {
-  return props.content?.showStars !== false || !!props.content?.ratingText
-})
-
-// Handle CTA button click
-const handleCtaClick = () => {
-  emit('cta-click', {
-    sectionId: props.section.id,
-    sectionType: props.section.type,
-    buttonData: props.content?.button
-  })
-
-  // Example navigation (can be customized based on requirements)
-  if (props.content?.button?.href) {
-    navigateTo(props.content.button.href)
-  }
-}
-
-const emit = defineEmits<{
-  'cta-click': [data: any]
-}>()
 </script>
 
 <style scoped>

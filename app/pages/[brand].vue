@@ -28,116 +28,121 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import type { SectionConfig } from '../../tokens/types'
+<script lang="ts">
+import { defineComponent, nextTick } from 'vue'
+import { useRoute, useHead } from '#imports'
 import { useBrand } from '~/composables/useBrand'
+import type { SectionConfig } from '../../tokens/types'
 
-// Set default layout - will be switched dynamically
 definePageMeta({
   layout: 'brand-shell'
 })
 
-// Get route parameters reactively
-const route = useRoute()
-const brandSlug = computed(() => route.params.brand as string)
+export default defineComponent({
+  name: 'BrandPageAdapter',
 
-// Dynamic layout determination and loading
-const loadBrandData = async () => {
-  const currentBrandSlug = brandSlug.value
-  if (!currentBrandSlug) {
-    throw new Error('Brand slug is required')
-  }
+  data() {
+    return {
+      brandData: null as any,
+      error: null as any,
+      isLoading: true
+    }
+  },
 
-  // Validate brand slug format
-  if (currentBrandSlug.includes('.svg') || currentBrandSlug.includes('/') || currentBrandSlug.includes('\\') || currentBrandSlug.includes('..')) {
-    throw new Error(`Invalid brand slug format: "${currentBrandSlug}"`)
-  }
+  computed: {
+    route() {
+      return useRoute()
+    },
 
-  const { config } = await useBrand(currentBrandSlug)
+    brandSlug(): string {
+      return (this.route.params.brand as string) ?? ''
+    },
 
-  // Load sections with brand-specific overrides
-  const { useSectionsConfig } = await import('~/composables/useSectionsConfig')
-  const sections = await useSectionsConfig(currentBrandSlug)
+    brandConfig() {
+      return this.brandData
+    },
 
-  return {
-    ...config,
-    sections
-  }
-}
+    sortedSections(): SectionConfig[] {
+      if (!this.brandConfig?.sections) return []
+      return [...this.brandConfig.sections]
+        .filter(section => section.visible)
+        .sort((a, b) => a.order - b.order)
+    }
+  },
 
-// Use useAsyncData with reactive key to ensure it refetches when brand changes
-const { data: brandData, error, pending: isLoading, refresh } = await useAsyncData(
-  computed(() => `brand-${brandSlug.value}`),
-  loadBrandData,
-  {
-    // Key function ensures refetch when brandSlug changes
-    server: true
-  }
-)
+  watch: {
+    brandSlug: {
+      immediate: true,
+      async handler() {
+        await this.refreshBrand()
+      }
+    }
+  },
 
-// Create a reactive computed property for the brand config
-const brandConfig = computed(() => brandData.value)
+  methods: {
+    async refreshBrand() {
+      try {
+        this.isLoading = true
+        this.error = null
 
+        if (!this.brandSlug) throw new Error('Brand slug is required')
 
-// Set the shared brand state for layouts to access
-const { setBrandState } = await import('~/composables/useBrandState')
+        if (
+          this.brandSlug.includes('.svg') ||
+          this.brandSlug.includes('/') ||
+          this.brandSlug.includes('\\') ||
+          this.brandSlug.includes('..')
+        ) {
+          throw new Error(`Invalid brand slug format: "${this.brandSlug}"`)
+        }
 
-// Update the shared state when brand data changes
-watch(brandData, (newData, oldData) => {
-  // Only update if the brand data actually changed
-  if (newData?.id !== oldData?.id) {
-    setBrandState(newData)
+        const { config } = await useBrand(this.brandSlug)
 
-    // Apply new theme tokens when brand data changes
-    if (process.client && newData?.theme?.tokens) {
-      nextTick(async () => {
-        const { useTokens } = await import('~/composables/useTokens')
-        const { applyBrandTheme } = useTokens()
-        applyBrandTheme(newData.theme, newData.id)
+        const { useSectionsConfig } = await import('~/composables/useSectionsConfig')
+        const sections = await useSectionsConfig(this.brandSlug)
+
+        this.brandData = {
+          ...config,
+          sections
+        }
+
+        await this.updateBrandState()
+        this.applyMetaTags()
+
+      } catch (err: any) {
+        this.error = err
+        console.error('Failed to load brand:', err)
+      } finally {
+        this.isLoading = false
+      }
+    },
+
+    async updateBrandState() {
+      const { setBrandState } = await import('~/composables/useBrandState')
+      setBrandState(this.brandData)
+
+      if (process.client && this.brandData?.theme?.tokens) {
+        nextTick(async () => {
+          const { useTokens } = await import('~/composables/useTokens')
+          const { applyBrandTheme } = useTokens()
+          applyBrandTheme(this.brandData.theme, this.brandData.id)
+        })
+      }
+    },
+
+    applyMetaTags() {
+      if (!this.brandConfig) return
+
+      useHead({
+        title: this.brandConfig.name,
+        meta: [
+          { name: 'description', content: this.brandConfig.description },
+          { name: 'og:title', content: this.brandConfig.name },
+          { name: 'og:description', content: this.brandConfig.description },
+          { name: 'og:image', content: this.brandConfig.logo }
+        ]
       })
     }
-  }
-}, { immediate: true })
-
-// Set initial brand state and handle client-side theme application
-if (process.client && brandData.value) {
-  setBrandState(brandData.value)
-
-  // Apply theme tokens on initial load
-  if (brandData.value?.theme?.tokens) {
-    const { useTokens } = await import('~/composables/useTokens')
-    const { applyBrandTheme } = useTokens()
-    applyBrandTheme(brandData.value.theme, brandData.value.id)
-  }
-}
-
-// Sort sections by order
-const sortedSections = computed(() => {
-  if (!brandConfig.value?.sections) return []
-  return [...brandConfig.value.sections]
-    .filter(section => section.visible)
-    .sort((a: SectionConfig, b: SectionConfig) => a.order - b.order)
-})
-
-// Set page metadata
-watchEffect(() => {
-  if (brandConfig.value) {
-    useHead({
-      title: brandConfig.value.name,
-      meta: [
-        { name: 'description', content: brandConfig.value.description },
-        { name: 'og:title', content: brandConfig.value.name },
-        { name: 'og:description', content: brandConfig.value.description },
-        { name: 'og:image', content: brandConfig.value.logo }
-      ]
-    })
-  }
-})
-
-// Handle errors
-watch(error, (errorValue) => {
-  if (errorValue) {
-    console.error('Failed to load brand:', errorValue)
   }
 })
 </script>

@@ -126,46 +126,71 @@
   </BaseAdapter>
 </template>
 
-<script setup lang="ts">
+
+<script lang="ts">
+import { defineComponent } from 'vue'
 import type { SectionConfig } from '../../../tokens/types'
 import BaseAdapter from './BaseAdapter.vue'
 
-interface Props {
-  section: SectionConfig
-  content?: any
-}
+export default defineComponent({
+  name: 'MentorVideoAdapter',
 
-const props = defineProps<Props>()
+  components: {
+    BaseAdapter
+  },
 
-const videoWatchButtonVisible = ref(true)
-const mentorVideo = ref<HTMLVideoElement>()
+  props: {
+    section: {
+      type: Object as () => SectionConfig,
+      required: true
+    },
+    content: {
+      type: Object as () => any,
+      default: () => ({})
+    }
+  },
 
-const hasValidVideoUrl = computed(() => {
-  return (
-    props.content?.founderInfo?.mediaType === 'video' &&
-    props.content?.founderInfo?.videoUrl &&
-    props.content.founderInfo.videoUrl.trim() !== '' &&
-    props.content.founderInfo.videoUrl.trim().length > 1
-  )
-})
+  data() {
+    return {
+      videoWatchButtonVisible: true,
+      mentorVideo: null as HTMLVideoElement | null
+    }
+  },
 
-const toggleVideoPlay = () => {
-  if (mentorVideo.value) {
-    if (mentorVideo.value.paused) {
-      mentorVideo.value.play()
-      videoWatchButtonVisible.value = false
-    } else {
-      mentorVideo.value.pause()
+  computed: {
+    hasValidVideoUrl(): boolean {
+      return (
+        this.content?.founderInfo?.mediaType === 'video' &&
+        this.content?.founderInfo?.videoUrl &&
+        this.content?.founderInfo.videoUrl.trim() !== '' &&
+        this.content?.founderInfo.videoUrl.trim().length > 1
+      )
+    }
+  },
+
+  methods: {
+    toggleVideoPlay() {
+      if (this.mentorVideo) {
+        if (this.mentorVideo.paused) {
+          this.mentorVideo.play()
+          this.videoWatchButtonVisible = false
+        } else {
+          this.mentorVideo.pause()
+        }
+      }
+    },
+
+    handleImageError(event: Event) {
+      const img = event.target as HTMLImageElement
+      img.src =
+        'data:image/svg+xml,%3Csvg width="400" height="400" xmlns="http://www.w3.org/2000/svg"%3E%3Crect width="400" height="400" fill="%23f0f0f0"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="20" fill="%23666"%3ENo Image%3C/text%3E%3C/svg%3E'
     }
   }
-}
-
-const handleImageError = (event: Event) => {
-  const img = event.target as HTMLImageElement
-  img.src = 'data:image/svg+xml,%3Csvg width="400" height="400" xmlns="http://www.w3.org/2000/svg"%3E%3Crect width="400" height="400" fill="%23f0f0f0"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="20" fill="%23666"%3ENo Image%3C/text%3E%3C/svg%3E'
-}
-
+})
 </script>
+
+
+
 
 <style scoped>
 .mentors-section {

@@ -17,7 +17,7 @@
           </NuxtLink>
 
           <!-- Minimal navigation -->
-          <nav class="hidden md:flex items-center space-x-8">
+          <nav class="hidden items-center space-x-8 md:flex">
             <a
               v-for="navItem in safeBrandConfig.navigation"
               :key="navItem.href"
@@ -50,7 +50,7 @@
       </div>
 
       <!-- Mobile navigation slide down -->
-      <div v-if="mobileMenuOpen" class="md:hidden border-t" style="border-color: var(--color-border);">
+      <div v-if="mobileMenuOpen" class="border-t md:hidden" style="border-color: var(--color-border);">
         <div class="container px-6 py-4 mx-auto space-y-3">
           <a
             v-for="navItem in safeBrandConfig.navigation"
@@ -63,7 +63,7 @@
             {{ navItem.label }}
           </a>
           <button
-            class="w-full py-2 text-sm font-medium text-left"
+            class="py-2 w-full text-sm font-medium text-left"
             :style="{ color: 'var(--color-primary)' }"
           >
             {{ safeBrandConfig.cta.primary }}
@@ -86,24 +86,40 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
+import { defineComponent } from 'vue'
 import type { BrandConfig } from '../../tokens/types'
 
-// Accept brand config as prop from parent
-const props = defineProps<{
-  brandConfig: BrandConfig
-}>()
+export default defineComponent({
+  name: 'BrandHeader',
 
-// Use the passed brand config
-const safeBrandConfig = computed(() => props.brandConfig)
+  props: {
+    brandConfig: {
+      type: Object as () => BrandConfig,
+      required: true
+    }
+  },
 
-// Mobile menu state
-const mobileMenuOpen = ref(false)
+  data() {
+    return {
+      mobileMenuOpen: false
+    }
+  },
 
-const toggleMobileMenu = () => {
-  mobileMenuOpen.value = !mobileMenuOpen.value
-}
+  computed: {
+    safeBrandConfig(): BrandConfig {
+      return this.brandConfig
+    }
+  },
+
+  methods: {
+    toggleMobileMenu() {
+      this.mobileMenuOpen = !this.mobileMenuOpen
+    }
+  }
+})
 </script>
+
 
 <style scoped>
 .brand-minimal {

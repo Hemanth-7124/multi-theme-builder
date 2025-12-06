@@ -125,30 +125,44 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
+import { defineComponent } from 'vue'
 import type { BrandConfig } from '../../tokens/types'
 
-// Accept brand config as prop from parent
-const props = defineProps<{
-  brandConfig: BrandConfig
-}>()
+export default defineComponent({
+  name: 'BrandHeader',
 
-// Use the passed brand config
-const safeBrandConfig = computed(() => props.brandConfig)
+  props: {
+    brandConfig: {
+      type: Object as () => BrandConfig,
+      required: true
+    }
+  },
 
+  data() {
+    return {
+      mobileMenuOpen: false
+    }
+  },
 
+  computed: {
+    safeBrandConfig(): BrandConfig {
+      return this.brandConfig
+    }
+  },
 
-// Mobile menu state
-const mobileMenuOpen = ref(false)
+  methods: {
+    toggleMobileMenu() {
+      this.mobileMenuOpen = !this.mobileMenuOpen
+    }
+  },
 
-const toggleMobileMenu = () => {
-  mobileMenuOpen.value = !mobileMenuOpen.value
-}
-
-// Close mobile menu on route change
-const route = useRoute()
-watch(() => route.path, () => {
-  mobileMenuOpen.value = false
+  watch: {
+    // Automatically triggers on route path change
+    '$route.path'() {
+      this.mobileMenuOpen = false
+    }
+  }
 })
 </script>
 

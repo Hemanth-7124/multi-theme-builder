@@ -23,55 +23,64 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
+import { defineAsyncComponent } from 'vue'
 import type { SectionConfig } from '../../tokens/types'
 
-interface Props {
-  sections: SectionConfig[]
-}
+export default {
+  name: 'LandingPageSections',
 
-const props = defineProps<Props>()
+  props: {
+    sections: {
+      type: Array as () => SectionConfig[],
+      required: true
+    }
+  },
 
-// Define components with proper async handling using defineAsyncComponent
-const HeroSection = defineAsyncComponent(() => import('./sections/HeroSection.vue'))
-const FeaturesSection = defineAsyncComponent(() => import('./sections/FeaturesSection.vue'))
-const CtaSection = defineAsyncComponent(() => import('./sections/CtaSection.vue'))
-const StatsSection = defineAsyncComponent(() => import('./sections/StatsSection.vue'))
-const VideoSection = defineAsyncComponent(() => import('./sections/VideoSection.vue'))
-const BonusesSection = defineAsyncComponent(() => import('./sections/BonusesSection.vue'))
-const TestimonialsSection = defineAsyncComponent(() => import('./sections/TestimonialsSection.vue'))
-const FaqSection = defineAsyncComponent(() => import('./sections/FaqSection.vue'))
-const MentorsSection = defineAsyncComponent(() => import('./sections/MentorsSection.vue'))
+  components: {
+    HeroSection: defineAsyncComponent(() => import('./sections/HeroSection.vue')),
+    FeaturesSection: defineAsyncComponent(() => import('./sections/FeaturesSection.vue')),
+    CtaSection: defineAsyncComponent(() => import('./sections/CtaSection.vue')),
+    StatsSection: defineAsyncComponent(() => import('./sections/StatsSection.vue')),
+    VideoSection: defineAsyncComponent(() => import('./sections/VideoSection.vue')),
+    BonusesSection: defineAsyncComponent(() => import('./sections/BonusesSection.vue')),
+    TestimonialsSection: defineAsyncComponent(() => import('./sections/TestimonialsSection.vue')),
+    FaqSection: defineAsyncComponent(() => import('./sections/FaqSection.vue')),
+    MentorsSection: defineAsyncComponent(() => import('./sections/MentorsSection.vue'))
+  },
 
-// Map section types to components
-const sectionComponents = {
-  hero: HeroSection,
-  features: FeaturesSection,
-  cta: CtaSection,
-  stats: StatsSection,
-  video: VideoSection,
-  bonuses: BonusesSection,
-  testimonials: TestimonialsSection,
-  faq: FaqSection,
-  mentors: MentorsSection
-}
-
-// Get CSS classes for section
-const getSectionClasses = (section: SectionConfig) => {
-  const baseClasses = ['section', `section-${section.type}`]
-
-  if (section.styles) {
-    Object.entries(section.styles).forEach(([property, value]) => {
-      if (property === 'className') {
-        baseClasses.push(value)
+  data() {
+    return {
+      sectionComponents: {
+        hero: 'HeroSection',
+        features: 'FeaturesSection',
+        cta: 'CtaSection',
+        stats: 'StatsSection',
+        video: 'VideoSection',
+        bonuses: 'BonusesSection',
+        testimonials: 'TestimonialsSection',
+        faq: 'FaqSection',
+        mentors: 'MentorsSection'
       }
-    })
+    }
+  },
+
+  methods: {
+    getSectionClasses(section: SectionConfig) {
+      const baseClasses = ['section', `section-${section.type}`]
+
+      if (section.styles) {
+        Object.entries(section.styles).forEach(([property, value]) => {
+          if (property === 'className') {
+            baseClasses.push(value as string)
+          }
+        })
+      }
+
+      return baseClasses.join(' ')
+    }
   }
-
-  return baseClasses.join(' ')
 }
-
-
 </script>
 
 <style scoped>

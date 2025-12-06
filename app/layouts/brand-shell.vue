@@ -11,7 +11,9 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { useRoute } from '#imports'
 import type { BrandConfig } from '../../tokens/types'
 
 // Import layout components
@@ -20,70 +22,87 @@ import BoldLayout from './bold.vue'
 import ClassicLayout from './classic.vue'
 import MinimalLayout from './minimal.vue'
 
-// Get the current route to determine brand
-const route = useRoute()
-const brandSlug = computed(() => route.params.brand as string)
+export default defineComponent({
+  name: 'BrandLayoutAdapter',
 
-// Create a fallback brand config for when no brand is set
-const fallbackBrandConfig: BrandConfig = {
-  id: "unknown",
-  name: "Unknown Brand",
-  description: "Brand configuration not available",
-  logo: "/placeholder-logo.svg",
-  favicon: "/favicon.ico",
-  theme: {
-    layout: "modern",
-    tokens: {}
+  components: {
+    ModernLayout,
+    BoldLayout,
+    ClassicLayout,
+    MinimalLayout
   },
-  navigation: [],
-  cta: {
-    primary: "Get Started",
-    secondary: "Learn More"
-  }
-}
 
-// Load brand config directly in the layout component
-const { data: brandData } = await useAsyncData(
-  computed(() => `brand-layout-${brandSlug.value}`),
-  async () => {
-    if (!brandSlug.value) return null
-
-    const { useBrand } = await import('~/composables/useBrand')
-    const { config } = await useBrand(brandSlug.value)
-    return config
+  data() {
+    return {
+      brandData: null as BrandConfig | null,
+      fallbackBrandConfig: {
+        id: 'unknown',
+        name: 'Unknown Brand',
+        description: 'Brand configuration not available',
+        logo: '/placeholder-logo.svg',
+        favicon: '/favicon.ico',
+        theme: {
+          layout: 'modern',
+          tokens: {}
+        },
+        navigation: [],
+        cta: {
+          primary: 'Get Started',
+          secondary: 'Learn More'
+        }
+      } as BrandConfig
+    }
   },
-  {
-    server: true
-  }
-)
 
-// Use current brand config or fallback
-const currentBrandConfig = computed(() => brandData.value || fallbackBrandConfig)
+  computed: {
+    brandSlug(): string {
+      const route = useRoute()
+      return (route.params.brand as string) ?? ''
+    },
 
-// Compute which layout component to use based on brand configuration
-const layoutComponent = computed(() => {
+    currentBrandConfig(): BrandConfig {
+      return this.brandData || this.fallbackBrandConfig
+    },
 
-  if (!currentBrandConfig.value?.theme?.layout) {
-    return ModernLayout // fallback to modern
-  }
+    layoutComponent() {
+      const layoutType = this.currentBrandConfig?.theme?.layout || 'modern'
 
-  const layoutType = currentBrandConfig.value.theme.layout
+      switch (layoutType) {
+        case 'modern':
+          return ModernLayout
+        case 'bold':
+          return BoldLayout
+        case 'classic':
+          return ClassicLayout
+        case 'minimal':
+          return MinimalLayout
+        default:
+          console.warn(`Unknown layout type: ${layoutType}, falling back to modern`)
+          return ModernLayout
+      }
+    }
+  },
 
-  switch (layoutType) {
-    case 'modern':
-      return ModernLayout
-    case 'bold':
-      return BoldLayout
-    case 'classic':
-      return ClassicLayout
-    case 'minimal':
-      return MinimalLayout
-    default:
-      console.warn(`Unknown layout type: ${layoutType}, falling back to modern`)
-      return ModernLayout
+  async serverPrefetch() {
+    await this.fetchBrandConfig()
+  },
+
+  async mounted() {
+    if (!this.brandData) {
+      await this.fetchBrandConfig()
+    }
+  },
+
+  methods: {
+    async fetchBrandConfig() {
+      if (!this.brandSlug) return
+
+      const { useBrand } = await import('~/composables/useBrand')
+      const { config } = await useBrand(this.brandSlug)
+      this.brandData = config
+    }
   }
 })
-
 </script>
 
 <style scoped>

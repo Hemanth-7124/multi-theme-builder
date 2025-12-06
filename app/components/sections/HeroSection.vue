@@ -90,84 +90,96 @@
   </BaseAdapter>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
+import { defineComponent } from 'vue'
 import type { SectionConfig } from '../../../tokens/types'
 import BaseAdapter from './BaseAdapter.vue'
 
-interface Props {
-  section: SectionConfig
-  content?: any
-}
+export default defineComponent({
+  name: 'SpecialOfferAdapter',
 
-const props = defineProps<Props>()
+  components: {
+    BaseAdapter
+  },
 
-// Computed styles for the section
-const computedStyles = computed(() => {
-  const styles: Record<string, any> = {}
-
-  // Apply section background if specified
-  if (props.content?.backgroundColor) {
-    styles.backgroundColor = props.content.backgroundColor
-  }
-
-  return styles
-})
-
-// Button styles using theme tokens
-const buttonStyles = computed(() => ({
-  background: `linear-gradient(135deg, var(--color-primary), var(--color-primary-hover))`,
-  color: 'var(--color-text-inverse)',
-  border: `1px solid var(--color-primary)`
-}))
-
-// Timer functionality
-const countdown = ref(180) // 3 minutes in seconds
-const intervalId = ref<NodeJS.Timeout | null>(null)
-
-const formattedTime = computed(() => {
-  const minutes = Math.floor(countdown.value / 60)
-  const seconds = countdown.value % 60
-  return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
-})
-
-// Start countdown timer
-onMounted(() => {
-  startCountdown()
-})
-
-onUnmounted(() => {
-  if (intervalId.value) {
-    clearInterval(intervalId.value)
-  }
-})
-
-const startCountdown = () => {
-  intervalId.value = setInterval(() => {
-    countdown.value--
-    if (countdown.value <= 0) {
-      countdown.value = 180 // Reset to 3 minutes
+  props: {
+    section: {
+      type: Object as () => SectionConfig,
+      required: true
+    },
+    content: {
+      type: Object as () => any,
+      default: () => ({})
     }
-  }, 1000)
-}
+  },
 
-// Handle CTA button click
-const handleCtaClick = () => {
-  // Emit event for parent components or handle navigation
-  emit('cta-click', {
-    sectionId: props.section.id,
-    sectionType: props.section.type,
-    buttonData: props.content?.workshop?.button
-  })
+  emits: ['cta-click'],
 
-  // Example navigation (can be customized based on requirements)
-  if (props.content?.workshop?.button?.href) {
-    navigateTo(props.content.workshop.button.href)
+  data() {
+    return {
+      countdown: 180, // 3 minutes in seconds
+      intervalId: null as any
+    }
+  },
+
+  computed: {
+    computedStyles(): Record<string, any> {
+      const styles: Record<string, any> = {}
+
+      if (this.content?.backgroundColor) {
+        styles.backgroundColor = this.content.backgroundColor
+      }
+      return styles
+    },
+
+    buttonStyles(): Record<string, any> {
+      return {
+        background: `linear-gradient(135deg, var(--color-primary), var(--color-primary-hover))`,
+        color: 'var(--color-text-inverse)',
+        border: `1px solid var(--color-primary)`
+      }
+    },
+
+    formattedTime(): string {
+      const minutes = Math.floor(this.countdown / 60)
+      const seconds = this.countdown % 60
+      return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
+    }
+  },
+
+  mounted() {
+    this.startCountdown()
+  },
+
+  unmounted() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId)
+    }
+  },
+
+  methods: {
+    startCountdown() {
+      this.intervalId = setInterval(() => {
+        this.countdown--
+        if (this.countdown <= 0) {
+          this.countdown = 180 // reset 3 min
+        }
+      }, 1000)
+    },
+
+    handleCtaClick() {
+      this.$emit('cta-click', {
+        sectionId: this.section.id,
+        sectionType: this.section.type,
+        buttonData: this.content?.workshop?.button
+      })
+
+      if (this.content?.workshop?.button?.href) {
+        navigateTo?.(this.content.workshop.button.href)
+      }
+    }
   }
-}
-
-const emit = defineEmits<{
-  'cta-click': [data: any]
-}>()
+})
 </script>
 
 <style scoped>

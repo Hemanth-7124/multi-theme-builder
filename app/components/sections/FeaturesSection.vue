@@ -57,71 +57,86 @@
   </BaseAdapter>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
+import { defineComponent } from 'vue'
 import type { SectionConfig } from '../../../tokens/types'
 import BaseAdapter from './BaseAdapter.vue'
 
-interface Props {
-  section: SectionConfig
-  content?: any
-}
+export default defineComponent({
+  name: 'CardAdapter',
 
-const props = defineProps<Props>()
+  components: {
+    BaseAdapter
+  },
 
-// Get dynamic classes for cards based on theme and index
-const getCardClasses = (item: any, index: number) => {
-  const classes = ['card-wrapper']
+  props: {
+    section: {
+      type: Object as () => SectionConfig,
+      required: true
+    },
+    content: {
+      type: Object as () => any,
+      default: () => ({})
+    }
+  },
 
-  // Add special class for middle card (index 1)
-  if (index === 1) {
-    classes.push('featured-card')
-  }
+  methods: {
+    // Dynamic card class builder
+    getCardClasses(item: any, index: number): string {
+      const classes = ['card-wrapper']
 
-  return classes.join(' ')
-}
+      if (index === 1) {
+        classes.push('featured-card')
+      }
 
-// Get dynamic styles for cards
-const getCardStyles = (item: any, index: number) => {
-  const styles: Record<string, any> = {}
+      return classes.join(' ')
+    },
 
-  // Determine gradient background based on theme or explicit background prop
-  let primaryColor = 'var(--color-primary)'
-  let secondaryColor = 'var(--color-primary-hover)'
+    // Dynamic card style builder
+    getCardStyles(item: any, index: number): Record<string, any> {
+      const styles: Record<string, any> = {}
 
-  if (item.background) {
-    switch (item.background) {
-      case 'green':
-        primaryColor = '#059669'
-        secondaryColor = '#047857'
-        break
-      case 'red':
-        primaryColor = '#dc2626'
-        secondaryColor = '#b91c1c'
-        break
-      case 'black':
-        primaryColor = '#111827'
-        secondaryColor = '#1f2937'
-        break
-      case 'primary':
-      default:
-        primaryColor = 'var(--color-primary)'
-        secondaryColor = 'var(--color-primary-hover)'
-        break
+      let primaryColor = 'var(--color-primary)'
+      let secondaryColor = 'var(--color-primary-hover)'
+
+      if (item.background) {
+        switch (item.background) {
+          case 'green':
+            primaryColor = '#059669'
+            secondaryColor = '#047857'
+            break
+          case 'red':
+            primaryColor = '#dc2626'
+            secondaryColor = '#b91c1c'
+            break
+          case 'black':
+            primaryColor = '#111827'
+            secondaryColor = '#1f2937'
+            break
+          default:
+            primaryColor = 'var(--color-primary)'
+            secondaryColor = 'var(--color-primary-hover)'
+            break
+        }
+      }
+
+      // default gradient
+      styles.background = `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`
+
+      // style override for featured card
+      if (index === 1) {
+        styles.background = `linear-gradient(135deg,
+          var(--color-primary),
+          var(--color-primary-hover)
+        )`
+        styles.transform = 'scale(1.05)'
+        styles.boxShadow = 'var(--shadow-2xl)'
+      }
+
+      return styles
     }
   }
-
-  // Apply gradient background
-  styles.background = `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`
-
-  // Featured card (middle) gets primary theme gradient
-  if (index === 1) {
-    styles.background = `linear-gradient(135deg, var(--color-primary), var(--color-primary-hover))`
-    styles.transform = 'scale(1.05)'
-    styles.boxShadow = 'var(--shadow-2xl)'
-  }
-
-  return styles
-}
+})
 </script>
 
 <style scoped>

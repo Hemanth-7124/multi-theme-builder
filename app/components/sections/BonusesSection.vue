@@ -52,16 +52,29 @@
   </BaseAdapter>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
+import { defineComponent } from 'vue'
 import type { SectionConfig } from '../../../tokens/types'
 import BaseAdapter from './BaseAdapter.vue'
 
-interface Props {
-  section: SectionConfig
-  content?: any
-}
+export default defineComponent({
+  name: 'SectionAdapter',
 
-const props = defineProps<Props>()
+  components: {
+    BaseAdapter
+  },
+
+  props: {
+    section: {
+      type: Object as () => SectionConfig,
+      required: true
+    },
+    content: {
+      type: Object as () => any,
+      default: () => ({})
+    }
+  }
+})
 </script>
 
 <style scoped>

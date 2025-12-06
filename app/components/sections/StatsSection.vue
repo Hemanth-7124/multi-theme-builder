@@ -37,47 +37,61 @@
   </BaseAdapter>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
+import { defineComponent } from 'vue'
 import type { SectionConfig } from '../../../tokens/types'
 import BaseAdapter from './BaseAdapter.vue'
 
-interface Props {
-  section: SectionConfig
-  content?: any
-}
+export default defineComponent({
+  name: 'StatsAdapter',
 
-const props = defineProps<Props>()
+  components: {
+    BaseAdapter
+  },
 
-// Button styles using theme tokens
-const buttonStyles = computed(() => ({
-  background: `linear-gradient(180deg, var(--color-primary), var(--color-primary-hover))`,
-  color: 'var(--color-text-inverse)',
-  border: `1px solid var(--color-primary)`
-}))
+  props: {
+    section: {
+      type: Object as () => SectionConfig,
+      required: true
+    },
+    content: {
+      type: Object as () => any,
+      default: () => ({})
+    }
+  },
 
-// Get animation delay for staggered stat animations
-const getStatDelay = (index: number) => {
-  return {
-    animationDelay: `${index * 0.1}s`
+  emits: ['cta-click'],
+
+  computed: {
+    buttonStyles(): Record<string, any> {
+      return {
+        background: `linear-gradient(180deg, var(--color-primary), var(--color-primary-hover))`,
+        color: 'var(--color-text-inverse)',
+        border: `1px solid var(--color-primary)`
+      }
+    }
+  },
+
+  methods: {
+    getStatDelay(index: number): Record<string, any> {
+      return {
+        animationDelay: `${index * 0.1}s`
+      }
+    },
+
+    handleCtaClick() {
+      this.$emit('cta-click', {
+        sectionId: this.section.id,
+        sectionType: this.section.type,
+        ctaData: this.content?.cta
+      })
+
+      if (this.content?.cta?.href) {
+        navigateTo?.(this.content.cta.href)
+      }
+    }
   }
-}
-
-// Handle CTA button click
-const handleCtaClick = () => {
-  emit('cta-click', {
-    sectionId: props.section.id,
-    sectionType: props.section.type,
-    ctaData: props.content?.cta
-  })
-
-  if (props.content?.cta?.href) {
-    navigateTo(props.content.cta.href)
-  }
-}
-
-const emit = defineEmits<{
-  'cta-click': [data: any]
-}>()
+})
 </script>
 
 <style scoped>

@@ -143,73 +143,83 @@
   </div>
 </template>
 
-<script setup lang="ts">
-// Define page meta
+<script lang="ts">
+import { defineComponent } from "vue";
+import { useRoute, useHead } from "#imports";
+
 definePageMeta({
   layout: "default",
 });
 
-// Dynamic brand discovery with proper refresh handling
-const {
-  data: availableBrands,
-  pending,
-  refresh: refreshBrands,
-} = await useAsyncData(
-  "available-brands",
-  async () => {
-    try {
-      const { useAllBrandsInfo } = await import("../composables/useBrand");
-      const brands = await useAllBrandsInfo(true); // Force refresh;
-      return brands;
-    } catch (error) {
-      console.error("Error loading brands:", error);
-      return [];
-    }
+export default defineComponent({
+  name: "BrandRouterPage",
+
+  data() {
+    return {
+      availableBrands: [] as any[],
+      pending: true,
+    };
   },
-  {
-    // Ensure this refetches on client navigation
-    server: true,
-    client: true,
-    default: () => [],
-  }
-);
 
-// Refresh brands when navigating to homepage
-onMounted(() => {
-  refreshBrands();
-});
-
-// Also refresh when the route changes to this page
-const route = useRoute();
-watch(
-  () => route.path,
-  (newPath) => {
-    if (newPath === "/") {
-      refreshBrands();
-    }
-  }
-);
-
-// Clear any brand state when on homepage
-onMounted(async () => {
-  const { setBrandState } = await import("~/composables/useBrandState");
-  setBrandState(null);
-  });
-
-// Set page metadata
-useHead({
-  title: "Brand Router Engine",
-  meta: [
-    {
-      name: "description",
-      content: "Multi-theme website engine with dynamic brand switching",
+  computed: {
+    route() {
+      return useRoute();
     },
-    { name: "og:title", content: "Brand Router Engine" },
-    {
-      name: "og:description",
-      content:
-        "A powerful multi-theme website engine with dynamic brand switching",
+  },
+
+  watch: {
+    "route.path"(newPath: string) {
+      if (newPath === "/") {
+        this.refreshBrands();
+      }
     },
-  ],
+  },
+
+  async serverPrefetch() {
+    await this.refreshBrands();
+  },
+
+  async mounted() {
+    useHead({
+      title: "Brand Router Engine",
+      meta: [
+        {
+          name: "description",
+          content:
+            "Multi-theme website engine with dynamic brand switching",
+        },
+        { name: "og:title", content: "Brand Router Engine" },
+        {
+          name: "og:description",
+          content:
+            "A powerful multi-theme website engine with dynamic brand switching",
+        },
+      ],
+    });
+
+    await this.refreshBrands();
+    await this.clearBrandState();
+  },
+
+  methods: {
+    async refreshBrands() {
+      try {
+        this.pending = true;
+
+        const { useAllBrandsInfo } = await import("../composables/useBrand");
+        this.availableBrands = await useAllBrandsInfo(true);
+      } catch (error) {
+        console.error("Error loading brands:", error);
+        this.availableBrands = [];
+      } finally {
+        this.pending = false;
+      }
+    },
+
+    async clearBrandState() {
+      const { setBrandState } = await import("~/composables/useBrandState");
+      setBrandState(null);
+    },
+  },
 });
 </script>
