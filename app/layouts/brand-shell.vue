@@ -62,14 +62,8 @@ const currentBrandConfig = computed(() => brandData.value || fallbackBrandConfig
 
 // Compute which layout component to use based on brand configuration
 const layoutComponent = computed(() => {
-  console.log('brand-shell: Computing layout component', {
-    brandSlug: brandSlug.value,
-    brandDataId: brandData.value?.id,
-    layoutType: currentBrandConfig.value?.theme?.layout
-  })
 
   if (!currentBrandConfig.value?.theme?.layout) {
-    console.log('No layout specified in brand config', currentBrandConfig.value?.theme?.layout)
     return ModernLayout // fallback to modern
   }
 
