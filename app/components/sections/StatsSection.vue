@@ -125,21 +125,21 @@ export default defineComponent({
   font-size: var(--font-size-xl);
   color: var(--color-text-secondary);
   line-height: var(--line-height-relaxed);
-  max-width: 600px;
+  max-width: var(--container-max, 600px);
   margin: 0 auto;
 }
 
 /* Stats Grid */
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(var(--spacing-48), 1fr));
   gap: var(--spacing-8);
   margin-bottom: var(--spacing-16);
 }
 
 .stat-item {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(var(--spacing-5));
   animation: fadeInUp 0.6s ease forwards;
 }
 

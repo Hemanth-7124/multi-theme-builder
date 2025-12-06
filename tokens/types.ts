@@ -21,6 +21,12 @@ export interface ColorTokens {
   'color-warning': string
   'color-success': string
   'color-info': string
+
+  // CTA Card specific tokens
+  'cta-card-bg-start': string
+  'cta-card-bg-middle': string
+  'cta-card-bg-end': string
+  'cta-card-border': string
 }
 
 export interface TypographyTokens {

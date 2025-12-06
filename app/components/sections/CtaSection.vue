@@ -88,11 +88,11 @@ export default defineComponent({
     cardStyles(): Record<string, any> {
       return {
         background: `linear-gradient(119deg,
-          rgba(255, 255, 255, 0.05) 0.05%,
-          ${this.getPrimaryColorWithOpacity('30%')} 50.05%,
-          rgba(255, 255, 255, 0.05) 100.05%
+          var(--cta-card-bg-start, rgba(255, 255, 255, 0.05)) 0.05%,
+          var(--cta-card-bg-middle, var(--color-primary)) 50.05%,
+          var(--cta-card-bg-end, rgba(255, 255, 255, 0.05)) 100.05%
         )`,
-        boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.1)'
+        boxShadow: 'inset 0 0 0 1px var(--cta-card-border, rgba(255, 255, 255, 0.1))'
       }
     },
 
@@ -102,7 +102,7 @@ export default defineComponent({
         background: `linear-gradient(180deg, var(--color-primary), var(--color-primary-hover))`,
         boxShadow: `
           inset 0 0 0 1px rgba(255, 255, 255, 0.1),
-          0 6px 12px ${this.getPrimaryColorWithOpacity('20%')},
+          0 6px 12px var(--cta-card-bg-middle, var(--color-primary)),
           inset -2px -2px 4px rgba(0, 0, 0, 0.2),
           inset 2px 2px 4px rgba(0, 0, 0, 0.2)
         `
@@ -118,7 +118,7 @@ export default defineComponent({
   methods: {
     // fallback gradient primary color processor
     getPrimaryColorWithOpacity(opacity: string) {
-      return `rgba(5, 150, 105, ${opacity})`
+      return `var(--color-primary-with-opacity, rgba(5, 150, 105, ${opacity}))`
     },
 
     handleCtaClick() {
@@ -140,8 +140,8 @@ export default defineComponent({
 
 <style scoped>
 .cta-section {
-  padding: 4rem 1rem;
-  max-width: 1200px;
+  padding: var(--spacing-16) var(--spacing-4);
+  max-width: var(--container-max, 1200px);
   margin: 0 auto;
 }
 
@@ -151,10 +151,10 @@ export default defineComponent({
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem 1.5rem;
+  padding: var(--spacing-8) var(--spacing-6);
   border-radius: var(--radius-2xl);
   text-align: center;
-  max-width: 800px;
+  max-width: var(--container-max, 800px);
   margin: 0 auto;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -162,13 +162,13 @@ export default defineComponent({
 
 @media (min-width: 768px) {
   .cta-card {
-    padding: 3rem 2.5rem;
+    padding: var(--spacing-12) var(--spacing-10);
   }
 }
 
 @media (min-width: 1024px) {
   .cta-card {
-    padding: 3rem;
+    padding: var(--spacing-12);
   }
 }
 
@@ -179,7 +179,7 @@ export default defineComponent({
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
   line-height: var(--line-height-tight);
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-4);
 }
 
 @media (min-width: 768px) {
@@ -190,8 +190,8 @@ export default defineComponent({
 
 @media (min-width: 1024px) {
   .cta-text {
-    font-size: 3.25rem; /* 52px equivalent */
-    line-height: 3.75rem; /* 60px equivalent */
+    font-size: var(--font-size-5xl);
+    line-height: var(--font-size-6xl);
   }
 }
 
@@ -200,36 +200,36 @@ export default defineComponent({
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  margin-top: 1rem;
-  padding: 0.625rem 1.25rem;
+  margin-top: var(--spacing-4);
+  padding: var(--spacing-2-5, 0.625rem) var(--spacing-5);
   border-radius: var(--radius-lg);
   border: none;
   color: var(--color-text-inverse);
   white-space: nowrap;
-  transition: all 0.3s ease;
+  transition: all var(--transition-fast, 0.3s ease);
   width: 100%;
 }
 
 @media (min-width: 768px) {
   .cta-button {
     width: auto;
-    margin-top: 2rem;
-    padding: 0.75rem 1.5rem;
+    margin-top: var(--spacing-8);
+    padding: var(--spacing-3) var(--spacing-6);
   }
 }
 
 @media (min-width: 1024px) {
   .cta-button {
-    margin-top: 2rem;
-    padding: 1rem 1.5rem;
+    margin-top: var(--spacing-8);
+    padding: var(--spacing-4) var(--spacing-6);
   }
 }
 
 .cta-button:hover {
-  transform: translateY(-2px);
+  transform: translateY(calc(-1 * var(--spacing-1)));
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.1),
-    0 8px 16px rgba(5, 150, 105, 0.3),
+    0 8px 16px var(--cta-card-bg-middle, var(--color-primary)),
     inset -2px -2px 4px rgba(0, 0, 0, 0.2),
     inset 2px 2px 4px rgba(0, 0, 0, 0.2) !important;
 }
@@ -282,14 +282,14 @@ export default defineComponent({
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-4);
 }
 
 /* Stars Container */
 .stars-container {
   display: flex;
-  gap: 0.25rem;
+  gap: var(--spacing-1);
 }
 
 .star {
@@ -298,8 +298,8 @@ export default defineComponent({
 }
 
 .star-icon {
-  width: 1rem;
-  height: 1rem;
+  width: var(--spacing-4);
+  height: var(--spacing-4);
   color: var(--color-primary);
   flex-shrink: 0;
 }
@@ -338,7 +338,7 @@ export default defineComponent({
 /* Responsive Design */
 @media (max-width: 767px) {
   .cta-section {
-    padding: 2rem 1rem;
+    padding: var(--spacing-8) var(--spacing-4);
   }
 
   .cta-text {

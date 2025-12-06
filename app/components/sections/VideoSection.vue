@@ -179,7 +179,7 @@ export default defineComponent({
   font-size: var(--font-size-xl);
   color: var(--color-text-secondary);
   line-height: var(--line-height-relaxed);
-  max-width: 800px;
+  max-width: var(--container-max, 800px);
   margin: 0 auto;
 }
 
@@ -191,7 +191,7 @@ export default defineComponent({
 .video-wrapper {
   position: relative;
   width: 100%;
-  max-width: 900px;
+  max-width: var(--video-max-width, 900px);
   margin: 0 auto;
   border-radius: var(--radius-2xl);
   overflow: hidden;
@@ -228,10 +228,10 @@ export default defineComponent({
 }
 
 .play-icon {
-  width: 80px;
-  height: 80px;
-  background: rgba(0, 0, 0, 0.7);
-  border-radius: 50%;
+  width: var(--spacing-20);
+  height: var(--spacing-20);
+  background: var(--video-overlay-bg, rgba(0, 0, 0, 0.7));
+  border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -240,15 +240,15 @@ export default defineComponent({
 }
 
 .video-wrapper:hover .play-icon {
-  background: rgba(0, 0, 0, 0.8);
+  background: var(--video-overlay-hover-bg, rgba(0, 0, 0, 0.8));
   transform: scale(1.1);
 }
 
 .play-svg {
-  width: 32px;
-  height: 32px;
-  color: white;
-  margin-left: 4px; /* Center the play triangle */
+  width: var(--spacing-8);
+  height: var(--spacing-8);
+  color: var(--color-text-inverse);
+  margin-left: var(--spacing-1); /* Center the play triangle */
 }
 
 /* Video Duration */
@@ -256,8 +256,8 @@ export default defineComponent({
   position: absolute;
   bottom: var(--spacing-4);
   right: var(--spacing-4);
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
+  background: var(--video-overlay-bg, rgba(0, 0, 0, 0.8));
+  color: var(--color-text-inverse);
   padding: var(--spacing-2) var(--spacing-3);
   border-radius: var(--radius-md);
   font-size: var(--font-size-sm);
@@ -267,7 +267,7 @@ export default defineComponent({
 
 /* Video Description */
 .video-description {
-  max-width: 800px;
+  max-width: var(--container-max, 800px);
   margin: 0 auto var(--spacing-12);
   font-size: var(--font-size-lg);
   color: var(--color-text-secondary);
@@ -278,9 +278,9 @@ export default defineComponent({
 /* Video Stats */
 .video-stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(var(--spacing-48), 1fr));
   gap: var(--spacing-6);
-  max-width: 800px;
+  max-width: var(--container-max, 800px);
   margin: 0 auto;
 }
 
@@ -298,13 +298,13 @@ export default defineComponent({
 
 .video-stat:hover {
   box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+  transform: translateY(calc(-1 * var(--spacing-1)));
 }
 
 .stat-icon {
   flex-shrink: 0;
-  width: 48px;
-  height: 48px;
+  width: var(--spacing-12);
+  height: var(--spacing-12);
   background: var(--color-primary);
   color: var(--color-text-inverse);
   border-radius: var(--radius-lg);
@@ -314,8 +314,8 @@ export default defineComponent({
 }
 
 .icon {
-  width: 24px;
-  height: 24px;
+  width: var(--spacing-6);
+  height: var(--spacing-6);
 }
 
 .stat-content {
@@ -354,13 +354,13 @@ export default defineComponent({
   }
 
   .play-icon {
-    width: 64px;
-    height: 64px;
+    width: var(--spacing-16);
+    height: var(--spacing-16);
   }
 
   .play-svg {
-    width: 24px;
-    height: 24px;
+    width: var(--spacing-6);
+    height: var(--spacing-6);
   }
 
   .video-stats {
@@ -373,13 +373,13 @@ export default defineComponent({
   }
 
   .stat-icon {
-    width: 40px;
-    height: 40px;
+    width: var(--spacing-10);
+    height: var(--spacing-10);
   }
 
   .icon {
-    width: 20px;
-    height: 20px;
+    width: var(--spacing-5);
+    height: var(--spacing-5);
   }
 }
 

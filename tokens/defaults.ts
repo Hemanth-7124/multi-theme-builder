@@ -23,7 +23,13 @@ export const defaultTokens: DesignTokens = {
     'color-error': '#ef4444',
     'color-warning': '#f59e0b',
     'color-success': '#10b981',
-    'color-info': '#3b82f6'
+    'color-info': '#3b82f6',
+
+    // CTA Card specific tokens (fallback values)
+    'cta-card-bg-start': 'rgba(59, 130, 246, 0.1)',
+    'cta-card-bg-middle': '#3b82f6',
+    'cta-card-bg-end': 'rgba(59, 130, 246, 0.1)',
+    'cta-card-border': 'rgba(59, 130, 246, 0.2)'
   },
   typography: {
     'font-family-sans': 'Inter, system-ui, sans-serif',

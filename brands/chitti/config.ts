@@ -47,7 +47,13 @@ export default {
 
         // Additional design tokens
         'star-color': '#fbbf24',             // Gold stars
-        'badge-background': 'rgba(255, 255, 255, 0.1)'
+        'badge-background': 'rgba(255, 255, 255, 0.1)',
+
+        // CTA Card specific tokens
+        'cta-card-bg-start': 'rgba(10, 26, 79, 0.1)',  // Navy with opacity
+        'cta-card-bg-middle': '#0a1a4f',                 // Primary navy
+        'cta-card-bg-end': 'rgba(10, 26, 79, 0.1)',    // Navy with opacity
+        'cta-card-border': 'rgba(255, 255, 255, 0.15)'
       },
       typography: {
         'font-family-sans': 'Inter, system-ui, sans-serif',

@@ -391,11 +391,11 @@ export default defineComponent({
 }
 
 .mentor-image {
-  width: 80px;
-  height: 80px;
+  width: var(--spacing-20);
+  height: var(--spacing-20);
   border-radius: var(--radius-full);
   object-fit: cover;
-  border: 3px solid var(--color-border);
+  border: var(--border-width-lg, 3px) solid var(--color-border);
 }
 
 .mentor-details {
@@ -505,8 +505,8 @@ export default defineComponent({
   }
 
   .mentor-image {
-    width: 64px;
-    height: 64px;
+    width: var(--spacing-16);
+    height: var(--spacing-16);
   }
 }
 

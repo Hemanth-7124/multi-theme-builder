@@ -102,16 +102,16 @@ export default defineComponent({
       if (item.background) {
         switch (item.background) {
           case 'green':
-            primaryColor = '#059669'
-            secondaryColor = '#047857'
+            primaryColor = 'var(--color-success)'
+            secondaryColor = 'var(--color-success-hover, var(--color-success))'
             break
           case 'red':
-            primaryColor = '#dc2626'
-            secondaryColor = '#b91c1c'
+            primaryColor = 'var(--color-error)'
+            secondaryColor = 'var(--color-error-hover, var(--color-error))'
             break
           case 'black':
-            primaryColor = '#111827'
-            secondaryColor = '#1f2937'
+            primaryColor = 'var(--color-text-primary)'
+            secondaryColor = 'var(--color-text-secondary)'
             break
           default:
             primaryColor = 'var(--color-primary)'
@@ -141,15 +141,15 @@ export default defineComponent({
 
 <style scoped>
 .features-section {
-  padding: 4rem 0;
-  max-width: 1200px;
+  padding: var(--spacing-16) 0;
+  max-width: var(--container-max, 1200px);
   margin: 0 auto;
 }
 
 /* Section Header */
 .features-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: var(--spacing-16);
 }
 
 .features-title {
@@ -157,7 +157,7 @@ export default defineComponent({
   font-size: var(--font-size-4xl);
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-4);
   line-height: var(--line-height-tight);
 }
 
@@ -173,21 +173,21 @@ export default defineComponent({
 .features-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
-  padding: 0 1rem;
+  gap: var(--spacing-8);
+  padding: 0 var(--spacing-4);
 }
 
 @media (min-width: 768px) {
   .features-grid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(var(--spacing-80), 1fr));
+    gap: var(--spacing-8);
   }
 }
 
 @media (min-width: 1024px) {
   .features-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    gap: var(--spacing-6);
   }
 }
 
@@ -201,22 +201,22 @@ export default defineComponent({
 }
 
 .feature-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(calc(-1 * var(--spacing-4)));
   box-shadow: var(--shadow-2xl);
 }
 
 .feature-card.featured-card:hover {
-  transform: scale(1.05) translateY(-4px);
+  transform: scale(1.05) translateY(calc(-1 * var(--spacing-4)));
 }
 
 /* Offer Badge */
 .offer-badge {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
+  top: var(--spacing-4);
+  left: var(--spacing-4);
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
-  padding: 0.5rem 1rem;
+  padding: var(--spacing-2) var(--spacing-4);
   border-radius: var(--radius-full);
   z-index: 10;
 }
@@ -231,15 +231,15 @@ export default defineComponent({
   font-size: var(--font-size-xs);
   color: var(--color-text-inverse);
   opacity: 0.8;
-  margin-left: 0.25rem;
+  margin-left: var(--spacing-1);
 }
 
 /* Card Content */
 .card-content {
-  padding: 1.5rem;
+  padding: var(--spacing-6);
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: var(--spacing-6);
   height: 100%;
 }
 
@@ -247,8 +247,8 @@ export default defineComponent({
   .card-content {
     flex-direction: row;
     align-items: center;
-    padding: 2rem;
-    gap: 2rem;
+    padding: var(--spacing-8);
+    gap: var(--spacing-8);
   }
 }
 
@@ -261,15 +261,15 @@ export default defineComponent({
 }
 
 .image-wrapper {
-  width: 160px;
-  height: 128px;
-  margin-bottom: 1rem;
+  width: var(--spacing-40);
+  height: var(--spacing-32);
+  margin-bottom: var(--spacing-4);
 }
 
 @media (min-width: 1024px) {
   .image-wrapper {
-    width: 180px;
-    height: 144px;
+    width: var(--spacing-44);
+    height: var(--spacing-36);
   }
 }
 
@@ -297,24 +297,24 @@ export default defineComponent({
 .points-list {
   display: flex;
   flex-direction: column;
-  gap: 0.625rem;
+  gap: var(--spacing-2-5, 0.625rem);
 }
 
 .point-item {
   display: flex;
   align-items: flex-start;
-  gap: 0.5rem;
+  gap: var(--spacing-2);
 }
 
 .point-icon {
   flex-shrink: 0;
-  margin-top: 0.125rem;
+  margin-top: var(--spacing-0-5, 0.125rem);
 }
 
 .tick-icon {
-  width: 1.25rem;
-  height: 1.25rem;
-  color: #10b981; /* Green tick color */
+  width: var(--spacing-5);
+  height: var(--spacing-5);
+  color: var(--color-success);
 }
 
 .point-text {
@@ -350,7 +350,7 @@ export default defineComponent({
 /* Responsive Design */
 @media (max-width: 1023px) {
   .features-section {
-    padding: 3rem 0;
+    padding: var(--spacing-12) 0;
   }
 
   .features-title {
@@ -364,16 +364,16 @@ export default defineComponent({
 
 @media (max-width: 767px) {
   .features-grid {
-    gap: 1.5rem;
+    gap: var(--spacing-6);
   }
 
   .card-content {
-    padding: 1.25rem;
+    padding: var(--spacing-5);
   }
 
   .image-wrapper {
-    width: 140px;
-    height: 112px;
+    width: var(--spacing-36);
+    height: var(--spacing-28);
   }
 
   .price-display {

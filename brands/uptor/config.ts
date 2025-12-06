@@ -36,7 +36,13 @@ export default {
         'color-error': '#dc2626',
         'color-warning': '#d97706',
         'color-success': '#059669',
-        'color-info': '#0891b2'
+        'color-info': '#0891b2',
+
+        // CTA Card specific tokens
+        'cta-card-bg-start': 'rgba(5, 150, 105, 0.1)',   // Green with opacity
+        'cta-card-bg-middle': '#059669',                  // Primary green
+        'cta-card-bg-end': 'rgba(5, 150, 105, 0.1)',     // Green with opacity
+        'cta-card-border': 'rgba(5, 150, 105, 0.2)'      // Green border with opacity
       },
       typography: {
         'font-family-sans': 'Inter, system-ui, sans-serif',

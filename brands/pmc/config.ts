@@ -36,7 +36,13 @@ export default {
         'color-error': '#dc2626',
         'color-warning': '#d97706',
         'color-success': '#059669',
-        'color-info': '#7c3aed'
+        'color-info': '#7c3aed',
+
+        // CTA Card specific tokens
+        'cta-card-bg-start': 'rgba(124, 58, 237, 0.1)',  // Purple with opacity
+        'cta-card-bg-middle': '#7c3aed',                   // Primary purple
+        'cta-card-bg-end': 'rgba(124, 58, 237, 0.1)',     // Purple with opacity
+        'cta-card-border': 'rgba(124, 58, 237, 0.2)'      // Purple border with opacity
       },
       typography: {
        // Navy Modern Typography
